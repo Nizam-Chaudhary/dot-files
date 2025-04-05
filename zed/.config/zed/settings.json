@@ -21,13 +21,14 @@
     ],
     "mode": "eager"
   },
+  "format_on_save": "prettier",
   "icon_theme": "Material Icon Theme",
   "show_edit_predictions": true,
   "features": {
     "edit_prediction_provider": "zed"
   },
-  "ui_font_size": 18,
-  "buffer_font_size": 18,
+  "ui_font_size": 22,
+  "buffer_font_size": 22,
   "ui_font_family": "JetBrainsMono Nerd Font",
   "buffer_font_family": "JetBrainsMono Nerd Font",
   // Use zed commit editor
@@ -39,7 +40,7 @@
     "env": {
       "EDITOR": "zed --wait"
     },
-    "font_size": 18,
+    "font_size": 22,
     "font_family": "JetBrainsMono Nerd Font"
   },
   "theme": {
@@ -185,7 +186,6 @@
   "chat_panel": {
     "dock": "right"
   },
-  "format_on_save": "prettier",
   "prettier": {
     "allowed": true,
     "plugins": [],

@@ -30,7 +30,8 @@
         "context_servers": {},
         "slash_commands": {},
         "indexed_docs_providers": {},
-        "snippets": null
+        "snippets": null,
+        "capabilities": []
       },
       "dev": false
     },
@@ -73,7 +74,8 @@
         "context_servers": {},
         "slash_commands": {},
         "indexed_docs_providers": {},
-        "snippets": null
+        "snippets": null,
+        "capabilities": []
       },
       "dev": false
     },
@@ -108,12 +110,12 @@
               "CSS"
             ],
             "language_ids": {
-              "TSX": "typescriptreact",
-              "PHP": "php",
-              "HTML": "html",
               "JavaScript": "javascriptreact",
               "CSS": "css",
-              "ERB": "eruby"
+              "PHP": "php",
+              "TSX": "typescriptreact",
+              "ERB": "eruby",
+              "HTML": "html"
             },
             "code_action_kinds": null
           }
@@ -121,7 +123,8 @@
         "context_servers": {},
         "slash_commands": {},
         "indexed_docs_providers": {},
-        "snippets": null
+        "snippets": null,
+        "capabilities": []
       },
       "dev": false
     },
@@ -156,7 +159,8 @@
         "context_servers": {},
         "slash_commands": {},
         "indexed_docs_providers": {},
-        "snippets": null
+        "snippets": null,
+        "capabilities": []
       },
       "dev": false
     },
@@ -221,7 +225,8 @@
         "context_servers": {},
         "slash_commands": {},
         "indexed_docs_providers": {},
-        "snippets": null
+        "snippets": null,
+        "capabilities": []
       },
       "dev": false
     },
@@ -229,7 +234,7 @@
       "manifest": {
         "id": "html",
         "name": "HTML",
-        "version": "0.1.5",
+        "version": "0.2.0",
         "schema_version": 1,
         "description": "HTML support.",
         "repository": "https://github.com/zed-industries/zed",
@@ -266,7 +271,8 @@
         "context_servers": {},
         "slash_commands": {},
         "indexed_docs_providers": {},
-        "snippets": null
+        "snippets": null,
+        "capabilities": []
       },
       "dev": false
     },
@@ -303,7 +309,8 @@
         "context_servers": {},
         "slash_commands": {},
         "indexed_docs_providers": {},
-        "snippets": null
+        "snippets": null,
+        "capabilities": []
       },
       "dev": false
     },
@@ -332,7 +339,8 @@
         "context_servers": {},
         "slash_commands": {},
         "indexed_docs_providers": {},
-        "snippets": null
+        "snippets": null,
+        "capabilities": []
       },
       "dev": false
     },
@@ -370,7 +378,8 @@
         "context_servers": {},
         "slash_commands": {},
         "indexed_docs_providers": {},
-        "snippets": null
+        "snippets": null,
+        "capabilities": []
       },
       "dev": false
     },
@@ -413,7 +422,8 @@
         "context_servers": {},
         "slash_commands": {},
         "indexed_docs_providers": {},
-        "snippets": null
+        "snippets": null,
+        "capabilities": []
       },
       "dev": false
     }

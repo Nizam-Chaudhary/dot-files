@@ -193,8 +193,15 @@ alias vim=vim
 #   alias cls="clear"
 # fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-# eval "$(fzf --bash)"
+# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+eval "$(fzf --bash)"
 
 # source ~/.local/share/blesh/ble.sh
 
+
+# fnm
+FNM_PATH="/home/nizam/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi
