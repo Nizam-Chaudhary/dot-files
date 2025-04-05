@@ -78,7 +78,7 @@ export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='nvim'
+  export EDITOR='vim'
 fi
 
 # if [ -x "$(command -v gnome-text-editor)" ]; then

@@ -1,0 +1,19 @@
+id = "dbml"
+name = "DBML"
+version = "0.0.1"
+schema_version = 1
+description = "Database Markup Language (DBML) support."
+repository = "https://github.com/shuklaayush/zed-dbml"
+authors = ["Ayush Shukla <ayush@shuklaayu.sh>"]
+themes = []
+languages = ["languages/dbml"]
+
+[lib]
+
+[grammars.dbml]
+repository = "https://github.com/dynamotn/tree-sitter-dbml"
+rev = "2e2fa5640268c33c3d3f27f7e676f631a9c68fd9"
+
+[language_servers]
+
+[slash_commands]

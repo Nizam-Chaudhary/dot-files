@@ -21,6 +21,7 @@
     ],
     "mode": "eager"
   },
+  "format_on_save": "prettier",
   "icon_theme": "Material Icon Theme",
   "show_edit_predictions": true,
   "features": {
@@ -45,7 +46,7 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "One Dark"
+    "dark": "Github Dark"
   },
   "base_keymap": "VSCode",
   // Vim mode settings
@@ -112,11 +113,11 @@
         "show_parameter_hints": true,
         "show_other_hints": true,
         "show_type_hints": true
-      },
-      "code_actions_on_format": {
-        "source.organizeImports": true,
-        "source.fixAll.eslint": true
       }
+      // "code_actions_on_format": {
+      //   "source.organizeImports": true,
+      //   "source.fixAll.eslint": true
+      // }
     },
     "Python": {
       "format_on_save": {
@@ -185,7 +186,7 @@
   "chat_panel": {
     "dock": "right"
   },
-  "format_on_save": "prettier",
+  "remove_trailing_whitespace_on_save": false,
   "prettier": {
     "allowed": true,
     "plugins": [],

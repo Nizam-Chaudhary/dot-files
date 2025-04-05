@@ -1,5 +1,41 @@
 {
   "extensions": {
+    "dbml": {
+      "manifest": {
+        "id": "dbml",
+        "name": "DBML",
+        "version": "0.0.1",
+        "schema_version": 1,
+        "description": "Database Markup Language (DBML) support.",
+        "repository": "https://github.com/shuklaayush/zed-dbml",
+        "authors": [
+          "Ayush Shukla <ayush@shuklaayu.sh>"
+        ],
+        "lib": {
+          "kind": null,
+          "version": null
+        },
+        "themes": [],
+        "icon_themes": [],
+        "languages": [
+          "languages/dbml"
+        ],
+        "grammars": {
+          "dbml": {
+            "repository": "https://github.com/dynamotn/tree-sitter-dbml",
+            "rev": "2e2fa5640268c33c3d3f27f7e676f631a9c68fd9",
+            "path": null
+          }
+        },
+        "language_servers": {},
+        "context_servers": {},
+        "slash_commands": {},
+        "indexed_docs_providers": {},
+        "snippets": null,
+        "capabilities": []
+      },
+      "dev": false
+    },
     "docker-compose": {
       "manifest": {
         "id": "docker-compose",
@@ -30,7 +66,8 @@
         "context_servers": {},
         "slash_commands": {},
         "indexed_docs_providers": {},
-        "snippets": null
+        "snippets": null,
+        "capabilities": []
       },
       "dev": false
     },
@@ -73,7 +110,8 @@
         "context_servers": {},
         "slash_commands": {},
         "indexed_docs_providers": {},
-        "snippets": null
+        "snippets": null,
+        "capabilities": []
       },
       "dev": false
     },
@@ -108,12 +146,12 @@
               "CSS"
             ],
             "language_ids": {
-              "TSX": "typescriptreact",
-              "PHP": "php",
               "HTML": "html",
+              "TSX": "typescriptreact",
               "JavaScript": "javascriptreact",
-              "CSS": "css",
-              "ERB": "eruby"
+              "ERB": "eruby",
+              "PHP": "php",
+              "CSS": "css"
             },
             "code_action_kinds": null
           }
@@ -121,7 +159,8 @@
         "context_servers": {},
         "slash_commands": {},
         "indexed_docs_providers": {},
-        "snippets": null
+        "snippets": null,
+        "capabilities": []
       },
       "dev": false
     },
@@ -156,7 +195,8 @@
         "context_servers": {},
         "slash_commands": {},
         "indexed_docs_providers": {},
-        "snippets": null
+        "snippets": null,
+        "capabilities": []
       },
       "dev": false
     },
@@ -221,7 +261,39 @@
         "context_servers": {},
         "slash_commands": {},
         "indexed_docs_providers": {},
-        "snippets": null
+        "snippets": null,
+        "capabilities": []
+      },
+      "dev": false
+    },
+    "github-theme": {
+      "manifest": {
+        "id": "github-theme",
+        "name": "Github Theme",
+        "version": "0.1.3",
+        "schema_version": 1,
+        "description": "GitHub themes for Zed",
+        "repository": "https://github.com/PyaeSoneAungRgn/github-zed-theme",
+        "authors": [
+          "Pyae Sone Aung <pyaesoneaungrgn@gmail.com>",
+          "Clay Tercek"
+        ],
+        "lib": {
+          "kind": null,
+          "version": null
+        },
+        "themes": [
+          "themes/github_theme.json"
+        ],
+        "icon_themes": [],
+        "languages": [],
+        "grammars": {},
+        "language_servers": {},
+        "context_servers": {},
+        "slash_commands": {},
+        "indexed_docs_providers": {},
+        "snippets": null,
+        "capabilities": []
       },
       "dev": false
     },
@@ -229,7 +301,7 @@
       "manifest": {
         "id": "html",
         "name": "HTML",
-        "version": "0.1.5",
+        "version": "0.2.0",
         "schema_version": 1,
         "description": "HTML support.",
         "repository": "https://github.com/zed-industries/zed",
@@ -266,7 +338,8 @@
         "context_servers": {},
         "slash_commands": {},
         "indexed_docs_providers": {},
-        "snippets": null
+        "snippets": null,
+        "capabilities": []
       },
       "dev": false
     },
@@ -303,7 +376,8 @@
         "context_servers": {},
         "slash_commands": {},
         "indexed_docs_providers": {},
-        "snippets": null
+        "snippets": null,
+        "capabilities": []
       },
       "dev": false
     },
@@ -332,7 +406,8 @@
         "context_servers": {},
         "slash_commands": {},
         "indexed_docs_providers": {},
-        "snippets": null
+        "snippets": null,
+        "capabilities": []
       },
       "dev": false
     },
@@ -370,7 +445,8 @@
         "context_servers": {},
         "slash_commands": {},
         "indexed_docs_providers": {},
-        "snippets": null
+        "snippets": null,
+        "capabilities": []
       },
       "dev": false
     },
@@ -413,12 +489,50 @@
         "context_servers": {},
         "slash_commands": {},
         "indexed_docs_providers": {},
-        "snippets": null
+        "snippets": null,
+        "capabilities": []
       },
       "dev": false
     }
   },
-  "themes": {},
+  "themes": {
+    "Github Dark": {
+      "extension": "github-theme",
+      "path": "themes/github_theme.json"
+    },
+    "Github Dark Colorblind": {
+      "extension": "github-theme",
+      "path": "themes/github_theme.json"
+    },
+    "Github Dark Dimmed": {
+      "extension": "github-theme",
+      "path": "themes/github_theme.json"
+    },
+    "Github Dark High Contrast": {
+      "extension": "github-theme",
+      "path": "themes/github_theme.json"
+    },
+    "Github Dark Tritanopia": {
+      "extension": "github-theme",
+      "path": "themes/github_theme.json"
+    },
+    "Github Light": {
+      "extension": "github-theme",
+      "path": "themes/github_theme.json"
+    },
+    "Github Light Colorblind": {
+      "extension": "github-theme",
+      "path": "themes/github_theme.json"
+    },
+    "Github Light High Contrast": {
+      "extension": "github-theme",
+      "path": "themes/github_theme.json"
+    },
+    "Github Light Tritanopia": {
+      "extension": "github-theme",
+      "path": "themes/github_theme.json"
+    }
+  },
   "icon_themes": {
     "Material Icon Theme": {
       "extension": "material-icon-theme",
@@ -426,6 +540,18 @@
     }
   },
   "languages": {
+    "DBML": {
+      "extension": "dbml",
+      "path": "languages/dbml",
+      "matcher": {
+        "path_suffixes": [
+          "dbml"
+        ],
+        "first_line_pattern": null
+      },
+      "hidden": false,
+      "grammar": "dbml"
+    },
     "Diff": {
       "extension": "git-firefly",
       "path": "languages/diff",

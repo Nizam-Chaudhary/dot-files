@@ -214,6 +214,6 @@ key = "Key0"
 mods = "Control"
 action = "ResetFontSize"
 
-[general]
-live_config_reload = true
-working_directory = "None"
+# [general]
+# live_config_reload = true
+# working_directory = "None"
