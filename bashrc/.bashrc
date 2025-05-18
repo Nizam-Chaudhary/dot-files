@@ -205,3 +205,5 @@ if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
   eval "`fnm env`"
 fi
+
+SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh

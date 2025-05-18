@@ -7,26 +7,32 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "show_inline_completions": true,
+  "format_on_save": "prettier",
+  "icon_theme": "Material Icon Theme",
+  "show_edit_predictions": true,
   "features": {
-    "inline_completion_provider": "zed"
+    "edit_prediction_provider": "zed"
   },
-  "ui_font_size": 20,
-  "buffer_font_size": 18,
+  "ui_font_size": 22,
+  "buffer_font_size": 22,
   "ui_font_family": "JetBrainsMono Nerd Font",
   "buffer_font_family": "JetBrainsMono Nerd Font",
   // Use zed commit editor
   "terminal": {
+    "external": {
+      "command": "kitty",
+      "args": ["--directory", "{cwd}"]
+    },
     "env": {
       "EDITOR": "zed --wait"
     },
-    "font_size": 16,
+    "font_size": 22,
     "font_family": "JetBrainsMono Nerd Font"
   },
   "theme": {
     "mode": "system",
-    "light": "Catppuccin Mocha",
-    "dark": "Github Dark"
+    "light": "One Light",
+    "dark": "One Dark"
   },
   "base_keymap": "VSCode",
   // Vim mode settings
@@ -54,7 +60,7 @@
   "assistant": {
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-latest"
+      "model": "claude-3-7-sonnet-latest"
     },
     "version": "2"
   },
@@ -100,8 +106,16 @@
       }
     },
     "Python": {
-      "format_on_save": { "language_server": { "name": "ruff" } },
-      "formatter": { "language_server": { "name": "ruff" } },
+      "format_on_save": {
+        "language_server": {
+          "name": "ruff"
+        }
+      },
+      "formatter": {
+        "language_server": {
+          "name": "ruff"
+        }
+      },
       "language_servers": ["pyright", "ruff"]
     }
   },
@@ -126,7 +140,7 @@
     // "**/.husky",
     "**/.turbo",
     "**/.vscode-test",
-    "**/.vscode",
+    // "**/.vscode",
     "**/.next",
     "**/.storybook",
     "**/.tap",
@@ -158,7 +172,6 @@
   "chat_panel": {
     "dock": "right"
   },
-  "format_on_save": "prettier",
   "prettier": {
     "allowed": true,
     "plugins": [],

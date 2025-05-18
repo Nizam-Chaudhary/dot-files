@@ -7,41 +7,27 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "edit_predictions": {
-    "disabled_globs": [
-      "dist/**/*",
-      "node_modules/**/*",
-      ".next/**/*",
-      "build/**/*",
-      "coverage/**/*",
-      ".turbo/**/*",
-      "out/**/*",
-      ".husky/**/*",
-      ".storybook/**/*"
-    ],
-    "mode": "eager"
-  },
   "format_on_save": "prettier",
   "icon_theme": "Material Icon Theme",
   "show_edit_predictions": true,
   "features": {
     "edit_prediction_provider": "zed"
   },
-  "ui_font_size": 22,
-  "buffer_font_size": 22,
-  "ui_font_family": "JetBrainsMono Nerd Font",
-  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "ui_font_size": 18,
+  "buffer_font_size": 18,
+  "ui_font_family": "Monaspace Neon",
+  "buffer_font_family": "Monaspace Neon",
   // Use zed commit editor
   "terminal": {
     "external": {
-      "command": "kitty",
+      "command": "cosmic-term",
       "args": ["--directory", "{cwd}"]
     },
     "env": {
       "EDITOR": "zed --wait"
     },
-    "font_size": 22,
-    "font_family": "JetBrainsMono Nerd Font"
+    "font_size": 18,
+    "font_family": "Monaspace Neon"
   },
   "theme": {
     "mode": "system",

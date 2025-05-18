@@ -39,10 +39,10 @@
       "manifest": {
         "id": "dockerfile",
         "name": "Dockerfile",
-        "version": "0.0.4",
+        "version": "0.0.5",
         "schema_version": 1,
         "description": "Dockerfile support.",
-        "repository": "https://github.com/d1y/dockerfile.zed",
+        "repository": "https://github.com/zed-extensions/dockerfile",
         "authors": [
           "d1y <chenhonzho@gmail.com>",
           "joshmeads <github@joshmeads.com>"
@@ -110,12 +110,12 @@
               "CSS"
             ],
             "language_ids": {
-              "JavaScript": "javascriptreact",
-              "CSS": "css",
-              "PHP": "php",
               "TSX": "typescriptreact",
+              "CSS": "css",
               "ERB": "eruby",
-              "HTML": "html"
+              "HTML": "html",
+              "PHP": "php",
+              "JavaScript": "javascriptreact"
             },
             "code_action_kinds": null
           }
@@ -230,11 +230,42 @@
       },
       "dev": false
     },
+    "github-theme": {
+      "manifest": {
+        "id": "github-theme",
+        "name": "Github Theme",
+        "version": "0.1.3",
+        "schema_version": 1,
+        "description": "GitHub themes for Zed",
+        "repository": "https://github.com/PyaeSoneAungRgn/github-zed-theme",
+        "authors": [
+          "Pyae Sone Aung <pyaesoneaungrgn@gmail.com>",
+          "Clay Tercek"
+        ],
+        "lib": {
+          "kind": null,
+          "version": null
+        },
+        "themes": [
+          "themes/github_theme.json"
+        ],
+        "icon_themes": [],
+        "languages": [],
+        "grammars": {},
+        "language_servers": {},
+        "context_servers": {},
+        "slash_commands": {},
+        "indexed_docs_providers": {},
+        "snippets": null,
+        "capabilities": []
+      },
+      "dev": false
+    },
     "html": {
       "manifest": {
         "id": "html",
         "name": "HTML",
-        "version": "0.2.0",
+        "version": "0.2.1",
         "schema_version": 1,
         "description": "HTML support.",
         "repository": "https://github.com/zed-industries/zed",
@@ -262,8 +293,8 @@
             "language": "HTML",
             "languages": [],
             "language_ids": {
-              "HTML": "html",
-              "CSS": "css"
+              "CSS": "css",
+              "HTML": "html"
             },
             "code_action_kinds": null
           }
@@ -428,7 +459,44 @@
       "dev": false
     }
   },
-  "themes": {},
+  "themes": {
+    "Github Dark": {
+      "extension": "github-theme",
+      "path": "themes/github_theme.json"
+    },
+    "Github Dark Colorblind": {
+      "extension": "github-theme",
+      "path": "themes/github_theme.json"
+    },
+    "Github Dark Dimmed": {
+      "extension": "github-theme",
+      "path": "themes/github_theme.json"
+    },
+    "Github Dark High Contrast": {
+      "extension": "github-theme",
+      "path": "themes/github_theme.json"
+    },
+    "Github Dark Tritanopia": {
+      "extension": "github-theme",
+      "path": "themes/github_theme.json"
+    },
+    "Github Light": {
+      "extension": "github-theme",
+      "path": "themes/github_theme.json"
+    },
+    "Github Light Colorblind": {
+      "extension": "github-theme",
+      "path": "themes/github_theme.json"
+    },
+    "Github Light High Contrast": {
+      "extension": "github-theme",
+      "path": "themes/github_theme.json"
+    },
+    "Github Light Tritanopia": {
+      "extension": "github-theme",
+      "path": "themes/github_theme.json"
+    }
+  },
   "icon_themes": {
     "Material Icon Theme": {
       "extension": "material-icon-theme",
@@ -454,7 +522,8 @@
       "matcher": {
         "path_suffixes": [
           "Dockerfile",
-          "Containerfile"
+          "Containerfile",
+          "dockerfile"
         ],
         "first_line_pattern": null
       },
