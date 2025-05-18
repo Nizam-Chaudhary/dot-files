@@ -15,19 +15,19 @@
   },
   "ui_font_size": 18,
   "buffer_font_size": 18,
-  "ui_font_family": "Monaspace Neon",
-  "buffer_font_family": "Monaspace Neon",
+  "ui_font_family": "JetBrainsMono Nerd Font Mono",
+  "buffer_font_family": "JetBrainsMono Nerd Font Mono",
   // Use zed commit editor
   "terminal": {
     "external": {
-      "command": "cosmic-term",
+      "command": "kitty",
       "args": ["--directory", "{cwd}"]
     },
     "env": {
       "EDITOR": "zed --wait"
     },
     "font_size": 18,
-    "font_family": "Monaspace Neon"
+    "font_family": "JetBrainsMono Nerd Font Mono"
   },
   "theme": {
     "mode": "system",
@@ -57,7 +57,7 @@
     "right_padding": 0.15
   },
   // Use Copilot Chat AI as default
-  "assistant": {
+  "agent": {
     "default_model": {
       "provider": "zed.dev",
       "model": "claude-3-7-sonnet-latest"

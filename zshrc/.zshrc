@@ -1,6 +1,10 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
+# zsh completions
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+autoload -U compinit && compinit
+
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -32,7 +36,7 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fzf extract eza sudo npm pnpm node docker docker-compose zsh-syntax-highlighting zsh-autosuggestions zsh-history-substring-search)
+plugins=(git fzf extract eza sudo npm node docker docker-compose zsh-syntax-highlighting zsh-autosuggestions zsh-history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -117,3 +121,14 @@ if [ -d "$FNM_PATH" ]; then
 fi
 
 # SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh
+
+# fnm
+FNM_PATH="/home/nizam/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/nizam/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
+
+# Starship
+eval "$(starship init zsh)"
+

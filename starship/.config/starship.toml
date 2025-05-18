@@ -1,7 +1,7 @@
 format = """\
 [╭╴](fg:arrow)\
-$username\
 $os\
+$username \
 $git_branch\
 (\
     at \
@@ -47,14 +47,15 @@ text_light = "#26272A"
 [username]
 style_user = 'bold os'
 style_root = 'bold os_admin'
-format = '[  $user](fg:$style) '
+format = '[$user](fg:$style)'
 disabled = false
 show_always = true
 
 [os]
-format = "on [($name)]($style) "
+# format = "$symbol on [($name)]($style) "
+format = "$symbol "
 style = "bold blue"
-disabled = true
+disabled = false
 
 [os.symbols]
 Alpine = " "
