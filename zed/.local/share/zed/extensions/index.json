@@ -31,7 +31,8 @@
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": null,
-        "capabilities": []
+        "capabilities": [],
+        "debug_adapters": []
       },
       "dev": false
     },
@@ -75,7 +76,8 @@
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": null,
-        "capabilities": []
+        "capabilities": [],
+        "debug_adapters": []
       },
       "dev": false
     },
@@ -110,12 +112,12 @@
               "CSS"
             ],
             "language_ids": {
+              "ERB": "eruby",
               "TSX": "typescriptreact",
-              "CSS": "css",
               "HTML": "html",
-              "JavaScript": "javascriptreact",
               "PHP": "php",
-              "ERB": "eruby"
+              "JavaScript": "javascriptreact",
+              "CSS": "css"
             },
             "code_action_kinds": null
           }
@@ -124,7 +126,8 @@
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": null,
-        "capabilities": []
+        "capabilities": [],
+        "debug_adapters": []
       },
       "dev": false
     },
@@ -160,7 +163,8 @@
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": null,
-        "capabilities": []
+        "capabilities": [],
+        "debug_adapters": []
       },
       "dev": false
     },
@@ -226,7 +230,8 @@
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": null,
-        "capabilities": []
+        "capabilities": [],
+        "debug_adapters": []
       },
       "dev": false
     },
@@ -257,7 +262,8 @@
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": null,
-        "capabilities": []
+        "capabilities": [],
+        "debug_adapters": []
       },
       "dev": false
     },
@@ -293,8 +299,8 @@
             "language": "HTML",
             "languages": [],
             "language_ids": {
-              "CSS": "css",
-              "HTML": "html"
+              "HTML": "html",
+              "CSS": "css"
             },
             "code_action_kinds": null
           }
@@ -303,7 +309,8 @@
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": null,
-        "capabilities": []
+        "capabilities": [],
+        "debug_adapters": []
       },
       "dev": false
     },
@@ -341,7 +348,8 @@
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": null,
-        "capabilities": []
+        "capabilities": [],
+        "debug_adapters": []
       },
       "dev": false
     },
@@ -371,7 +379,52 @@
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": null,
-        "capabilities": []
+        "capabilities": [],
+        "debug_adapters": []
+      },
+      "dev": false
+    },
+    "nginx": {
+      "manifest": {
+        "id": "nginx",
+        "name": "Nginx",
+        "version": "0.0.1",
+        "schema_version": 1,
+        "description": "Nginx support",
+        "repository": "https://github.com/d1y/nginx-zed",
+        "authors": [
+          "d1y <chenhonzhou@gmail.com>"
+        ],
+        "lib": {
+          "kind": "Rust",
+          "version": "0.0.6"
+        },
+        "themes": [],
+        "icon_themes": [],
+        "languages": [
+          "languages/nginx"
+        ],
+        "grammars": {
+          "nginx": {
+            "repository": "https://gitlab.com/joncoole/tree-sitter-nginx",
+            "rev": "b4b61db443602b69410ab469c122c01b1e685aa0",
+            "path": null
+          }
+        },
+        "language_servers": {
+          "nginx": {
+            "language": "Nginx",
+            "languages": [],
+            "language_ids": {},
+            "code_action_kinds": null
+          }
+        },
+        "context_servers": {},
+        "slash_commands": {},
+        "indexed_docs_providers": {},
+        "snippets": null,
+        "capabilities": [],
+        "debug_adapters": []
       },
       "dev": false
     },
@@ -410,7 +463,8 @@
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": null,
-        "capabilities": []
+        "capabilities": [],
+        "debug_adapters": []
       },
       "dev": false
     },
@@ -418,7 +472,7 @@
       "manifest": {
         "id": "toml",
         "name": "TOML",
-        "version": "0.1.3",
+        "version": "0.1.4",
         "schema_version": 1,
         "description": "TOML support.",
         "repository": "https://github.com/zed-industries/zed",
@@ -454,7 +508,49 @@
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": null,
-        "capabilities": []
+        "capabilities": [],
+        "debug_adapters": []
+      },
+      "dev": false
+    },
+    "tsgo": {
+      "manifest": {
+        "id": "tsgo",
+        "name": "tsgo",
+        "version": "0.0.1",
+        "schema_version": 1,
+        "description": "Native implementation of TypeScript compiler.",
+        "repository": "https://github.com/zed-extensions/tsgo",
+        "authors": [
+          "Zed Industries <hello@zed.dev>"
+        ],
+        "lib": {
+          "kind": "Rust",
+          "version": "0.5.0"
+        },
+        "themes": [],
+        "icon_themes": [],
+        "languages": [],
+        "grammars": {},
+        "language_servers": {
+          "tsgo": {
+            "language": null,
+            "languages": [
+              "TypeScript",
+              "TSX",
+              "JavaScript",
+              "JSX"
+            ],
+            "language_ids": {},
+            "code_action_kinds": null
+          }
+        },
+        "context_servers": {},
+        "slash_commands": {},
+        "indexed_docs_providers": {},
+        "snippets": null,
+        "capabilities": [],
+        "debug_adapters": []
       },
       "dev": false
     }
@@ -621,6 +717,18 @@
       },
       "hidden": false,
       "grammar": "log"
+    },
+    "Nginx": {
+      "extension": "nginx",
+      "path": "languages/nginx",
+      "matcher": {
+        "path_suffixes": [
+          "nginx.conf"
+        ],
+        "first_line_pattern": null
+      },
+      "hidden": false,
+      "grammar": "nginx"
     },
     "SQL": {
       "extension": "sql",
