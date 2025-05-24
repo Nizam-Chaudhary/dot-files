@@ -112,12 +112,12 @@
               "CSS"
             ],
             "language_ids": {
-              "ERB": "eruby",
-              "TSX": "typescriptreact",
-              "HTML": "html",
-              "PHP": "php",
               "JavaScript": "javascriptreact",
-              "CSS": "css"
+              "CSS": "css",
+              "HTML": "html",
+              "TSX": "typescriptreact",
+              "ERB": "eruby",
+              "PHP": "php"
             },
             "code_action_kinds": null
           }
