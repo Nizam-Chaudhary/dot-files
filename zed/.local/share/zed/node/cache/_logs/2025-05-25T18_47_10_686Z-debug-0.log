@@ -1,0 +1,138 @@
+0 verbose cli /home/nizam/.local/share/fnm/node-versions/v24.1.0/installation/bin/node /run/user/1000/fnm_multishells/14646_1748198727961/bin/npm
+1 info using npm@11.3.0
+2 info using node@v24.1.0
+3 silly config load:file:/home/nizam/.local/share/fnm/node-versions/v24.1.0/installation/lib/node_modules/npm/npmrc
+4 silly config load:file:/home/nizam/config-files/.npmrc
+5 silly config load:file:/home/nizam/.npmrc
+6 silly config load:file:/home/nizam/.local/share/fnm/node-versions/v24.1.0/installation/etc/npmrc
+7 verbose title npm info vscode-langservers-extracted
+8 verbose argv "info" "--cache" "/home/nizam/.local/share/zed/node/cache" "vscode-langservers-extracted" "--json" "--fetch-retry-mintimeout" "2000" "--fetch-retry-maxtimeout" "5000" "--fetch-timeout" "5000"
+9 verbose logfile logs-max:10 dir:/home/nizam/.local/share/zed/node/cache/_logs/2025-05-25T18_47_10_686Z-
+10 verbose logfile /home/nizam/.local/share/zed/node/cache/_logs/2025-05-25T18_47_10_686Z-debug-0.log
+11 silly logfile done cleaning log files
+12 http fetch GET 200 https://registry.npmjs.org/vscode-langservers-extracted 690ms (cache miss)
+13 silly view {
+13 silly view   '4.10.0': {
+13 silly view     _id: 'vscode-langservers-extracted@4.10.0',
+13 silly view     _rev: '24-eeafbef4861fcc379f74633fe15355ba',
+13 silly view     name: 'vscode-langservers-extracted',
+13 silly view     'dist-tags': { latest: '4.10.0' },
+13 silly view     versions: [
+13 silly view       '1.0.1', '1.0.2',  '2.0.0',
+13 silly view       '2.1.0', '2.2.0',  '2.3.0',
+13 silly view       '2.3.1', '2.4.0',  '3.0.0',
+13 silly view       '3.0.1', '3.0.2',  '4.0.0',
+13 silly view       '4.1.0', '4.2.1',  '4.3.0',
+13 silly view       '4.4.0', '4.5.0',  '4.6.0',
+13 silly view       '4.7.0', '4.7.1',  '4.8.0',
+13 silly view       '4.9.0', '4.10.0'
+13 silly view     ],
+13 silly view     time: {
+13 silly view       created: '2020-11-09T05:24:35.060Z',
+13 silly view       '1.0.1': '2020-11-09T05:24:35.205Z',
+13 silly view       modified: '2024-05-08T02:25:52.317Z',
+13 silly view       '1.0.2': '2020-11-09T05:49:25.321Z',
+13 silly view       '2.0.0': '2020-11-09T06:43:03.755Z',
+13 silly view       '2.1.0': '2020-12-03T15:16:13.181Z',
+13 silly view       '2.2.0': '2021-01-02T06:53:08.764Z',
+13 silly view       '2.3.0': '2021-01-02T13:34:43.679Z',
+13 silly view       '2.3.1': '2021-03-02T13:54:23.384Z',
+13 silly view       '2.4.0': '2021-06-14T03:51:37.239Z',
+13 silly view       '3.0.0': '2021-10-01T08:33:27.776Z',
+13 silly view       '3.0.1': '2021-10-19T02:51:11.886Z',
+13 silly view       '3.0.2': '2021-11-19T14:07:49.556Z',
+13 silly view       '4.0.0': '2021-12-27T15:21:52.820Z',
+13 silly view       '4.1.0': '2022-02-21T12:30:55.718Z',
+13 silly view       '4.2.1': '2022-05-09T13:58:47.918Z',
+13 silly view       '4.3.0': '2022-07-20T10:36:52.095Z',
+13 silly view       '4.4.0': '2022-07-20T11:59:42.615Z',
+13 silly view       '4.5.0': '2022-10-13T07:27:47.391Z',
+13 silly view       '4.6.0': '2023-02-01T16:36:49.253Z',
+13 silly view       '4.7.0': '2023-04-24T17:34:37.458Z',
+13 silly view       '4.7.1': '2023-10-20T17:28:06.880Z',
+13 silly view       '4.8.0': '2023-10-21T16:26:38.153Z',
+13 silly view       '4.9.0': '2024-05-07T11:37:22.908Z',
+13 silly view       '4.10.0': '2024-05-08T02:25:52.141Z'
+13 silly view     },
+13 silly view     maintainers: [ [Object] ],
+13 silly view     description: 'HTML/CSS/JSON/ESLint language servers extracted from [vscode](https://github.com/Microsoft/vscode).',
+13 silly view     license: 'MIT',
+13 silly view     readmeFilename: 'README.md',
+13 silly view     homepage: 'https://github.com/hrsh7th/vscode-langservers-extracted#readme',
+13 silly view     keywords: [ 'language-server-protocol' ],
+13 silly view     repository: {
+13 silly view       type: 'git',
+13 silly view       url: 'git+https://github.com/hrsh7th/vscode-langservers-extracted.git'
+13 silly view     },
+13 silly view     author: { name: 'hrsh7th' },
+13 silly view     bugs: {
+13 silly view       url: 'https://github.com/hrsh7th/vscode-langservers-extracted/issues'
+13 silly view     },
+13 silly view     users: { 'flumpus-dev': true },
+13 silly view     version: '4.10.0',
+13 silly view     main: 'index.js',
+13 silly view     directories: { bin: './bin' },
+13 silly view     bin: {
+13 silly view       'vscode-css-language-server': 'bin/vscode-css-language-server',
+13 silly view       'vscode-eslint-language-server': 'bin/vscode-eslint-language-server',
+13 silly view       'vscode-html-language-server': 'bin/vscode-html-language-server',
+13 silly view       'vscode-json-language-server': 'bin/vscode-json-language-server',
+13 silly view       'vscode-markdown-language-server': 'bin/vscode-markdown-language-server'
+13 silly view     },
+13 silly view     scripts: {
+13 silly view       clean: 'rimraf {lib,dist}/*',
+13 silly view       update: 'yarn clean && ./script/build.sh && node ./script/depcheck.js',
+13 silly view       release: 'np --no-yarn',
+13 silly view       test: 'echo 1'
+13 silly view     },
+13 silly view     devDependencies: {
+13 silly view       '@babel/cli': '^7.16.0',
+13 silly view       '@babel/core': '^7.16.5',
+13 silly view       '@babel/preset-env': '^7.16.5',
+13 silly view       np: '^7.7.0',
+13 silly view       'npm-run-all': '^4.1.5',
+13 silly view       rimraf: '^3.0.2'
+13 silly view     },
+13 silly view     dependencies: {
+13 silly view       '@vscode/l10n': '^0.0.18',
+13 silly view       'core-js': '^3.20.1',
+13 silly view       'jsonc-parser': '^3.2.1',
+13 silly view       'regenerator-runtime': '^0.13.9',
+13 silly view       'request-light': '^0.7.0',
+13 silly view       semver: '^7.6.1',
+13 silly view       typescript: '^4.0.5',
+13 silly view       'vscode-css-languageservice': '^6.2.14',
+13 silly view       'vscode-html-languageservice': '^5.2.0',
+13 silly view       'vscode-json-languageservice': '^5.3.11',
+13 silly view       'vscode-languageserver': '^10.0.0-next.3',
+13 silly view       'vscode-languageserver-textdocument': '^1.0.11',
+13 silly view       'vscode-languageserver-types': '^3.17.5',
+13 silly view       'vscode-markdown-languageservice': '^0.5.0-alpha.6',
+13 silly view       'vscode-nls': '^5.2.0',
+13 silly view       'vscode-uri': '^3.0.8'
+13 silly view     },
+13 silly view     gitHead: '0a7a86dd080ec1adfb61732c17ba59492719c001',
+13 silly view     _nodeVersion: '20.11.1',
+13 silly view     _npmVersion: '10.2.4',
+13 silly view     dist: {
+13 silly view       integrity: 'sha512-EFf9uQI4dAKbzMQFjDvVm1xJq1DXAQvBEuEfPGrK/xzfsL5xWTfIuRr90NgfmqwO+IEt6vLZm9EOj6R66xIifg==',
+13 silly view       shasum: '420d63a4e8064ec0027436a21f315f1199b566c1',
+13 silly view       tarball: 'https://registry.npmjs.org/vscode-langservers-extracted/-/vscode-langservers-extracted-4.10.0.tgz',
+13 silly view       fileCount: 94,
+13 silly view       unpackedSize: 847612,
+13 silly view       signatures: [Array]
+13 silly view     },
+13 silly view     _npmUser: { name: 'hrsh7th', email: 'hrsh7th@gmail.com' },
+13 silly view     _npmOperationalInternal: {
+13 silly view       host: 's3://npm-registry-packages',
+13 silly view       tmp: 'tmp/vscode-langservers-extracted_4.10.0_1715135151926_0.651471945034156'
+13 silly view     },
+13 silly view     _hasShrinkwrap: false
+13 silly view   }
+13 silly view }
+14 verbose cwd /home/nizam/config-files
+15 verbose os Linux 6.14.7-arch2-1
+16 verbose node v24.1.0
+17 verbose npm  v11.3.0
+18 verbose exit 0
+19 info ok
