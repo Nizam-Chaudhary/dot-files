@@ -131,4 +131,3 @@ fi
 
 # Starship
 eval "$(starship init zsh)"
-

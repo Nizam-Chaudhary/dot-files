@@ -1,4 +1,0 @@
-name = "LOG"
-grammar = "log"
-path_suffixes = ["log"]
-brackets = [{ start = "\"", end = "\"", close = false, newline = false }]

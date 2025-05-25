@@ -1,9 +1,0 @@
-zed/.local/share/zed/copilot
-zed/.local/share/zed/db
-zed/.local/share/zed/languages
-zed/.local/share/zed/logs
-zed/.local/share/zed/node
-zed/.local/share/zed/prettier
-zed/.local/share/zed/prompts
-zed/.local/share/zed/conversations
-zed/.local/share/zed/threads/**/*
