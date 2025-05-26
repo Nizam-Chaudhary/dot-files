@@ -188,6 +188,7 @@
         "useTabs": false,
         "bracketSpacing": true
     },
+    "remove_trailing_whitespace_on_save": false,
     "snippets": {
         "enabled": true
     }
