@@ -112,12 +112,12 @@
               "CSS"
             ],
             "language_ids": {
-              "JavaScript": "javascriptreact",
-              "HTML": "html",
-              "TSX": "typescriptreact",
               "PHP": "php",
-              "CSS": "css",
-              "ERB": "eruby"
+              "ERB": "eruby",
+              "TSX": "typescriptreact",
+              "HTML": "html",
+              "JavaScript": "javascriptreact",
+              "CSS": "css"
             },
             "code_action_kinds": null
           }
@@ -299,8 +299,8 @@
             "language": "HTML",
             "languages": [],
             "language_ids": {
-              "HTML": "html",
-              "CSS": "css"
+              "CSS": "css",
+              "HTML": "html"
             },
             "code_action_kinds": null
           }
@@ -357,7 +357,7 @@
       "manifest": {
         "id": "material-icon-theme",
         "name": "Material Icon Theme",
-        "version": "0.1.2",
+        "version": "1.0.0",
         "schema_version": 1,
         "description": "Material Design icons.",
         "repository": "https://github.com/zed-extensions/material-icon-theme",
