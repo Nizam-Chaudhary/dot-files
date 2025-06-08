@@ -7,13 +7,13 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-    "format_on_save": "prettier",
+    "format_on_save": "language_server",
     "icon_theme": "Material Icon Theme",
     "show_edit_predictions": true,
     "features": {
         "edit_prediction_provider": "zed"
     },
-    "formatter": "prettier",
+    "formatter": "language_server",
     "ui_font_size": 18,
     "buffer_font_size": 18,
     "ui_font_family": "JetBrainsMono Nerd Font Mono",
@@ -32,8 +32,8 @@
     },
     "theme": {
         "mode": "system",
-        "light": "One Light",
-        "dark": "Github Dark Dimmed"
+        "light": "poimandres",
+        "dark": "poimandres"
     },
     "base_keymap": "VSCode",
     // Vim mode settings
@@ -158,7 +158,8 @@
     "languages": {
         // Refer https://zed.dev/docs/languages/javascript and https://zed.dev/docs/languages/typescript for more info
         "TypeScript": {
-            "language_servers": ["tsgo", "typescript-language-server"],
+            "formatter": "prettier",
+            "format_on_save": "prettier",
             // Refer https://github.com/jellydn/ts-inlay-hints for how to setup for Neovim and VSCode
             "code_actions_on_format": {
                 "source.fixAll.prettier": true,
@@ -166,31 +167,40 @@
             }
         },
         "TSX": {
-            "language_servers": ["tsgo", "typescript-language-server"],
+            "formatter": "prettier",
+            "format_on_save": "prettier",
             "code_actions_on_format": {
                 "source.fixAll.prettier": true,
                 "source.organizeImports.prettier": true
             }
         },
         "JavaScript": {
-            "language_servers": ["typescript-language-server"],
+            "formatter": "prettier",
+            "format_on_save": "prettier",
             "code_actions_on_format": {
                 "source.fixAll.prettier": true,
                 "source.organizeImports.prettier": true
             }
         },
-        "Python": {
-            "format_on_save": {
-                "language_server": {
-                    "name": "ruff"
-                }
-            },
-            "formatter": {
-                "language_server": {
-                    "name": "ruff"
-                }
-            },
-            "language_servers": ["pyright", "ruff"]
+        "JSON": {
+            "formatter": "prettier",
+            "format_on_save": "prettier"
+        },
+        "JSONC": {
+            "formatter": "prettier",
+            "format_on_save": "prettier"
+        },
+        "YAML": {
+            "formatter": "prettier",
+            "format_on_save": "prettier"
+        },
+        "TOML": {
+            "formatter": "prettier",
+            "format_on_save": "prettier"
+        },
+        "Markdown": {
+            "formatter": "prettier",
+            "format_on_save": "prettier"
         }
     },
     // File syntax highlighting

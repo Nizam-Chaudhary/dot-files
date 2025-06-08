@@ -38,7 +38,7 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fzf extract eza sudo npm node docker docker-compose zsh-syntax-highlighting zsh-autosuggestions zsh-history-substring-search)
+plugins=(git fzf eza sudo npm dnf node bun docker docker-compose zsh-syntax-highlighting zsh-autosuggestions zsh-history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -107,13 +107,15 @@ export GPG_TTY=$(tty)
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # source <(fzf --zsh)
 
-# pnpm
-export PNPM_HOME="/home/nizam/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh
+
+# bun completions
+[ -s "/home/nizam/.bun/_bun" ] && source "/home/nizam/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 
 # fnm
 FNM_PATH="/home/nizam/.local/share/fnm"
@@ -121,15 +123,3 @@ if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
   eval "`fnm env`"
 fi
-
-# SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh
-
-# fnm
-FNM_PATH="/home/nizam/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/nizam/.local/share/fnm:$PATH"
-  eval "`fnm env`"
-fi
-
-# Starship
-eval "$(starship init zsh)"

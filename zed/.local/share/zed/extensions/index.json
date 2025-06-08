@@ -112,12 +112,12 @@
               "CSS"
             ],
             "language_ids": {
-              "PHP": "php",
+              "CSS": "css",
+              "JavaScript": "javascriptreact",
               "ERB": "eruby",
               "TSX": "typescriptreact",
               "HTML": "html",
-              "JavaScript": "javascriptreact",
-              "CSS": "css"
+              "PHP": "php"
             },
             "code_action_kinds": null
           }
@@ -225,38 +225,6 @@
             "path": null
           }
         },
-        "language_servers": {},
-        "context_servers": {},
-        "slash_commands": {},
-        "indexed_docs_providers": {},
-        "snippets": null,
-        "capabilities": [],
-        "debug_adapters": []
-      },
-      "dev": false
-    },
-    "github-theme": {
-      "manifest": {
-        "id": "github-theme",
-        "name": "Github Theme",
-        "version": "0.1.3",
-        "schema_version": 1,
-        "description": "GitHub themes for Zed",
-        "repository": "https://github.com/PyaeSoneAungRgn/github-zed-theme",
-        "authors": [
-          "Pyae Sone Aung <pyaesoneaungrgn@gmail.com>",
-          "Clay Tercek"
-        ],
-        "lib": {
-          "kind": null,
-          "version": null
-        },
-        "themes": [
-          "themes/github_theme.json"
-        ],
-        "icon_themes": [],
-        "languages": [],
-        "grammars": {},
         "language_servers": {},
         "context_servers": {},
         "slash_commands": {},
@@ -428,14 +396,48 @@
       },
       "dev": false
     },
+    "poimandres": {
+      "manifest": {
+        "id": "poimandres",
+        "name": "poimandres",
+        "version": "0.0.4",
+        "schema_version": 1,
+        "description": "poimandres themes",
+        "repository": "https://github.com/mshaugh/poimandres.zed",
+        "authors": [
+          "mshaugh <max@mshaugh.com>",
+          "luk4h <luizmarcondes@lgvm.dev>"
+        ],
+        "lib": {
+          "kind": null,
+          "version": null
+        },
+        "themes": [
+          "themes/poimandres-storm.json",
+          "themes/poimandres.json",
+          "themes/poimandres-white.json"
+        ],
+        "icon_themes": [],
+        "languages": [],
+        "grammars": {},
+        "language_servers": {},
+        "context_servers": {},
+        "slash_commands": {},
+        "indexed_docs_providers": {},
+        "snippets": null,
+        "capabilities": [],
+        "debug_adapters": []
+      },
+      "dev": false
+    },
     "sql": {
       "manifest": {
         "id": "sql",
         "name": "SQL",
-        "version": "1.1.2",
+        "version": "1.1.3",
         "schema_version": 1,
         "description": "SQL language support.",
-        "repository": "https://github.com/nervenes/zed-sql",
+        "repository": "https://github.com/zed-extensions/sql",
         "authors": [
           "nervenes",
           "notpeter",
@@ -453,8 +455,8 @@
         ],
         "grammars": {
           "sql": {
-            "repository": "https://github.com/nervenes/tree-sitter-sql",
-            "rev": "6dfca8b6dcb196d943c10e9cabab25e60232d332",
+            "repository": "https://github.com/DerekStride/tree-sitter-sql",
+            "rev": "4a99c73f5384f2be10adc55208c84d95a7eb1137",
             "path": null
           }
         },
@@ -512,85 +514,36 @@
         "debug_adapters": []
       },
       "dev": false
-    },
-    "tsgo": {
-      "manifest": {
-        "id": "tsgo",
-        "name": "tsgo",
-        "version": "0.0.1",
-        "schema_version": 1,
-        "description": "Native implementation of TypeScript compiler.",
-        "repository": "https://github.com/zed-extensions/tsgo",
-        "authors": [
-          "Zed Industries <hello@zed.dev>"
-        ],
-        "lib": {
-          "kind": "Rust",
-          "version": "0.5.0"
-        },
-        "themes": [],
-        "icon_themes": [],
-        "languages": [],
-        "grammars": {},
-        "language_servers": {
-          "tsgo": {
-            "language": null,
-            "languages": [
-              "TypeScript",
-              "TSX",
-              "JavaScript",
-              "JSX"
-            ],
-            "language_ids": {},
-            "code_action_kinds": null
-          }
-        },
-        "context_servers": {},
-        "slash_commands": {},
-        "indexed_docs_providers": {},
-        "snippets": null,
-        "capabilities": [],
-        "debug_adapters": []
-      },
-      "dev": false
     }
   },
   "themes": {
-    "Github Dark": {
-      "extension": "github-theme",
-      "path": "themes/github_theme.json"
+    "poimandres": {
+      "extension": "poimandres",
+      "path": "themes/poimandres.json"
     },
-    "Github Dark Colorblind": {
-      "extension": "github-theme",
-      "path": "themes/github_theme.json"
+    "poimandres (no italics)": {
+      "extension": "poimandres",
+      "path": "themes/poimandres.json"
     },
-    "Github Dark Dimmed": {
-      "extension": "github-theme",
-      "path": "themes/github_theme.json"
+    "poimandres blurry": {
+      "extension": "poimandres",
+      "path": "themes/poimandres.json"
     },
-    "Github Dark High Contrast": {
-      "extension": "github-theme",
-      "path": "themes/github_theme.json"
+    "poimandres storm": {
+      "extension": "poimandres",
+      "path": "themes/poimandres-storm.json"
     },
-    "Github Dark Tritanopia": {
-      "extension": "github-theme",
-      "path": "themes/github_theme.json"
+    "poimandres storm (no italics)": {
+      "extension": "poimandres",
+      "path": "themes/poimandres-storm.json"
     },
-    "Github Light": {
-      "extension": "github-theme",
-      "path": "themes/github_theme.json"
+    "poimandres white": {
+      "extension": "poimandres",
+      "path": "themes/poimandres-white.json"
     },
-    "Github Light Colorblind": {
-      "extension": "github-theme",
-      "path": "themes/github_theme.json"
-    },
-    "Github Light High Contrast": {
-      "extension": "github-theme",
-      "path": "themes/github_theme.json"
-    },
-    "Github Light Tritanopia": {
-      "extension": "github-theme",
-      "path": "themes/github_theme.json"
+    "poimandres white (no italics)": {
+      "extension": "poimandres",
+      "path": "themes/poimandres-white.json"
     }
   },
   "icon_themes": {
