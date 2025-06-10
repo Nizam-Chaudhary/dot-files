@@ -32,8 +32,8 @@
     },
     "theme": {
         "mode": "system",
-        "light": "poimandres",
-        "dark": "poimandres"
+        "light": "Zedokai (Filter Spectrum)",
+        "dark": "Zedokai (Filter Spectrum)"
     },
     "base_keymap": "VSCode",
     // Vim mode settings
@@ -59,13 +59,14 @@
     },
     // Use Copilot Chat AI as default
     "agent": {
+        "default_profile": "ask",
         "inline_assistant_model": {
             "provider": "ollama",
             "model": "qwen2.5-coder:3b"
         },
         "default_model": {
-            "provider": "ollama",
-            "model": "devstral:latest"
+            "provider": "zed.dev",
+            "model": "claude-sonnet-4"
         },
         "version": "2"
     },
@@ -106,7 +107,7 @@
                 "javascript": {
                     "inlayHints": {
                         "parameterNames": {
-                            "enabled": "all",
+                            "enabled": "true",
                             "suppressWhenArgumentMatchesName": false
                         },
                         "parameterTypes": {

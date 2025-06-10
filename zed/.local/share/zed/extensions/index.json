@@ -112,12 +112,12 @@
               "CSS"
             ],
             "language_ids": {
-              "CSS": "css",
-              "JavaScript": "javascriptreact",
-              "ERB": "eruby",
-              "TSX": "typescriptreact",
               "HTML": "html",
-              "PHP": "php"
+              "JavaScript": "javascriptreact",
+              "PHP": "php",
+              "CSS": "css",
+              "TSX": "typescriptreact",
+              "ERB": "eruby"
             },
             "code_action_kinds": null
           }
@@ -396,40 +396,6 @@
       },
       "dev": false
     },
-    "poimandres": {
-      "manifest": {
-        "id": "poimandres",
-        "name": "poimandres",
-        "version": "0.0.4",
-        "schema_version": 1,
-        "description": "poimandres themes",
-        "repository": "https://github.com/mshaugh/poimandres.zed",
-        "authors": [
-          "mshaugh <max@mshaugh.com>",
-          "luk4h <luizmarcondes@lgvm.dev>"
-        ],
-        "lib": {
-          "kind": null,
-          "version": null
-        },
-        "themes": [
-          "themes/poimandres-storm.json",
-          "themes/poimandres.json",
-          "themes/poimandres-white.json"
-        ],
-        "icon_themes": [],
-        "languages": [],
-        "grammars": {},
-        "language_servers": {},
-        "context_servers": {},
-        "slash_commands": {},
-        "indexed_docs_providers": {},
-        "snippets": null,
-        "capabilities": [],
-        "debug_adapters": []
-      },
-      "dev": false
-    },
     "sql": {
       "manifest": {
         "id": "sql",
@@ -514,36 +480,95 @@
         "debug_adapters": []
       },
       "dev": false
+    },
+    "zedokai": {
+      "manifest": {
+        "id": "zedokai",
+        "name": "Zedokai",
+        "version": "1.2.2",
+        "schema_version": 1,
+        "description": "a theme for Zed based on the Monokai Pro color scheme",
+        "repository": "https://github.com/slymax/zedokai",
+        "authors": [
+          "slymax <contact@slymax.com>"
+        ],
+        "lib": {
+          "kind": null,
+          "version": null
+        },
+        "themes": [
+          "themes/zedokai.json"
+        ],
+        "icon_themes": [],
+        "languages": [],
+        "grammars": {},
+        "language_servers": {},
+        "context_servers": {},
+        "slash_commands": {},
+        "indexed_docs_providers": {},
+        "snippets": null,
+        "capabilities": [],
+        "debug_adapters": []
+      },
+      "dev": false
     }
   },
   "themes": {
-    "poimandres": {
-      "extension": "poimandres",
-      "path": "themes/poimandres.json"
+    "Zedokai": {
+      "extension": "zedokai",
+      "path": "themes/zedokai.json"
     },
-    "poimandres (no italics)": {
-      "extension": "poimandres",
-      "path": "themes/poimandres.json"
+    "Zedokai (Filter Machine)": {
+      "extension": "zedokai",
+      "path": "themes/zedokai.json"
     },
-    "poimandres blurry": {
-      "extension": "poimandres",
-      "path": "themes/poimandres.json"
+    "Zedokai (Filter Octagon)": {
+      "extension": "zedokai",
+      "path": "themes/zedokai.json"
     },
-    "poimandres storm": {
-      "extension": "poimandres",
-      "path": "themes/poimandres-storm.json"
+    "Zedokai (Filter Ristretto)": {
+      "extension": "zedokai",
+      "path": "themes/zedokai.json"
     },
-    "poimandres storm (no italics)": {
-      "extension": "poimandres",
-      "path": "themes/poimandres-storm.json"
+    "Zedokai (Filter Spectrum)": {
+      "extension": "zedokai",
+      "path": "themes/zedokai.json"
     },
-    "poimandres white": {
-      "extension": "poimandres",
-      "path": "themes/poimandres-white.json"
+    "Zedokai Classic": {
+      "extension": "zedokai",
+      "path": "themes/zedokai.json"
     },
-    "poimandres white (no italics)": {
-      "extension": "poimandres",
-      "path": "themes/poimandres-white.json"
+    "Zedokai Darker": {
+      "extension": "zedokai",
+      "path": "themes/zedokai.json"
+    },
+    "Zedokai Darker (Filter Machine)": {
+      "extension": "zedokai",
+      "path": "themes/zedokai.json"
+    },
+    "Zedokai Darker (Filter Octagon)": {
+      "extension": "zedokai",
+      "path": "themes/zedokai.json"
+    },
+    "Zedokai Darker (Filter Ristretto)": {
+      "extension": "zedokai",
+      "path": "themes/zedokai.json"
+    },
+    "Zedokai Darker (Filter Spectrum)": {
+      "extension": "zedokai",
+      "path": "themes/zedokai.json"
+    },
+    "Zedokai Darker Classic": {
+      "extension": "zedokai",
+      "path": "themes/zedokai.json"
+    },
+    "Zedokai Light": {
+      "extension": "zedokai",
+      "path": "themes/zedokai.json"
+    },
+    "Zedokai Light (Filter Sun)": {
+      "extension": "zedokai",
+      "path": "themes/zedokai.json"
     }
   },
   "icon_themes": {
