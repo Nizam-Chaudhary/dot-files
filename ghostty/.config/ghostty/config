@@ -1,6 +1,6 @@
-theme = catppuccin-mocha
+theme = OneHalfDark
 font-family = JetBrainsMono Nerd Font Mono
-font-size = 13
+font-size = 14
 background-opacity = 0.95
 # disable for kde
 gtk-titlebar = true

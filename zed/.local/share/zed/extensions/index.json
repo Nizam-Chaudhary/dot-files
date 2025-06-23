@@ -32,7 +32,8 @@
         "indexed_docs_providers": {},
         "snippets": null,
         "capabilities": [],
-        "debug_adapters": []
+        "debug_adapters": {},
+        "debug_locators": {}
       },
       "dev": false
     },
@@ -77,7 +78,8 @@
         "indexed_docs_providers": {},
         "snippets": null,
         "capabilities": [],
-        "debug_adapters": []
+        "debug_adapters": {},
+        "debug_locators": {}
       },
       "dev": false
     },
@@ -112,12 +114,12 @@
               "CSS"
             ],
             "language_ids": {
+              "CSS": "css",
+              "ERB": "eruby",
               "HTML": "html",
               "JavaScript": "javascriptreact",
               "PHP": "php",
-              "CSS": "css",
-              "TSX": "typescriptreact",
-              "ERB": "eruby"
+              "TSX": "typescriptreact"
             },
             "code_action_kinds": null
           }
@@ -127,7 +129,8 @@
         "indexed_docs_providers": {},
         "snippets": null,
         "capabilities": [],
-        "debug_adapters": []
+        "debug_adapters": {},
+        "debug_locators": {}
       },
       "dev": false
     },
@@ -164,7 +167,8 @@
         "indexed_docs_providers": {},
         "snippets": null,
         "capabilities": [],
-        "debug_adapters": []
+        "debug_adapters": {},
+        "debug_locators": {}
       },
       "dev": false
     },
@@ -231,7 +235,8 @@
         "indexed_docs_providers": {},
         "snippets": null,
         "capabilities": [],
-        "debug_adapters": []
+        "debug_adapters": {},
+        "debug_locators": {}
       },
       "dev": false
     },
@@ -278,7 +283,8 @@
         "indexed_docs_providers": {},
         "snippets": null,
         "capabilities": [],
-        "debug_adapters": []
+        "debug_adapters": {},
+        "debug_locators": {}
       },
       "dev": false
     },
@@ -317,7 +323,8 @@
         "indexed_docs_providers": {},
         "snippets": null,
         "capabilities": [],
-        "debug_adapters": []
+        "debug_adapters": {},
+        "debug_locators": {}
       },
       "dev": false
     },
@@ -348,7 +355,8 @@
         "indexed_docs_providers": {},
         "snippets": null,
         "capabilities": [],
-        "debug_adapters": []
+        "debug_adapters": {},
+        "debug_locators": {}
       },
       "dev": false
     },
@@ -392,7 +400,72 @@
         "indexed_docs_providers": {},
         "snippets": null,
         "capabilities": [],
-        "debug_adapters": []
+        "debug_adapters": {},
+        "debug_locators": {}
+      },
+      "dev": false
+    },
+    "night-owlz": {
+      "manifest": {
+        "id": "night-owlz",
+        "name": "Night Owl Theme",
+        "version": "0.0.3",
+        "schema_version": 0,
+        "description": "A port to Zed of the famous Night Owl theme for VSCode by Sarah Drasner",
+        "repository": "https://github.com/elGusto/night-owlz",
+        "authors": [
+          "Auguste Bercovici <gusberco@proton.me>"
+        ],
+        "lib": {
+          "kind": null,
+          "version": null
+        },
+        "themes": [
+          "themes/NightOwl.json"
+        ],
+        "icon_themes": [],
+        "languages": [],
+        "grammars": {},
+        "language_servers": {},
+        "context_servers": {},
+        "slash_commands": {},
+        "indexed_docs_providers": {},
+        "snippets": null,
+        "capabilities": [],
+        "debug_adapters": {},
+        "debug_locators": {}
+      },
+      "dev": false
+    },
+    "one-dark-pro": {
+      "manifest": {
+        "id": "one-dark-pro",
+        "name": "One Dark Pro",
+        "version": "0.0.10",
+        "schema_version": 1,
+        "description": "A port of VSCode One Dark Pro with some tweaks",
+        "repository": "https://github.com/mordfustang21/zed-one-dark-pro",
+        "authors": [
+          "MordFustang21"
+        ],
+        "lib": {
+          "kind": null,
+          "version": null
+        },
+        "themes": [
+          "themes/one-dark.json"
+        ],
+        "icon_themes": [],
+        "languages": [],
+        "grammars": {},
+        "language_servers": {},
+        "context_servers": {},
+        "slash_commands": {},
+        "indexed_docs_providers": {},
+        "snippets": null,
+        "capabilities": [],
+        "debug_adapters": {},
+        "debug_locators": {}
       },
       "dev": false
     },
@@ -432,7 +505,8 @@
         "indexed_docs_providers": {},
         "snippets": null,
         "capabilities": [],
-        "debug_adapters": []
+        "debug_adapters": {},
+        "debug_locators": {}
       },
       "dev": false
     },
@@ -477,98 +551,32 @@
         "indexed_docs_providers": {},
         "snippets": null,
         "capabilities": [],
-        "debug_adapters": []
-      },
-      "dev": false
-    },
-    "zedokai": {
-      "manifest": {
-        "id": "zedokai",
-        "name": "Zedokai",
-        "version": "1.2.2",
-        "schema_version": 1,
-        "description": "a theme for Zed based on the Monokai Pro color scheme",
-        "repository": "https://github.com/slymax/zedokai",
-        "authors": [
-          "slymax <contact@slymax.com>"
-        ],
-        "lib": {
-          "kind": null,
-          "version": null
-        },
-        "themes": [
-          "themes/zedokai.json"
-        ],
-        "icon_themes": [],
-        "languages": [],
-        "grammars": {},
-        "language_servers": {},
-        "context_servers": {},
-        "slash_commands": {},
-        "indexed_docs_providers": {},
-        "snippets": null,
-        "capabilities": [],
-        "debug_adapters": []
+        "debug_adapters": {},
+        "debug_locators": {}
       },
       "dev": false
     }
   },
   "themes": {
-    "Zedokai": {
-      "extension": "zedokai",
-      "path": "themes/zedokai.json"
+    "Night Owl Dark": {
+      "extension": "night-owlz",
+      "path": "themes/NightOwl.json"
     },
-    "Zedokai (Filter Machine)": {
-      "extension": "zedokai",
-      "path": "themes/zedokai.json"
+    "Night Owl Light": {
+      "extension": "night-owlz",
+      "path": "themes/NightOwl.json"
     },
-    "Zedokai (Filter Octagon)": {
-      "extension": "zedokai",
-      "path": "themes/zedokai.json"
+    "Night Owl Light No Italics": {
+      "extension": "night-owlz",
+      "path": "themes/NightOwl.json"
     },
-    "Zedokai (Filter Ristretto)": {
-      "extension": "zedokai",
-      "path": "themes/zedokai.json"
+    "Night Owl No Italics": {
+      "extension": "night-owlz",
+      "path": "themes/NightOwl.json"
     },
-    "Zedokai (Filter Spectrum)": {
-      "extension": "zedokai",
-      "path": "themes/zedokai.json"
-    },
-    "Zedokai Classic": {
-      "extension": "zedokai",
-      "path": "themes/zedokai.json"
-    },
-    "Zedokai Darker": {
-      "extension": "zedokai",
-      "path": "themes/zedokai.json"
-    },
-    "Zedokai Darker (Filter Machine)": {
-      "extension": "zedokai",
-      "path": "themes/zedokai.json"
-    },
-    "Zedokai Darker (Filter Octagon)": {
-      "extension": "zedokai",
-      "path": "themes/zedokai.json"
-    },
-    "Zedokai Darker (Filter Ristretto)": {
-      "extension": "zedokai",
-      "path": "themes/zedokai.json"
-    },
-    "Zedokai Darker (Filter Spectrum)": {
-      "extension": "zedokai",
-      "path": "themes/zedokai.json"
-    },
-    "Zedokai Darker Classic": {
-      "extension": "zedokai",
-      "path": "themes/zedokai.json"
-    },
-    "Zedokai Light": {
-      "extension": "zedokai",
-      "path": "themes/zedokai.json"
-    },
-    "Zedokai Light (Filter Sun)": {
-      "extension": "zedokai",
-      "path": "themes/zedokai.json"
+    "One Dark Pro": {
+      "extension": "one-dark-pro",
+      "path": "themes/one-dark.json"
     }
   },
   "icon_themes": {

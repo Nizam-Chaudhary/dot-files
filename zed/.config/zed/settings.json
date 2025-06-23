@@ -14,8 +14,8 @@
         "edit_prediction_provider": "zed"
     },
     "formatter": "language_server",
-    "ui_font_size": 18,
-    "buffer_font_size": 18,
+    "ui_font_size": 22,
+    "buffer_font_size": 22,
     "ui_font_family": "JetBrainsMono Nerd Font Mono",
     "buffer_font_family": "JetBrainsMono Nerd Font Mono",
     // Use zed commit editor
@@ -27,13 +27,13 @@
         "env": {
             "EDITOR": "zed --wait"
         },
-        "font_size": 18,
+        "font_size": 22,
         "font_family": "JetBrainsMono Nerd Font Mono"
     },
     "theme": {
         "mode": "system",
-        "light": "Zedokai (Filter Spectrum)",
-        "dark": "Zedokai (Filter Spectrum)"
+        "light": "One Dark Pro",
+        "dark": "One Dark Pro"
     },
     "base_keymap": "VSCode",
     // Vim mode settings
@@ -61,8 +61,8 @@
     "agent": {
         "default_profile": "ask",
         "inline_assistant_model": {
-            "provider": "ollama",
-            "model": "qwen2.5-coder:3b"
+            "provider": "zed.dev",
+            "model": "claude-sonnet-4"
         },
         "default_model": {
             "provider": "zed.dev",
@@ -240,21 +240,29 @@
     // Move all panel to the right
     "project_panel": {
         "button": true,
-        "dock": "left",
-        "git_status": true
+        "dock": "right",
+        "git_status": true,
+        "hide_root": true,
+        "default_width": 360
     },
     "outline_panel": {
-        "dock": "left"
+        "dock": "left",
+        "default_width": 360
+    },
+    "git_panel": {
+        "dock": "right",
+        "default_width": 360
     },
     "collaboration_panel": {
-        "dock": "right"
+        "dock": "left",
+        "button": false
     },
     // Move some unnecessary panels to the left
     "notification_panel": {
-        "dock": "right"
+        "dock": "left"
     },
     "chat_panel": {
-        "dock": "right"
+        "dock": "left"
     },
     "prettier": {
         "allowed": true,
