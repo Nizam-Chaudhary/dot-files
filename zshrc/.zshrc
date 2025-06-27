@@ -38,7 +38,7 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fzf eza sudo npm dnf node bun docker docker-compose zsh-syntax-highlighting zsh-autosuggestions zsh-history-substring-search)
+plugins=(git fzf eza sudo npm dnf node bun docker docker-compose zsh-syntax-highlighting zsh-autosuggestions zsh-history-substring-search kubectl)
 
 source $ZSH/oh-my-zsh.sh
 

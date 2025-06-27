@@ -7,280 +7,280 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-    "format_on_save": "language_server",
-    "icon_theme": "Material Icon Theme",
-    "show_edit_predictions": true,
-    "features": {
-        "edit_prediction_provider": "zed"
+  "format_on_save": "off",
+  "icon_theme": "Material Icon Theme",
+  "show_edit_predictions": true,
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "formatter": "language_server",
+  "ui_font_size": 20,
+  "buffer_font_size": 20,
+  "ui_font_family": "JetBrainsMono Nerd Font Mono",
+  "buffer_font_family": "JetBrainsMono Nerd Font Mono",
+  // Use zed commit editor
+  "terminal": {
+    "external": {
+      "command": "kitty",
+      "args": ["--directory", "{cwd}"]
     },
-    "formatter": "language_server",
-    "ui_font_size": 22,
-    "buffer_font_size": 22,
-    "ui_font_family": "JetBrainsMono Nerd Font Mono",
-    "buffer_font_family": "JetBrainsMono Nerd Font Mono",
-    // Use zed commit editor
-    "terminal": {
-        "external": {
-            "command": "kitty",
-            "args": ["--directory", "{cwd}"]
-        },
-        "env": {
-            "EDITOR": "zed --wait"
-        },
-        "font_size": 22,
-        "font_family": "JetBrainsMono Nerd Font Mono"
+    "env": {
+      "EDITOR": "zed --wait"
     },
-    "theme": {
-        "mode": "system",
-        "light": "One Dark Pro",
-        "dark": "One Dark Pro"
+    "font_size": 18,
+    "font_family": "JetBrainsMono Nerd Font Mono"
+  },
+  "theme": {
+    "mode": "system",
+    "light": "One Dark Pro",
+    "dark": "One Dark Pro"
+  },
+  "base_keymap": "VSCode",
+  // Vim mode settings
+  "vim_mode": false,
+  // use relative line numbers
+  "relative_line_numbers": false,
+  "tab_bar": {
+    "show": true
+  },
+  "scrollbar": {
+    "show": "always"
+  },
+  // Indentation, rainbow indentation
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware"
+  },
+  "tab_size": 2,
+  // NOTE: Zen mode, refer https://github.com/zed-industries/zed/issues/4382 when it's resolved
+  "centered_layout": {
+    "left_padding": 0.15,
+    "right_padding": 0.15
+  },
+  // Use Copilot Chat AI as default
+  "agent": {
+    "dock": "left",
+    "default_profile": "ask",
+    "inline_assistant_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4"
     },
-    "base_keymap": "VSCode",
-    // Vim mode settings
-    "vim_mode": false,
-    // use relative line numbers
-    "relative_line_numbers": false,
-    "tab_bar": {
-        "show": true
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4"
     },
-    "scrollbar": {
-        "show": "always"
-    },
-    // Indentation, rainbow indentation
-    "indent_guides": {
-        "enabled": true,
-        "coloring": "indent_aware"
-    },
-    "tab_size": 4,
-    // NOTE: Zen mode, refer https://github.com/zed-industries/zed/issues/4382 when it's resolved
-    "centered_layout": {
-        "left_padding": 0.15,
-        "right_padding": 0.15
-    },
-    // Use Copilot Chat AI as default
-    "agent": {
-        "default_profile": "ask",
-        "inline_assistant_model": {
-            "provider": "zed.dev",
-            "model": "claude-sonnet-4"
-        },
-        "default_model": {
-            "provider": "zed.dev",
-            "model": "claude-sonnet-4"
-        },
-        "version": "2"
-    },
-    // Uncomment below to use local AI with Ollama, refer https://zed.dev/docs/language-model-integration?highlight=ollama#using-ollama-on-macos
-    // "assistant": {
-    //   "default_model": {
-    //     "provider": "ollama",
-    //     "model": "llama3.1:latest"
-    //   },
-    //   "version": "2",
-    //   "provider": null
-    // },
-    "language_models": {
-        "ollama": {
-            "api_url": "http://localhost:11434"
-        }
-    },
-    // Inlay hints preconfigured by Zed: Go, Rust, Typescript and Svelte
-    "inlay_hints": {
-        "enabled": false
-    },
-    // LSP
-    "lsp": {
-        "tailwindcss-language-server": {
-            "settings": {
-                "classAttributes": ["class", "className", "ngClass", "styles"]
-            }
-        },
-        "biome": {
-            "settings": {
-                // "config_path": "<path>/biome.json",
-                // "require_config_file": true
-            }
-        },
-        "vtsls": {
-            "settings": {
-                // For JavaScript:
-                "javascript": {
-                    "inlayHints": {
-                        "parameterNames": {
-                            "enabled": "true",
-                            "suppressWhenArgumentMatchesName": false
-                        },
-                        "parameterTypes": {
-                            "enabled": true
-                        },
-                        "variableTypes": {
-                            "enabled": true,
-                            "suppressWhenTypeMatchesName": true
-                        },
-                        "propertyDeclarationTypes": {
-                            "enabled": true
-                        },
-                        "functionLikeReturnTypes": {
-                            "enabled": true
-                        },
-                        "enumMemberValues": {
-                            "enabled": true
-                        }
-                    }
-                },
-                // For TypeScript:
-                "typescript": {
-                    "inlayHints": {
-                        "parameterNames": {
-                            "enabled": "true",
-                            "suppressWhenArgumentMatchesName": false
-                        },
-                        "parameterTypes": {
-                            "enabled": true
-                        },
-                        "variableTypes": {
-                            "enabled": true,
-                            "suppressWhenTypeMatchesName": true
-                        },
-                        "propertyDeclarationTypes": {
-                            "enabled": true
-                        },
-                        "functionLikeReturnTypes": {
-                            "enabled": true
-                        },
-                        "enumMemberValues": {
-                            "enabled": true
-                        }
-                    }
-                }
-            }
-        }
-    },
-    "languages": {
-        // Refer https://zed.dev/docs/languages/javascript and https://zed.dev/docs/languages/typescript for more info
-        "TypeScript": {
-            "formatter": "prettier",
-            "format_on_save": "prettier",
-            // Refer https://github.com/jellydn/ts-inlay-hints for how to setup for Neovim and VSCode
-            "code_actions_on_format": {
-                "source.fixAll.prettier": true,
-                "source.organizeImports.prettier": true
-            }
-        },
-        "TSX": {
-            "formatter": "prettier",
-            "format_on_save": "prettier",
-            "code_actions_on_format": {
-                "source.fixAll.prettier": true,
-                "source.organizeImports.prettier": true
-            }
-        },
-        "JavaScript": {
-            "formatter": "prettier",
-            "format_on_save": "prettier",
-            "code_actions_on_format": {
-                "source.fixAll.prettier": true,
-                "source.organizeImports.prettier": true
-            }
-        },
-        "JSON": {
-            "formatter": "prettier",
-            "format_on_save": "prettier"
-        },
-        "JSONC": {
-            "formatter": "prettier",
-            "format_on_save": "prettier"
-        },
-        "YAML": {
-            "formatter": "prettier",
-            "format_on_save": "prettier"
-        },
-        "TOML": {
-            "formatter": "prettier",
-            "format_on_save": "prettier"
-        },
-        "Markdown": {
-            "formatter": "prettier",
-            "format_on_save": "prettier"
-        }
-    },
-    // File syntax highlighting
-    "file_types": {
-        "Dockerfile": ["Dockerfile", "Dockerfile.*"],
-        "JSON": ["json", "jsonc", "*.code-snippets"]
-    },
-    // File scan exclusions, hide on the file explorer and search
-    "file_scan_exclusions": [
-        "**/.git",
-        "**/.svn",
-        "**/.hg",
-        "**/CVS",
-        "**/.DS_Store",
-        "**/Thumbs.db",
-        "**/.classpath",
-        "**/.settings",
-        // above is default from Zed
-        "**/out",
-        // "**/dist",
-        // "**/.husky",
-        "**/.turbo",
-        "**/.vscode-test",
-        "**/.next",
-        "**/.storybook",
-        "**/.tap",
-        "**/.nyc_output",
-        "**/report"
-        // "**/node_modules"
-    ],
-    // Turn off telemetry
-    "telemetry": {
-        "diagnostics": false,
-        "metrics": false
-    },
-    // Move all panel to the right
-    "project_panel": {
-        "button": true,
-        "dock": "right",
-        "git_status": true,
-        "hide_root": true,
-        "default_width": 360
-    },
-    "outline_panel": {
-        "dock": "left",
-        "default_width": 360
-    },
-    "git_panel": {
-        "dock": "right",
-        "default_width": 360
-    },
-    "collaboration_panel": {
-        "dock": "left",
-        "button": false
-    },
-    // Move some unnecessary panels to the left
-    "notification_panel": {
-        "dock": "left"
-    },
-    "chat_panel": {
-        "dock": "left"
-    },
-    "prettier": {
-        "allowed": true,
-        "plugins": [],
-        "singleQuote": false,
-        "arrowParens": "always",
-        "jsxSingleQuote": false,
-        "tabWidth": 4,
-        "quoteProps": "as-needed",
-        "singleAttributePerLine": false,
-        "printWidth": 80,
-        "trailingComma": "es5",
-        "semi": true,
-        "useTabs": false,
-        "bracketSpacing": true
-    },
-    "remove_trailing_whitespace_on_save": false,
-    "snippets": {
-        "enabled": true
+    "version": "2"
+  },
+  // Uncomment below to use local AI with Ollama, refer https://zed.dev/docs/language-model-integration?highlight=ollama#using-ollama-on-macos
+  // "assistant": {
+  //   "default_model": {
+  //     "provider": "ollama",
+  //     "model": "llama3.1:latest"
+  //   },
+  //   "version": "2",
+  //   "provider": null
+  // },
+  "language_models": {
+    "ollama": {
+      "api_url": "http://localhost:11434"
     }
+  },
+  // Inlay hints preconfigured by Zed: Go, Rust, Typescript and Svelte
+  "inlay_hints": {
+    "enabled": false
+  },
+  // LSP
+  "lsp": {
+    "tailwindcss-language-server": {
+      "settings": {
+        "classAttributes": ["class", "className", "ngClass", "styles"]
+      }
+    },
+    "biome": {
+      "settings": {
+        // "config_path": "<path>/biome.json",
+        // "require_config_file": true
+      }
+    },
+    "vtsls": {
+      "settings": {
+        // For JavaScript:
+        "javascript": {
+          "inlayHints": {
+            "parameterNames": {
+              "enabled": "true",
+              "suppressWhenArgumentMatchesName": false
+            },
+            "parameterTypes": {
+              "enabled": true
+            },
+            "variableTypes": {
+              "enabled": true,
+              "suppressWhenTypeMatchesName": true
+            },
+            "propertyDeclarationTypes": {
+              "enabled": true
+            },
+            "functionLikeReturnTypes": {
+              "enabled": true
+            },
+            "enumMemberValues": {
+              "enabled": true
+            }
+          }
+        },
+        // For TypeScript:
+        "typescript": {
+          "inlayHints": {
+            "parameterNames": {
+              "enabled": "true",
+              "suppressWhenArgumentMatchesName": false
+            },
+            "parameterTypes": {
+              "enabled": true
+            },
+            "variableTypes": {
+              "enabled": true,
+              "suppressWhenTypeMatchesName": true
+            },
+            "propertyDeclarationTypes": {
+              "enabled": true
+            },
+            "functionLikeReturnTypes": {
+              "enabled": true
+            },
+            "enumMemberValues": {
+              "enabled": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "languages": {
+    // Refer https://zed.dev/docs/languages/javascript and https://zed.dev/docs/languages/typescript for more info
+    "TypeScript": {
+      "formatter": "prettier",
+      "format_on_save": "off",
+      // Refer https://github.com/jellydn/ts-inlay-hints for how to setup for Neovim and VSCode
+      "code_actions_on_format": {
+        "source.fixAll.prettier": true,
+        "source.organizeImports.prettier": true
+      }
+    },
+    "TSX": {
+      "formatter": "prettier",
+      "format_on_save": "prettier",
+      "code_actions_on_format": {
+        "source.fixAll.prettier": true,
+        "source.organizeImports.prettier": true
+      }
+    },
+    "JavaScript": {
+      "formatter": "prettier",
+      "format_on_save": "off",
+      "code_actions_on_format": {
+        "source.fixAll.prettier": true,
+        "source.organizeImports.prettier": true
+      }
+    },
+    "JSON": {
+      "formatter": "prettier",
+      "format_on_save": "off"
+    },
+    "JSONC": {
+      "formatter": "prettier",
+      "format_on_save": "off"
+    },
+    "YAML": {
+      "formatter": "prettier",
+      "format_on_save": "off"
+    },
+    "TOML": {
+      "formatter": "prettier",
+      "format_on_save": "off"
+    },
+    "Markdown": {
+      "formatter": "prettier",
+      "format_on_save": "off"
+    }
+  },
+  // File syntax highlighting
+  "file_types": {
+    "Dockerfile": ["Dockerfile", "Dockerfile.*"],
+    "JSON": ["json", "jsonc", "*.code-snippets"]
+  },
+  // File scan exclusions, hide on the file explorer and search
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    // above is default from Zed
+    "**/out",
+    // "**/dist",
+    // "**/.husky",
+    "**/.turbo",
+    "**/.vscode-test",
+    "**/.next",
+    "**/.storybook",
+    "**/.tap",
+    "**/.nyc_output",
+    "**/report"
+    // "**/node_modules"
+  ],
+  // Turn off telemetry
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  // Move all panel to the right
+  "project_panel": {
+    "button": true,
+    "dock": "right",
+    "git_status": true,
+    "default_width": 360
+  },
+  "outline_panel": {
+    "dock": "left",
+    "default_width": 360
+  },
+  "git_panel": {
+    "dock": "right",
+    "default_width": 360
+  },
+  "collaboration_panel": {
+    "dock": "left",
+    "button": false
+  },
+  // Move some unnecessary panels to the left
+  "notification_panel": {
+    "dock": "left"
+  },
+  "chat_panel": {
+    "dock": "left"
+  },
+  "prettier": {
+    "allowed": true,
+    "plugins": [],
+    "singleQuote": false,
+    "arrowParens": "always",
+    "jsxSingleQuote": false,
+    "tabWidth": 2,
+    "quoteProps": "as-needed",
+    "singleAttributePerLine": false,
+    "printWidth": 80,
+    "trailingComma": "es5",
+    "semi": true,
+    "useTabs": false,
+    "bracketSpacing": true
+  },
+  "remove_trailing_whitespace_on_save": false,
+  "snippets": {
+    "enabled": true
+  }
 }
