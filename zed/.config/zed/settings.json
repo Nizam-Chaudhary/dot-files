@@ -14,8 +14,8 @@
     "edit_prediction_provider": "copilot"
   },
   "formatter": "language_server",
-  "ui_font_size": 20,
-  "buffer_font_size": 20,
+  "ui_font_size": 18,
+  "buffer_font_size": 18,
   "ui_font_family": "JetBrainsMono Nerd Font Mono",
   "buffer_font_family": "JetBrainsMono Nerd Font Mono",
   // Use zed commit editor
@@ -32,8 +32,8 @@
   },
   "theme": {
     "mode": "system",
-    "light": "poimandres",
-    "dark": "poimandres"
+    "light": "One Dark",
+    "dark": "One Dark"
   },
   "base_keymap": "VSCode",
   // Vim mode settings
@@ -44,8 +44,8 @@
   "indent_guides": {
     "enabled": true,
     "coloring": "indent_aware",
-    "active_line_width": 4,
-    "line_width": 2
+    "active_line_width": 2,
+    "line_width": 1
   },
   "tab_size": 2,
   // NOTE: Zen mode, refer https://github.com/zed-industries/zed/issues/4382 when it's resolved
@@ -82,15 +82,19 @@
   "languages": {
     "JavaScript": {
       "formatter": "prettier"
+      // "language_servers": ["tsgo", "vtsls", "eslint"]
     },
     "TypeScript": {
       "formatter": "prettier"
+      // "language_servers": ["tsgo", "vtsls", "eslint"]
     },
     "JSX": {
       "formatter": "prettier"
+      // "language_servers": ["tsgo", "vtsls", "eslint"]
     },
     "TSX": {
       "formatter": "prettier"
+      // "language_servers": ["tsgo", "vtsls", "eslint"]
     },
     "JSON": {
       "formatter": "prettier"
