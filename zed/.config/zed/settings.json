@@ -11,7 +11,7 @@
   "icon_theme": "Material Icon Theme",
   "show_edit_predictions": true,
   "features": {
-    "edit_prediction_provider": "zed"
+    "edit_prediction_provider": "copilot"
   },
   "formatter": "language_server",
   "ui_font_size": 20,
@@ -21,35 +21,31 @@
   // Use zed commit editor
   "terminal": {
     "external": {
-      "command": "kitty",
+      "command": "ghostty",
       "args": ["--directory", "{cwd}"]
     },
     "env": {
       "EDITOR": "zed --wait"
     },
-    "font_size": 18,
+    "font_size": 16,
     "font_family": "JetBrainsMono Nerd Font Mono"
   },
   "theme": {
     "mode": "system",
-    "light": "One Dark Pro",
-    "dark": "One Dark Pro"
+    "light": "poimandres",
+    "dark": "poimandres"
   },
   "base_keymap": "VSCode",
   // Vim mode settings
   "vim_mode": false,
   // use relative line numbers
   "relative_line_numbers": false,
-  "tab_bar": {
-    "show": true
-  },
-  "scrollbar": {
-    "show": "always"
-  },
   // Indentation, rainbow indentation
   "indent_guides": {
     "enabled": true,
-    "coloring": "indent_aware"
+    "coloring": "indent_aware",
+    "active_line_width": 4,
+    "line_width": 2
   },
   "tab_size": 2,
   // NOTE: Zen mode, refer https://github.com/zed-industries/zed/issues/4382 when it's resolved
@@ -60,7 +56,7 @@
   // Use Copilot Chat AI as default
   "agent": {
     "dock": "left",
-    "default_profile": "ask",
+    "default_profile": "write",
     "inline_assistant_model": {
       "provider": "zed.dev",
       "model": "claude-sonnet-4"
@@ -71,23 +67,9 @@
     },
     "version": "2"
   },
-  // Uncomment below to use local AI with Ollama, refer https://zed.dev/docs/language-model-integration?highlight=ollama#using-ollama-on-macos
-  // "assistant": {
-  //   "default_model": {
-  //     "provider": "ollama",
-  //     "model": "llama3.1:latest"
-  //   },
-  //   "version": "2",
-  //   "provider": null
-  // },
-  "language_models": {
-    "ollama": {
-      "api_url": "http://localhost:11434"
-    }
-  },
   // Inlay hints preconfigured by Zed: Go, Rust, Typescript and Svelte
   "inlay_hints": {
-    "enabled": false
+    "enabled": true
   },
   // LSP
   "lsp": {
@@ -95,114 +77,41 @@
       "settings": {
         "classAttributes": ["class", "className", "ngClass", "styles"]
       }
-    },
-    "biome": {
-      "settings": {
-        // "config_path": "<path>/biome.json",
-        // "require_config_file": true
-      }
-    },
-    "vtsls": {
-      "settings": {
-        // For JavaScript:
-        "javascript": {
-          "inlayHints": {
-            "parameterNames": {
-              "enabled": "true",
-              "suppressWhenArgumentMatchesName": false
-            },
-            "parameterTypes": {
-              "enabled": true
-            },
-            "variableTypes": {
-              "enabled": true,
-              "suppressWhenTypeMatchesName": true
-            },
-            "propertyDeclarationTypes": {
-              "enabled": true
-            },
-            "functionLikeReturnTypes": {
-              "enabled": true
-            },
-            "enumMemberValues": {
-              "enabled": true
-            }
-          }
-        },
-        // For TypeScript:
-        "typescript": {
-          "inlayHints": {
-            "parameterNames": {
-              "enabled": "true",
-              "suppressWhenArgumentMatchesName": false
-            },
-            "parameterTypes": {
-              "enabled": true
-            },
-            "variableTypes": {
-              "enabled": true,
-              "suppressWhenTypeMatchesName": true
-            },
-            "propertyDeclarationTypes": {
-              "enabled": true
-            },
-            "functionLikeReturnTypes": {
-              "enabled": true
-            },
-            "enumMemberValues": {
-              "enabled": true
-            }
-          }
-        }
-      }
     }
   },
   "languages": {
-    // Refer https://zed.dev/docs/languages/javascript and https://zed.dev/docs/languages/typescript for more info
+    "JavaScript": {
+      "formatter": "prettier"
+    },
     "TypeScript": {
-      "formatter": "prettier",
-      "format_on_save": "off",
-      // Refer https://github.com/jellydn/ts-inlay-hints for how to setup for Neovim and VSCode
-      "code_actions_on_format": {
-        "source.fixAll.prettier": true,
-        "source.organizeImports.prettier": true
-      }
+      "formatter": "prettier"
+    },
+    "JSX": {
+      "formatter": "prettier"
     },
     "TSX": {
-      "formatter": "prettier",
-      "format_on_save": "prettier",
-      "code_actions_on_format": {
-        "source.fixAll.prettier": true,
-        "source.organizeImports.prettier": true
-      }
-    },
-    "JavaScript": {
-      "formatter": "prettier",
-      "format_on_save": "off",
-      "code_actions_on_format": {
-        "source.fixAll.prettier": true,
-        "source.organizeImports.prettier": true
-      }
+      "formatter": "prettier"
     },
     "JSON": {
-      "formatter": "prettier",
-      "format_on_save": "off"
+      "formatter": "prettier"
     },
     "JSONC": {
-      "formatter": "prettier",
-      "format_on_save": "off"
+      "formatter": "prettier"
     },
-    "YAML": {
-      "formatter": "prettier",
-      "format_on_save": "off"
+    "CSS": {
+      "formatter": "prettier"
     },
-    "TOML": {
-      "formatter": "prettier",
-      "format_on_save": "off"
+    "GraphQL": {
+      "formatter": "prettier"
     },
     "Markdown": {
-      "formatter": "prettier",
-      "format_on_save": "off"
+      "formatter": "prettier"
+    },
+    "YAML": {
+      "formatter": "prettier"
+    },
+    "HTML": {
+      "formatter": "prettier"
     }
   },
   // File syntax highlighting
@@ -222,8 +131,6 @@
     "**/.settings",
     // above is default from Zed
     "**/out",
-    // "**/dist",
-    // "**/.husky",
     "**/.turbo",
     "**/.vscode-test",
     "**/.next",
@@ -231,7 +138,6 @@
     "**/.tap",
     "**/.nyc_output",
     "**/report"
-    // "**/node_modules"
   ],
   // Turn off telemetry
   "telemetry": {

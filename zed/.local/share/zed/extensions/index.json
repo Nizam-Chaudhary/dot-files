@@ -83,57 +83,6 @@
       },
       "dev": false
     },
-    "emmet": {
-      "manifest": {
-        "id": "emmet",
-        "name": "Emmet",
-        "version": "0.0.3",
-        "schema_version": 1,
-        "description": "Emmet support",
-        "repository": "https://github.com/zed-industries/zed",
-        "authors": [
-          "Piotr Osiewicz <piotr@zed.dev>"
-        ],
-        "lib": {
-          "kind": "Rust",
-          "version": "0.0.4"
-        },
-        "themes": [],
-        "icon_themes": [],
-        "languages": [],
-        "grammars": {},
-        "language_servers": {
-          "emmet-language-server": {
-            "language": "HTML",
-            "languages": [
-              "HTML",
-              "PHP",
-              "ERB",
-              "JavaScript",
-              "TSX",
-              "CSS"
-            ],
-            "language_ids": {
-              "CSS": "css",
-              "ERB": "eruby",
-              "HTML": "html",
-              "JavaScript": "javascriptreact",
-              "PHP": "php",
-              "TSX": "typescriptreact"
-            },
-            "code_action_kinds": null
-          }
-        },
-        "context_servers": {},
-        "slash_commands": {},
-        "indexed_docs_providers": {},
-        "snippets": null,
-        "capabilities": [],
-        "debug_adapters": {},
-        "debug_locators": {}
-      },
-      "dev": false
-    },
     "env": {
       "manifest": {
         "id": "env",
@@ -272,8 +221,8 @@
             "language": "HTML",
             "languages": [],
             "language_ids": {
-              "CSS": "css",
-              "HTML": "html"
+              "HTML": "html",
+              "CSS": "css"
             },
             "code_action_kinds": null
           }
@@ -360,74 +309,29 @@
       },
       "dev": false
     },
-    "nginx": {
+    "mcp-server-context7": {
       "manifest": {
-        "id": "nginx",
-        "name": "Nginx",
-        "version": "0.0.1",
+        "id": "mcp-server-context7",
+        "name": "Context7 MCP Server",
+        "version": "0.0.3",
         "schema_version": 1,
-        "description": "Nginx support",
-        "repository": "https://github.com/d1y/nginx-zed",
+        "description": "Model Context Protocol Server for Context7",
+        "repository": "https://github.com/akbxr/zed-mcp-server-context7",
         "authors": [
-          "d1y <chenhonzhou@gmail.com>"
+          "Akbxr <hi@akbxr.com>"
         ],
         "lib": {
           "kind": "Rust",
-          "version": "0.0.6"
+          "version": "0.5.0"
         },
         "themes": [],
         "icon_themes": [],
-        "languages": [
-          "languages/nginx"
-        ],
-        "grammars": {
-          "nginx": {
-            "repository": "https://gitlab.com/joncoole/tree-sitter-nginx",
-            "rev": "b4b61db443602b69410ab469c122c01b1e685aa0",
-            "path": null
-          }
-        },
-        "language_servers": {
-          "nginx": {
-            "language": "Nginx",
-            "languages": [],
-            "language_ids": {},
-            "code_action_kinds": null
-          }
-        },
-        "context_servers": {},
-        "slash_commands": {},
-        "indexed_docs_providers": {},
-        "snippets": null,
-        "capabilities": [],
-        "debug_adapters": {},
-        "debug_locators": {}
-      },
-      "dev": false
-    },
-    "night-owlz": {
-      "manifest": {
-        "id": "night-owlz",
-        "name": "Night Owl Theme",
-        "version": "0.0.3",
-        "schema_version": 0,
-        "description": "A port to Zed of the famous Night Owl theme for VSCode by Sarah Drasner",
-        "repository": "https://github.com/elGusto/night-owlz",
-        "authors": [
-          "Auguste Bercovici <gusberco@proton.me>"
-        ],
-        "lib": {
-          "kind": null,
-          "version": null
-        },
-        "themes": [
-          "themes/NightOwl.json"
-        ],
-        "icon_themes": [],
         "languages": [],
         "grammars": {},
         "language_servers": {},
-        "context_servers": {},
+        "context_servers": {
+          "mcp-server-context7": {}
+        },
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": null,
@@ -437,23 +341,26 @@
       },
       "dev": false
     },
-    "one-dark-pro": {
+    "poimandres": {
       "manifest": {
-        "id": "one-dark-pro",
-        "name": "One Dark Pro",
-        "version": "0.0.10",
+        "id": "poimandres",
+        "name": "poimandres",
+        "version": "0.0.4",
         "schema_version": 1,
-        "description": "A port of VSCode One Dark Pro with some tweaks",
-        "repository": "https://github.com/mordfustang21/zed-one-dark-pro",
+        "description": "poimandres themes",
+        "repository": "https://github.com/mshaugh/poimandres.zed",
         "authors": [
-          "MordFustang21"
+          "mshaugh <max@mshaugh.com>",
+          "luk4h <luizmarcondes@lgvm.dev>"
         ],
         "lib": {
           "kind": null,
           "version": null
         },
         "themes": [
-          "themes/one-dark.json"
+          "themes/poimandres-storm.json",
+          "themes/poimandres.json",
+          "themes/poimandres-white.json"
         ],
         "icon_themes": [],
         "languages": [],
@@ -463,6 +370,36 @@
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": null,
+        "capabilities": [],
+        "debug_adapters": {},
+        "debug_locators": {}
+      },
+      "dev": false
+    },
+    "react-typescript-snippets": {
+      "manifest": {
+        "id": "react-typescript-snippets",
+        "name": "React Typescript Snippets",
+        "version": "0.1.0",
+        "schema_version": 1,
+        "description": "A collection of useful React + TypeScript snippets to speed up your development.",
+        "repository": "https://github.com/vishnuroshan/zed-react-ts-snippets",
+        "authors": [
+          "Vishnu Roshan"
+        ],
+        "lib": {
+          "kind": null,
+          "version": null
+        },
+        "themes": [],
+        "icon_themes": [],
+        "languages": [],
+        "grammars": {},
+        "language_servers": {},
+        "context_servers": {},
+        "slash_commands": {},
+        "indexed_docs_providers": {},
+        "snippets": "./snippets/tsx.json",
         "capabilities": [],
         "debug_adapters": {},
         "debug_locators": {}
@@ -555,28 +492,78 @@
         "debug_locators": {}
       },
       "dev": false
+    },
+    "tsgo": {
+      "manifest": {
+        "id": "tsgo",
+        "name": "tsgo",
+        "version": "0.0.1",
+        "schema_version": 1,
+        "description": "Native implementation of TypeScript compiler.",
+        "repository": "https://github.com/zed-extensions/tsgo",
+        "authors": [
+          "Zed Industries <hello@zed.dev>"
+        ],
+        "lib": {
+          "kind": "Rust",
+          "version": "0.5.0"
+        },
+        "themes": [],
+        "icon_themes": [],
+        "languages": [],
+        "grammars": {},
+        "language_servers": {
+          "tsgo": {
+            "language": null,
+            "languages": [
+              "TypeScript",
+              "TSX",
+              "JavaScript",
+              "JSX"
+            ],
+            "language_ids": {},
+            "code_action_kinds": null
+          }
+        },
+        "context_servers": {},
+        "slash_commands": {},
+        "indexed_docs_providers": {},
+        "snippets": null,
+        "capabilities": [],
+        "debug_adapters": {},
+        "debug_locators": {}
+      },
+      "dev": false
     }
   },
   "themes": {
-    "Night Owl Dark": {
-      "extension": "night-owlz",
-      "path": "themes/NightOwl.json"
+    "poimandres": {
+      "extension": "poimandres",
+      "path": "themes/poimandres.json"
     },
-    "Night Owl Light": {
-      "extension": "night-owlz",
-      "path": "themes/NightOwl.json"
+    "poimandres (no italics)": {
+      "extension": "poimandres",
+      "path": "themes/poimandres.json"
     },
-    "Night Owl Light No Italics": {
-      "extension": "night-owlz",
-      "path": "themes/NightOwl.json"
+    "poimandres blurry": {
+      "extension": "poimandres",
+      "path": "themes/poimandres.json"
     },
-    "Night Owl No Italics": {
-      "extension": "night-owlz",
-      "path": "themes/NightOwl.json"
+    "poimandres storm": {
+      "extension": "poimandres",
+      "path": "themes/poimandres-storm.json"
     },
-    "One Dark Pro": {
-      "extension": "one-dark-pro",
-      "path": "themes/one-dark.json"
+    "poimandres storm (no italics)": {
+      "extension": "poimandres",
+      "path": "themes/poimandres-storm.json"
+    },
+    "poimandres white": {
+      "extension": "poimandres",
+      "path": "themes/poimandres-white.json"
+    },
+    "poimandres white (no italics)": {
+      "extension": "poimandres",
+      "path": "themes/poimandres-white.json"
     }
   },
   "icon_themes": {
@@ -703,18 +690,6 @@
       },
       "hidden": false,
       "grammar": "log"
-    },
-    "Nginx": {
-      "extension": "nginx",
-      "path": "languages/nginx",
-      "matcher": {
-        "path_suffixes": [
-          "nginx.conf"
-        ],
-        "first_line_pattern": null
-      },
-      "hidden": false,
-      "grammar": "nginx"
     },
     "SQL": {
       "extension": "sql",
