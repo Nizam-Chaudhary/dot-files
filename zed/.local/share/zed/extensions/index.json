@@ -31,9 +31,7 @@
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": null,
-        "capabilities": [],
-        "debug_adapters": {},
-        "debug_locators": {}
+        "capabilities": []
       },
       "dev": false
     },
@@ -77,9 +75,7 @@
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": null,
-        "capabilities": [],
-        "debug_adapters": {},
-        "debug_locators": {}
+        "capabilities": []
       },
       "dev": false
     },
@@ -115,9 +111,7 @@
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": null,
-        "capabilities": [],
-        "debug_adapters": {},
-        "debug_locators": {}
+        "capabilities": []
       },
       "dev": false
     },
@@ -183,9 +177,7 @@
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": null,
-        "capabilities": [],
-        "debug_adapters": {},
-        "debug_locators": {}
+        "capabilities": []
       },
       "dev": false
     },
@@ -221,8 +213,8 @@
             "language": "HTML",
             "languages": [],
             "language_ids": {
-              "CSS": "css",
-              "HTML": "html"
+              "HTML": "html",
+              "CSS": "css"
             },
             "code_action_kinds": null
           }
@@ -231,9 +223,7 @@
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": null,
-        "capabilities": [],
-        "debug_adapters": {},
-        "debug_locators": {}
+        "capabilities": []
       },
       "dev": false
     },
@@ -271,9 +261,7 @@
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": null,
-        "capabilities": [],
-        "debug_adapters": {},
-        "debug_locators": {}
+        "capabilities": []
       },
       "dev": false
     },
@@ -303,9 +291,7 @@
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": null,
-        "capabilities": [],
-        "debug_adapters": {},
-        "debug_locators": {}
+        "capabilities": []
       },
       "dev": false
     },
@@ -335,9 +321,40 @@
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": null,
-        "capabilities": [],
-        "debug_adapters": {},
-        "debug_locators": {}
+        "capabilities": []
+      },
+      "dev": false
+    },
+    "poimandres": {
+      "manifest": {
+        "id": "poimandres",
+        "name": "poimandres",
+        "version": "0.0.4",
+        "schema_version": 1,
+        "description": "poimandres themes",
+        "repository": "https://github.com/mshaugh/poimandres.zed",
+        "authors": [
+          "mshaugh <max@mshaugh.com>",
+          "luk4h <luizmarcondes@lgvm.dev>"
+        ],
+        "lib": {
+          "kind": null,
+          "version": null
+        },
+        "themes": [
+          "themes/poimandres-storm.json",
+          "themes/poimandres.json",
+          "themes/poimandres-white.json"
+        ],
+        "icon_themes": [],
+        "languages": [],
+        "grammars": {},
+        "language_servers": {},
+        "context_servers": {},
+        "slash_commands": {},
+        "indexed_docs_providers": {},
+        "snippets": null,
+        "capabilities": []
       },
       "dev": false
     },
@@ -365,9 +382,7 @@
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": "./snippets/tsx.json",
-        "capabilities": [],
-        "debug_adapters": {},
-        "debug_locators": {}
+        "capabilities": []
       },
       "dev": false
     },
@@ -375,7 +390,7 @@
       "manifest": {
         "id": "sql",
         "name": "SQL",
-        "version": "1.1.3",
+        "version": "1.1.4",
         "schema_version": 1,
         "description": "SQL language support.",
         "repository": "https://github.com/zed-extensions/sql",
@@ -406,9 +421,7 @@
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": null,
-        "capabilities": [],
-        "debug_adapters": {},
-        "debug_locators": {}
+        "capabilities": []
       },
       "dev": false
     },
@@ -452,14 +465,41 @@
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": null,
-        "capabilities": [],
-        "debug_adapters": {},
-        "debug_locators": {}
+        "capabilities": []
       },
       "dev": false
     }
   },
-  "themes": {},
+  "themes": {
+    "poimandres": {
+      "extension": "poimandres",
+      "path": "themes/poimandres.json"
+    },
+    "poimandres (no italics)": {
+      "extension": "poimandres",
+      "path": "themes/poimandres.json"
+    },
+    "poimandres blurry": {
+      "extension": "poimandres",
+      "path": "themes/poimandres.json"
+    },
+    "poimandres storm": {
+      "extension": "poimandres",
+      "path": "themes/poimandres-storm.json"
+    },
+    "poimandres storm (no italics)": {
+      "extension": "poimandres",
+      "path": "themes/poimandres-storm.json"
+    },
+    "poimandres white": {
+      "extension": "poimandres",
+      "path": "themes/poimandres-white.json"
+    },
+    "poimandres white (no italics)": {
+      "extension": "poimandres",
+      "path": "themes/poimandres-white.json"
+    }
+  },
   "icon_themes": {
     "Material Icon Theme": {
       "extension": "material-icon-theme",
