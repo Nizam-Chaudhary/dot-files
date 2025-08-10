@@ -16,19 +16,30 @@
   "formatter": "language_server",
   "ui_font_size": 20,
   "buffer_font_size": 20,
-  "ui_font_family": "JetBrainsMono Nerd Font Mono",
-  "buffer_font_family": "JetBrainsMono Nerd Font Mono",
+  "ui_font_family": "Monaspace Neon Frozen",
+  "buffer_font_family": "Monaspace Neon Frozen",
+  "buffer_font_features": {
+    "calt": true, 
+    "cv01": 1,
+    "cv31": 1,  
+    "liga": true, 
+    "ss01": true, 
+    "ss02": true, 
+    "ss03": true,
+    "ss04": true, 
+    "ss05": true, 
+    "ss06": true, 
+    "ss07": true, 
+    "ss08": true, 
+    "ss09": true
+  },
   // Use zed commit editor
   "terminal": {
-    "external": {
-      "command": "ghostty",
-      "args": ["--directory", "{cwd}"]
-    },
     "env": {
       "EDITOR": "zed --wait"
     },
     "font_size": 16,
-    "font_family": "JetBrainsMono Nerd Font Mono"
+    "font_family": "Monaspace Neon Frozen"
   },
   "theme": {
     "mode": "system",
@@ -81,9 +92,6 @@
   },
   "languages": {
     "CSS": {
-      "formatter": "prettier"
-    },
-    "GraphQL": {
       "formatter": "prettier"
     },
     "Markdown": {

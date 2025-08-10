@@ -119,12 +119,13 @@
       "manifest": {
         "id": "git-firefly",
         "name": "Git Firefly",
-        "version": "0.0.3",
+        "version": "0.1.1",
         "schema_version": 1,
         "description": "Provides Git Syntax Highlighting",
         "repository": "https://github.com/d1y/git_firefly",
         "authors": [
-          "d1y <chenhonzho@gmail.com>"
+          "d1y <chenhonzhou@gmail.com>",
+          "Peter Tripp <petertripp@gmail.com>"
         ],
         "lib": {
           "kind": null,
@@ -133,19 +134,13 @@
         "themes": [],
         "icon_themes": [],
         "languages": [
-          "languages/gitconfig",
-          "languages/diff",
           "languages/gitcommit",
-          "languages/gitignore",
           "languages/gitrebase",
-          "languages/gitattributes"
+          "languages/gitattributes",
+          "languages/gitignore",
+          "languages/gitconfig"
         ],
         "grammars": {
-          "diff": {
-            "repository": "https://github.com/the-mikedavis/tree-sitter-diff",
-            "rev": "c165725c28e69b36c5799ff0e458713a844f1aaf",
-            "path": null
-          },
           "git_commit": {
             "repository": "https://github.com/the-mikedavis/tree-sitter-git-commit",
             "rev": "6f193a66e9aa872760823dff020960c6cedc37b3",
@@ -325,63 +320,51 @@
       },
       "dev": false
     },
-    "poimandres": {
+    "scss": {
       "manifest": {
-        "id": "poimandres",
-        "name": "poimandres",
-        "version": "0.0.4",
+        "id": "scss",
+        "name": "SCSS",
+        "version": "0.1.1",
         "schema_version": 1,
-        "description": "poimandres themes",
-        "repository": "https://github.com/mshaugh/poimandres.zed",
+        "description": "SCSS support",
+        "repository": "https://github.com/bajrangCoder/zed-scss",
         "authors": [
-          "mshaugh <max@mshaugh.com>",
-          "luk4h <luizmarcondes@lgvm.dev>"
+          "Raunak Raj <bajrangcoders@gmail.com>"
         ],
         "lib": {
-          "kind": null,
-          "version": null
+          "kind": "Rust",
+          "version": "0.0.6"
         },
-        "themes": [
-          "themes/poimandres-storm.json",
-          "themes/poimandres.json",
-          "themes/poimandres-white.json"
-        ],
+        "themes": [],
         "icon_themes": [],
-        "languages": [],
-        "grammars": {},
-        "language_servers": {},
+        "languages": [
+          "languages/scss"
+        ],
+        "grammars": {
+          "scss": {
+            "repository": "https://github.com/savetheclocktower/tree-sitter-scss",
+            "rev": "f5dfc3b4609d01fb11af8c97f3948fffeff25e92",
+            "path": null
+          }
+        },
+        "language_servers": {
+          "scss-lsp": {
+            "language": "SCSS",
+            "languages": [],
+            "language_ids": {},
+            "code_action_kinds": null
+          },
+          "some-sass-lsp": {
+            "language": "SCSS",
+            "languages": [],
+            "language_ids": {},
+            "code_action_kinds": null
+          }
+        },
         "context_servers": {},
         "slash_commands": {},
         "indexed_docs_providers": {},
         "snippets": null,
-        "capabilities": []
-      },
-      "dev": false
-    },
-    "react-typescript-snippets": {
-      "manifest": {
-        "id": "react-typescript-snippets",
-        "name": "React Typescript Snippets",
-        "version": "0.1.0",
-        "schema_version": 1,
-        "description": "A collection of useful React + TypeScript snippets to speed up your development.",
-        "repository": "https://github.com/vishnuroshan/zed-react-ts-snippets",
-        "authors": [
-          "Vishnu Roshan"
-        ],
-        "lib": {
-          "kind": null,
-          "version": null
-        },
-        "themes": [],
-        "icon_themes": [],
-        "languages": [],
-        "grammars": {},
-        "language_servers": {},
-        "context_servers": {},
-        "slash_commands": {},
-        "indexed_docs_providers": {},
-        "snippets": "./snippets/tsx.json",
         "capabilities": []
       },
       "dev": false
@@ -470,36 +453,7 @@
       "dev": false
     }
   },
-  "themes": {
-    "poimandres": {
-      "extension": "poimandres",
-      "path": "themes/poimandres.json"
-    },
-    "poimandres (no italics)": {
-      "extension": "poimandres",
-      "path": "themes/poimandres.json"
-    },
-    "poimandres blurry": {
-      "extension": "poimandres",
-      "path": "themes/poimandres.json"
-    },
-    "poimandres storm": {
-      "extension": "poimandres",
-      "path": "themes/poimandres-storm.json"
-    },
-    "poimandres storm (no italics)": {
-      "extension": "poimandres",
-      "path": "themes/poimandres-storm.json"
-    },
-    "poimandres white": {
-      "extension": "poimandres",
-      "path": "themes/poimandres-white.json"
-    },
-    "poimandres white (no italics)": {
-      "extension": "poimandres",
-      "path": "themes/poimandres-white.json"
-    }
-  },
+  "themes": {},
   "icon_themes": {
     "Material Icon Theme": {
       "extension": "material-icon-theme",
@@ -507,18 +461,6 @@
     }
   },
   "languages": {
-    "Diff": {
-      "extension": "git-firefly",
-      "path": "languages/diff",
-      "matcher": {
-        "path_suffixes": [
-          "diff"
-        ],
-        "first_line_pattern": null
-      },
-      "hidden": false,
-      "grammar": "diff"
-    },
     "Dockerfile": {
       "extension": "dockerfile",
       "path": "languages/dockerfile",
@@ -538,6 +480,7 @@
       "path": "languages/gitattributes",
       "matcher": {
         "path_suffixes": [
+          "gitattributes",
           ".gitattributes"
         ],
         "first_line_pattern": null
@@ -550,11 +493,11 @@
       "path": "languages/gitcommit",
       "matcher": {
         "path_suffixes": [
-          "TAG_EDITMSG",
-          "MERGE_MSG",
           "COMMIT_EDITMSG",
+          "EDIT_DESCRIPTION",
+          "MERGE_MSG",
           "NOTES_EDITMSG",
-          "EDIT_DESCRIPTION"
+          "TAG_EDITMSG"
         ],
         "first_line_pattern": null
       },
@@ -566,8 +509,10 @@
       "path": "languages/gitconfig",
       "matcher": {
         "path_suffixes": [
+          "config.worktree",
           ".gitconfig",
-          ".gitmodules"
+          ".gitmodules",
+          ".lfsconfig"
         ],
         "first_line_pattern": null
       },
@@ -579,8 +524,18 @@
       "path": "languages/gitignore",
       "matcher": {
         "path_suffixes": [
+          ".containerignore",
+          ".cursorignore",
+          ".dockerignore",
+          ".eslintignore",
+          ".fdignore",
           ".gitignore",
-          ".dockerignore"
+          ".git-blame-ignore-revs",
+          ".ignore",
+          ".npmignore",
+          ".prettierignore",
+          ".rgignore",
+          ".vscodeignore"
         ],
         "first_line_pattern": null
       },
@@ -624,6 +579,18 @@
       },
       "hidden": false,
       "grammar": "log"
+    },
+    "SCSS": {
+      "extension": "scss",
+      "path": "languages/scss",
+      "matcher": {
+        "path_suffixes": [
+          "scss"
+        ],
+        "first_line_pattern": null
+      },
+      "hidden": false,
+      "grammar": "scss"
     },
     "SQL": {
       "extension": "sql",
