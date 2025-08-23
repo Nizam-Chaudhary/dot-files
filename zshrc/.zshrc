@@ -65,12 +65,6 @@ alias c="clear"
 # alias fixpacman="sudo rm /var/lib/pacman/db.lck"
 # alias update="sudo pacman -Syu"
 
-# Fish-like syntax highlighting and autosuggestions
-# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# Use history substring search
-# source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # pkgfile "command not found" handler
 # source /usr/share/doc/pkgfile/command-not-found.zsh
@@ -87,10 +81,6 @@ else
   export EDITOR='nvim'
 fi
 
-# if [ -x "$(command -v gnome-text-editor)" ]; then
-#     alias note="gnome-text-editor"
-#     alias text="gnome-text-editor"
-# fi
 
 bindkey ^H backward-delete-word
 
@@ -133,10 +123,3 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-
-# fnm
-FNM_PATH="/home/nizam/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
-fi
