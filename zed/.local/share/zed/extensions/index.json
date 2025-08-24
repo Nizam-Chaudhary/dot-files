@@ -1,5 +1,36 @@
 {
   "extensions": {
+    "catppuccin": {
+      "manifest": {
+        "id": "catppuccin",
+        "name": "Catppuccin",
+        "version": "0.2.23",
+        "schema_version": 1,
+        "description": "🦀 Soothing pastel theme for Zed",
+        "repository": "https://github.com/catppuccin/zed",
+        "authors": [
+          "Catppuccin <releases@catppuccin.com>"
+        ],
+        "lib": {
+          "kind": null,
+          "version": null
+        },
+        "themes": [
+          "themes/catppuccin-no-italics-mauve.json",
+          "themes/catppuccin-mauve.json"
+        ],
+        "icon_themes": [],
+        "languages": [],
+        "grammars": {},
+        "language_servers": {},
+        "context_servers": {},
+        "slash_commands": {},
+        "indexed_docs_providers": {},
+        "snippets": null,
+        "capabilities": []
+      },
+      "dev": false
+    },
     "docker-compose": {
       "manifest": {
         "id": "docker-compose",
@@ -320,55 +351,6 @@
       },
       "dev": false
     },
-    "scss": {
-      "manifest": {
-        "id": "scss",
-        "name": "SCSS",
-        "version": "0.1.1",
-        "schema_version": 1,
-        "description": "SCSS support",
-        "repository": "https://github.com/bajrangCoder/zed-scss",
-        "authors": [
-          "Raunak Raj <bajrangcoders@gmail.com>"
-        ],
-        "lib": {
-          "kind": "Rust",
-          "version": "0.0.6"
-        },
-        "themes": [],
-        "icon_themes": [],
-        "languages": [
-          "languages/scss"
-        ],
-        "grammars": {
-          "scss": {
-            "repository": "https://github.com/savetheclocktower/tree-sitter-scss",
-            "rev": "f5dfc3b4609d01fb11af8c97f3948fffeff25e92",
-            "path": null
-          }
-        },
-        "language_servers": {
-          "scss-lsp": {
-            "language": "SCSS",
-            "languages": [],
-            "language_ids": {},
-            "code_action_kinds": null
-          },
-          "some-sass-lsp": {
-            "language": "SCSS",
-            "languages": [],
-            "language_ids": {},
-            "code_action_kinds": null
-          }
-        },
-        "context_servers": {},
-        "slash_commands": {},
-        "indexed_docs_providers": {},
-        "snippets": null,
-        "capabilities": []
-      },
-      "dev": false
-    },
     "sql": {
       "manifest": {
         "id": "sql",
@@ -453,7 +435,40 @@
       "dev": false
     }
   },
-  "themes": {},
+  "themes": {
+    "Catppuccin Frappé": {
+      "extension": "catppuccin",
+      "path": "themes/catppuccin-mauve.json"
+    },
+    "Catppuccin Frappé - No Italics": {
+      "extension": "catppuccin",
+      "path": "themes/catppuccin-no-italics-mauve.json"
+    },
+    "Catppuccin Latte": {
+      "extension": "catppuccin",
+      "path": "themes/catppuccin-mauve.json"
+    },
+    "Catppuccin Latte - No Italics": {
+      "extension": "catppuccin",
+      "path": "themes/catppuccin-no-italics-mauve.json"
+    },
+    "Catppuccin Macchiato": {
+      "extension": "catppuccin",
+      "path": "themes/catppuccin-mauve.json"
+    },
+    "Catppuccin Macchiato - No Italics": {
+      "extension": "catppuccin",
+      "path": "themes/catppuccin-no-italics-mauve.json"
+    },
+    "Catppuccin Mocha": {
+      "extension": "catppuccin",
+      "path": "themes/catppuccin-mauve.json"
+    },
+    "Catppuccin Mocha - No Italics": {
+      "extension": "catppuccin",
+      "path": "themes/catppuccin-no-italics-mauve.json"
+    }
+  },
   "icon_themes": {
     "Material Icon Theme": {
       "extension": "material-icon-theme",
@@ -579,18 +594,6 @@
       },
       "hidden": false,
       "grammar": "log"
-    },
-    "SCSS": {
-      "extension": "scss",
-      "path": "languages/scss",
-      "matcher": {
-        "path_suffixes": [
-          "scss"
-        ],
-        "first_line_pattern": null
-      },
-      "hidden": false,
-      "grammar": "scss"
     },
     "SQL": {
       "extension": "sql",
