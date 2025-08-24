@@ -83,6 +83,9 @@ fi
 ##### HOMEBREW #####
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+##### ZOXIDE #####
+eval "$(zoxide init zsh)"
+alias cd="z"
 
 ##### PNPM #####
 export PNPM_HOME="$HOME/.local/share/pnpm"

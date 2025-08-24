@@ -72,6 +72,11 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 command -v fzf &>/dev/null && eval "$(fzf --bash)"
 
 
+# zoxide
+eval "$(zoxide init bash)"
+alias cd="z"
+
+
 ##### SSH / GPG #####
 export GPG_TTY=$(tty)
 export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh
