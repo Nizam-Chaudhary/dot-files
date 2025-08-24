@@ -1,80 +1,52 @@
-# Add deno completions to search path
-if [[ ":$FPATH:" != *":/home/nizam/.zsh/completions:"* ]]; then export FPATH="/home/nizam/.zsh/completions:$FPATH"; fi
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+# ~/.zshrc
+# ===============================
+# Minimal, structured zsh config
+# ===============================
 
-# zsh completions
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-autoload -U compinit && compinit
-
-# Path to your Oh My Zsh installation.
+##### OH-MY-ZSH #####
 export ZSH="$HOME/.oh-my-zsh"
-
-# starship prompt
-# eval "$(starship init zsh)"
-
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-DISABLE_MAGIC_FUNCTIONS="true"
-
-zstyle ':omz:update' mode auto      # update automatically without asking
-
-zstyle ':omz:update' frequency 7
-
-# Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git fzf eza sudo npm dnf node bun docker docker-compose zsh-syntax-highlighting zsh-autosuggestions zsh-history-substring-search kubectl)
+plugins=(
+  git fzf sudo npm node docker docker-compose
+  bun kubectl
+  zsh-syntax-highlighting zsh-autosuggestions zsh-history-substring-search
+)
 
 source $ZSH/oh-my-zsh.sh
 
-# Ignore commands that start with spaces and duplicates.
+# Auto update OMZ without prompt (weekly)
+zstyle ':omz:update' mode auto
+zstyle ':omz:update' frequency 7
+
+
+##### COMPLETIONS #####
+# Custom completions (deno, zsh-completions plugin)
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+autoload -U compinit && compinit
+
+# PNPM completions
+if command -v pnpm &>/dev/null; then
+  eval "$(pnpm completion zsh)"
+fi
+
+
+##### HISTORY #####
 export HISTCONTROL=ignoreboth
-
-# Don't add certain commands to the history file.
-export HISTIGNORE="&:[bf]g:c:clear:history:exit:q:pwd:* --help"s
-
-# Use custom `less` colors for `man` pages.
-export LESS_TERMCAP_md="$(tput bold 2> /dev/null; tput setaf 2 2> /dev/null)"
-export LESS_TERMCAP_me="$(tput sgr0 2> /dev/null)"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-#alias open="xdg-open"
-alias make="make -j`nproc`"
-alias ninja="ninja -j`nproc`"
-alias n="ninja"
-alias c="clear"
-# alias rmpkg="sudo pacman -Rsn"
-# alias cleanch="sudo pacman -Scc"
-# alias fixpacman="sudo rm /var/lib/pacman/db.lck"
-# alias update="sudo pacman -Syu"
-
-
-# pkgfile "command not found" handler
-# source /usr/share/doc/pkgfile/command-not-found.zsh
-
-
-# Make new shells get the history lines from all previous
-# shells instead of the default "last window closed" history.
+export HISTIGNORE="&:[bf]g:c:clear:history:exit:q:pwd:* --help"
 export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
-# Preferred editor for local and remote sessions
+
+##### SHELL BEHAVIOR #####
+DISABLE_MAGIC_FUNCTIONS="true"
+ENABLE_CORRECTION="true"
+COMPLETION_WAITING_DOTS="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+bindkey ^H backward-delete-word
+
+
+##### EDITOR #####
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
@@ -82,44 +54,51 @@ else
 fi
 
 
-bindkey ^H backward-delete-word
+##### PATHS #####
+export PATH="$HOME/.local/bin:$PATH"
+export LC_ALL="en_IN.UTF-8"
+export LANG="en_IN.UTF-8"
 
+
+##### NVM #####
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
 
-export GPG_TTY=$(tty)
-export PATH=$HOME/.local/bin:$PATH
 
-export GPG_TTY=$(tty)
-
-# Set up fzf key bindings and fuzzy completion
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# source <(fzf --zsh)
-
-SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh
-
-# bun completions
-[ -s "/home/nizam/.bun/_bun" ] && source "/home/nizam/.bun/_bun"
-
-# bun
+##### BUN #####
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+[ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
 
 
-# fnm
-FNM_PATH="/home/nizam/.local/share/fnm"
+##### FNM (Fast Node Manager) #####
+FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
+  eval "$(fnm env)"
 fi
 
+
+##### HOMEBREW #####
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-# pnpm
-export PNPM_HOME="/home/nizam/.local/share/pnpm"
+
+##### PNPM #####
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end
+
+
+##### SSH / GPG #####
+export GPG_TTY=$(tty)
+export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh
+
+
+##### ALIASES #####
+alias make="make -j$(nproc)"
+alias ninja="ninja -j$(nproc)"
+alias n="ninja"
+alias c="clear"
