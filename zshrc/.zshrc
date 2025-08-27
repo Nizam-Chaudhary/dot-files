@@ -3,11 +3,10 @@
 # Minimal, structured zsh config
 # ===============================
 
-##### COMPLETIONS #####
+##### OHO MY ZSH COMPLETIONS #####
 # Custom completions (deno, zsh-completions plugin)
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/k3d
-source /usr/share/zsh/plugins/pnpm-shell-completion/pnpm-shell-completion.zsh
 autoload -U compinit && compinit
 
 ##### OH-MY-ZSH #####
@@ -101,3 +100,6 @@ alias ninja="ninja -j$(nproc)"
 alias n="ninja"
 alias c="clear"
 alias cat="bat"
+
+##### PNPM Completions #####
+source /usr/share/zsh/plugins/pnpm-shell-completion/pnpm-shell-completion.zsh
