@@ -85,7 +85,7 @@ export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh
 ##### PATHS #####
 export PATH="$HOME/.local/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/home/nizam/.rd/bin:$PATH"
+export PATH="$HOME/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 

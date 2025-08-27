@@ -1,2 +1,2 @@
-require("nizam.core")
-require("nizam.lazy")
+require("neovim.core")
+require("neovim.lazy")
