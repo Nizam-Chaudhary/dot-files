@@ -3,6 +3,13 @@
 # Minimal, structured zsh config
 # ===============================
 
+##### COMPLETIONS #####
+# Custom completions (deno, zsh-completions plugin)
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/k3d
+source /usr/share/zsh/plugins/pnpm-shell-completion/pnpm-shell-completion.zsh
+autoload -U compinit && compinit
+
 ##### OH-MY-ZSH #####
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
@@ -18,18 +25,6 @@ source $ZSH/oh-my-zsh.sh
 # Auto update OMZ without prompt (weekly)
 zstyle ':omz:update' mode auto
 zstyle ':omz:update' frequency 7
-
-
-##### COMPLETIONS #####
-# Custom completions (deno, zsh-completions plugin)
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-autoload -U compinit && compinit
-
-# PNPM completions
-if command -v pnpm &>/dev/null; then
-  eval "$(pnpm completion zsh)"
-fi
-
 
 ##### HISTORY #####
 export HISTCONTROL=ignoreboth
@@ -105,3 +100,4 @@ alias make="make -j$(nproc)"
 alias ninja="ninja -j$(nproc)"
 alias n="ninja"
 alias c="clear"
+alias cat="bat"
