@@ -16,8 +16,8 @@
   "formatter": "language_server",
   "ui_font_size": 18,
   "buffer_font_size": 18,
-  "ui_font_family": "Geist",
-  "buffer_font_family": "Geist Mono",
+  "ui_font_family": "GeistMono Nerd Font",
+  "buffer_font_family": "GeistMono Nerd Font",
   // "buffer_font_features": {
   //   "calt": true, 
   //   "cv01": 1,
@@ -39,7 +39,7 @@
       "EDITOR": "zed --wait"
     },
     "font_size": 16,
-    "font_family": "Geist Mono"
+    "font_family": "GeistMono Nerd Font"
   },
   "theme": {
     "mode": "system",
