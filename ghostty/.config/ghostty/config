@@ -1,7 +1,5 @@
-# theme = OneHalfDark
-font-family = JetBrainsMono Nerd Font Mono
-font-size = 12
-background-opacity = 0.95
-# disable for kde
-gtk-titlebar = true
-gtk-adwaita = true
+theme = vesper
+font-family = "Geist Mono"
+font-size = 14
+gtk-titlebar = false
+gtk-adwaita = false

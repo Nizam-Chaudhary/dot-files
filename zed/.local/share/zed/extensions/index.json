@@ -1,35 +1,5 @@
 {
   "extensions": {
-    "catppuccin": {
-      "manifest": {
-        "id": "catppuccin",
-        "name": "Catppuccin",
-        "version": "0.2.23",
-        "schema_version": 1,
-        "description": "🦀 Soothing pastel theme for Zed",
-        "repository": "https://github.com/catppuccin/zed",
-        "authors": [
-          "Catppuccin <releases@catppuccin.com>"
-        ],
-        "lib": {
-          "kind": null,
-          "version": null
-        },
-        "themes": [
-          "themes/catppuccin-no-italics-mauve.json",
-          "themes/catppuccin-mauve.json"
-        ],
-        "icon_themes": [],
-        "languages": [],
-        "grammars": {},
-        "language_servers": {},
-        "context_servers": {},
-        "slash_commands": {},
-        "snippets": null,
-        "capabilities": []
-      },
-      "dev": false
-    },
     "docker-compose": {
       "manifest": {
         "id": "docker-compose",
@@ -342,6 +312,36 @@
       },
       "dev": false
     },
+    "rich-vesper": {
+      "manifest": {
+        "id": "rich-vesper",
+        "name": "Rich Vesper",
+        "version": "0.0.5",
+        "schema_version": 1,
+        "description": "Modified peppermint and orange flavored dark theme.",
+        "repository": "https://github.com/zezic/rich-vesper-zed",
+        "authors": [
+          "Sergey Ukolov <zezic51@yandex.ru>",
+          "bdsqqq <igorbedesqui@gmail.com>"
+        ],
+        "lib": {
+          "kind": null,
+          "version": null
+        },
+        "themes": [
+          "themes/rich-vesper-dark.json"
+        ],
+        "icon_themes": [],
+        "languages": [],
+        "grammars": {},
+        "language_servers": {},
+        "context_servers": {},
+        "slash_commands": {},
+        "snippets": null,
+        "capabilities": []
+      },
+      "dev": false
+    },
     "sql": {
       "manifest": {
         "id": "sql",
@@ -425,37 +425,9 @@
     }
   },
   "themes": {
-    "Catppuccin Frappé": {
-      "extension": "catppuccin",
-      "path": "themes/catppuccin-mauve.json"
-    },
-    "Catppuccin Frappé - No Italics": {
-      "extension": "catppuccin",
-      "path": "themes/catppuccin-no-italics-mauve.json"
-    },
-    "Catppuccin Latte": {
-      "extension": "catppuccin",
-      "path": "themes/catppuccin-mauve.json"
-    },
-    "Catppuccin Latte - No Italics": {
-      "extension": "catppuccin",
-      "path": "themes/catppuccin-no-italics-mauve.json"
-    },
-    "Catppuccin Macchiato": {
-      "extension": "catppuccin",
-      "path": "themes/catppuccin-mauve.json"
-    },
-    "Catppuccin Macchiato - No Italics": {
-      "extension": "catppuccin",
-      "path": "themes/catppuccin-no-italics-mauve.json"
-    },
-    "Catppuccin Mocha": {
-      "extension": "catppuccin",
-      "path": "themes/catppuccin-mauve.json"
-    },
-    "Catppuccin Mocha - No Italics": {
-      "extension": "catppuccin",
-      "path": "themes/catppuccin-no-italics-mauve.json"
+    "Rich Vesper": {
+      "extension": "rich-vesper",
+      "path": "themes/rich-vesper-dark.json"
     }
   },
   "icon_themes": {
