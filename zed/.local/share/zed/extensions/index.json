@@ -25,7 +25,6 @@
         "language_servers": {},
         "context_servers": {},
         "slash_commands": {},
-        "indexed_docs_providers": {},
         "snippets": null,
         "capabilities": []
       },
@@ -60,7 +59,6 @@
         },
         "context_servers": {},
         "slash_commands": {},
-        "indexed_docs_providers": {},
         "snippets": null,
         "capabilities": []
       },
@@ -104,7 +102,6 @@
         },
         "context_servers": {},
         "slash_commands": {},
-        "indexed_docs_providers": {},
         "snippets": null,
         "capabilities": []
       },
@@ -140,7 +137,6 @@
         "language_servers": {},
         "context_servers": {},
         "slash_commands": {},
-        "indexed_docs_providers": {},
         "snippets": null,
         "capabilities": []
       },
@@ -201,7 +197,6 @@
         "language_servers": {},
         "context_servers": {},
         "slash_commands": {},
-        "indexed_docs_providers": {},
         "snippets": null,
         "capabilities": []
       },
@@ -211,7 +206,7 @@
       "manifest": {
         "id": "html",
         "name": "HTML",
-        "version": "0.2.1",
+        "version": "0.2.2",
         "schema_version": 1,
         "description": "HTML support.",
         "repository": "https://github.com/zed-industries/zed",
@@ -247,7 +242,6 @@
         },
         "context_servers": {},
         "slash_commands": {},
-        "indexed_docs_providers": {},
         "snippets": null,
         "capabilities": []
       },
@@ -285,7 +279,6 @@
         "language_servers": {},
         "context_servers": {},
         "slash_commands": {},
-        "indexed_docs_providers": {},
         "snippets": null,
         "capabilities": []
       },
@@ -315,7 +308,6 @@
         "language_servers": {},
         "context_servers": {},
         "slash_commands": {},
-        "indexed_docs_providers": {},
         "snippets": null,
         "capabilities": []
       },
@@ -345,7 +337,6 @@
           "mcp-server-context7": {}
         },
         "slash_commands": {},
-        "indexed_docs_providers": {},
         "snippets": null,
         "capabilities": []
       },
@@ -384,7 +375,6 @@
         "language_servers": {},
         "context_servers": {},
         "slash_commands": {},
-        "indexed_docs_providers": {},
         "snippets": null,
         "capabilities": []
       },
@@ -428,7 +418,6 @@
         },
         "context_servers": {},
         "slash_commands": {},
-        "indexed_docs_providers": {},
         "snippets": null,
         "capabilities": []
       },
