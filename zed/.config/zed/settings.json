@@ -44,7 +44,7 @@
   "theme": {
     "mode": "system",
     "light": "One Dark",
-    "dark": "Rich Vesper"
+    "dark": "Rosé Pine"
   },
   "base_keymap": "VSCode",
   // Vim mode settings

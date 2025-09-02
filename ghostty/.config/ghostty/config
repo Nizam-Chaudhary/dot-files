@@ -1,5 +1,5 @@
-theme = vesper
-font-family = "GeistMono Nerd Font"
+theme = rose-pine
+font-family = "GeistMono"
 font-size = 14
 gtk-titlebar = false
 gtk-adwaita = false

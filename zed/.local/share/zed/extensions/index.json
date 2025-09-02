@@ -254,6 +254,35 @@
       },
       "dev": false
     },
+    "macos-classic": {
+      "manifest": {
+        "id": "macos-classic",
+        "name": "macOS Classic Theme",
+        "version": "0.2.3",
+        "schema_version": 1,
+        "description": "A macOS native style theme, let it same like native app in macOS.",
+        "repository": "https://github.com/huacnlee/zed-theme-macos-classic",
+        "authors": [
+          "Jason Lee <huacnlee@gmail.com>"
+        ],
+        "lib": {
+          "kind": null,
+          "version": null
+        },
+        "themes": [
+          "themes/macos-classic.json"
+        ],
+        "icon_themes": [],
+        "languages": [],
+        "grammars": {},
+        "language_servers": {},
+        "context_servers": {},
+        "slash_commands": {},
+        "snippets": null,
+        "capabilities": []
+      },
+      "dev": false
+    },
     "material-icon-theme": {
       "manifest": {
         "id": "material-icon-theme",
@@ -312,24 +341,57 @@
       },
       "dev": false
     },
-    "rich-vesper": {
+    "poimandres": {
       "manifest": {
-        "id": "rich-vesper",
-        "name": "Rich Vesper",
-        "version": "0.0.5",
+        "id": "poimandres",
+        "name": "poimandres",
+        "version": "0.0.4",
         "schema_version": 1,
-        "description": "Modified peppermint and orange flavored dark theme.",
-        "repository": "https://github.com/zezic/rich-vesper-zed",
+        "description": "poimandres themes",
+        "repository": "https://github.com/mshaugh/poimandres.zed",
         "authors": [
-          "Sergey Ukolov <zezic51@yandex.ru>",
-          "bdsqqq <igorbedesqui@gmail.com>"
+          "mshaugh <max@mshaugh.com>",
+          "luk4h <luizmarcondes@lgvm.dev>"
         ],
         "lib": {
           "kind": null,
           "version": null
         },
         "themes": [
-          "themes/rich-vesper-dark.json"
+          "themes/poimandres-storm.json",
+          "themes/poimandres.json",
+          "themes/poimandres-white.json"
+        ],
+        "icon_themes": [],
+        "languages": [],
+        "grammars": {},
+        "language_servers": {},
+        "context_servers": {},
+        "slash_commands": {},
+        "snippets": null,
+        "capabilities": []
+      },
+      "dev": false
+    },
+    "rose-pine-theme": {
+      "manifest": {
+        "id": "rose-pine-theme",
+        "name": "Rosé Pine",
+        "version": "1.3.2",
+        "schema_version": 1,
+        "description": "All natural pine, faux fur, and a bit of soho vibes – a classy minimalist theme for Zed.",
+        "repository": "https://github.com/rose-pine/zed",
+        "authors": [
+          "Kainoa Kanter <kainoa@t1c.dev>"
+        ],
+        "lib": {
+          "kind": null,
+          "version": null
+        },
+        "themes": [
+          "themes/rose-pine.json",
+          "themes/rose-pine-dawn.json",
+          "themes/rose-pine-moon.json"
         ],
         "icon_themes": [],
         "languages": [],
@@ -425,9 +487,57 @@
     }
   },
   "themes": {
-    "Rich Vesper": {
-      "extension": "rich-vesper",
-      "path": "themes/rich-vesper-dark.json"
+    "Rosé Pine": {
+      "extension": "rose-pine-theme",
+      "path": "themes/rose-pine.json"
+    },
+    "Rosé Pine Dawn": {
+      "extension": "rose-pine-theme",
+      "path": "themes/rose-pine-dawn.json"
+    },
+    "Rosé Pine Moon": {
+      "extension": "rose-pine-theme",
+      "path": "themes/rose-pine-moon.json"
+    },
+    "macOS Classic Dark": {
+      "extension": "macos-classic",
+      "path": "themes/macos-classic.json"
+    },
+    "macOS Classic Dark2": {
+      "extension": "macos-classic",
+      "path": "themes/macos-classic.json"
+    },
+    "macOS Classic Light": {
+      "extension": "macos-classic",
+      "path": "themes/macos-classic.json"
+    },
+    "poimandres": {
+      "extension": "poimandres",
+      "path": "themes/poimandres.json"
+    },
+    "poimandres (no italics)": {
+      "extension": "poimandres",
+      "path": "themes/poimandres.json"
+    },
+    "poimandres blurry": {
+      "extension": "poimandres",
+      "path": "themes/poimandres.json"
+    },
+    "poimandres storm": {
+      "extension": "poimandres",
+      "path": "themes/poimandres-storm.json"
+    },
+    "poimandres storm (no italics)": {
+      "extension": "poimandres",
+      "path": "themes/poimandres-storm.json"
+    },
+    "poimandres white": {
+      "extension": "poimandres",
+      "path": "themes/poimandres-white.json"
+    },
+    "poimandres white (no italics)": {
+      "extension": "poimandres",
+      "path": "themes/poimandres-white.json"
     }
   },
   "icon_themes": {

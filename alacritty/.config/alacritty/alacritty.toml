@@ -1,7 +1,7 @@
 
 #### THEME ####
 general.import = [
-  "~/.config/alacritty/vesper.toml"
+  "~/.config/alacritty/rose-pine.toml"
 ]
 
 ##### GENERAL #####
