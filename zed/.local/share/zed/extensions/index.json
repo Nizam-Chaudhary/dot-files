@@ -254,35 +254,6 @@
       },
       "dev": false
     },
-    "macos-classic": {
-      "manifest": {
-        "id": "macos-classic",
-        "name": "macOS Classic Theme",
-        "version": "0.2.3",
-        "schema_version": 1,
-        "description": "A macOS native style theme, let it same like native app in macOS.",
-        "repository": "https://github.com/huacnlee/zed-theme-macos-classic",
-        "authors": [
-          "Jason Lee <huacnlee@gmail.com>"
-        ],
-        "lib": {
-          "kind": null,
-          "version": null
-        },
-        "themes": [
-          "themes/macos-classic.json"
-        ],
-        "icon_themes": [],
-        "languages": [],
-        "grammars": {},
-        "language_servers": {},
-        "context_servers": {},
-        "slash_commands": {},
-        "snippets": null,
-        "capabilities": []
-      },
-      "dev": false
-    },
     "material-icon-theme": {
       "manifest": {
         "id": "material-icon-theme",
@@ -341,69 +312,6 @@
       },
       "dev": false
     },
-    "poimandres": {
-      "manifest": {
-        "id": "poimandres",
-        "name": "poimandres",
-        "version": "0.0.4",
-        "schema_version": 1,
-        "description": "poimandres themes",
-        "repository": "https://github.com/mshaugh/poimandres.zed",
-        "authors": [
-          "mshaugh <max@mshaugh.com>",
-          "luk4h <luizmarcondes@lgvm.dev>"
-        ],
-        "lib": {
-          "kind": null,
-          "version": null
-        },
-        "themes": [
-          "themes/poimandres-storm.json",
-          "themes/poimandres.json",
-          "themes/poimandres-white.json"
-        ],
-        "icon_themes": [],
-        "languages": [],
-        "grammars": {},
-        "language_servers": {},
-        "context_servers": {},
-        "slash_commands": {},
-        "snippets": null,
-        "capabilities": []
-      },
-      "dev": false
-    },
-    "rose-pine-theme": {
-      "manifest": {
-        "id": "rose-pine-theme",
-        "name": "Rosé Pine",
-        "version": "1.3.2",
-        "schema_version": 1,
-        "description": "All natural pine, faux fur, and a bit of soho vibes – a classy minimalist theme for Zed.",
-        "repository": "https://github.com/rose-pine/zed",
-        "authors": [
-          "Kainoa Kanter <kainoa@t1c.dev>"
-        ],
-        "lib": {
-          "kind": null,
-          "version": null
-        },
-        "themes": [
-          "themes/rose-pine.json",
-          "themes/rose-pine-dawn.json",
-          "themes/rose-pine-moon.json"
-        ],
-        "icon_themes": [],
-        "languages": [],
-        "grammars": {},
-        "language_servers": {},
-        "context_servers": {},
-        "slash_commands": {},
-        "snippets": null,
-        "capabilities": []
-      },
-      "dev": false
-    },
     "sql": {
       "manifest": {
         "id": "sql",
@@ -446,17 +354,17 @@
       "manifest": {
         "id": "toml",
         "name": "TOML",
-        "version": "0.1.4",
+        "version": "1.0.0",
         "schema_version": 1,
         "description": "TOML support.",
-        "repository": "https://github.com/zed-industries/zed",
+        "repository": "https://github.com/zed-extensions/toml",
         "authors": [
           "Max Brunsfeld <max@zed.dev>",
           "Ammar Arif <evergreenkary@gmail.com>"
         ],
         "lib": {
-          "kind": "Rust",
-          "version": "0.1.0"
+          "kind": null,
+          "version": null
         },
         "themes": [],
         "icon_themes": [],
@@ -470,14 +378,7 @@
             "path": null
           }
         },
-        "language_servers": {
-          "taplo": {
-            "language": "TOML",
-            "languages": [],
-            "language_ids": {},
-            "code_action_kinds": null
-          }
-        },
+        "language_servers": {},
         "context_servers": {},
         "slash_commands": {},
         "snippets": null,
@@ -486,60 +387,7 @@
       "dev": false
     }
   },
-  "themes": {
-    "Rosé Pine": {
-      "extension": "rose-pine-theme",
-      "path": "themes/rose-pine.json"
-    },
-    "Rosé Pine Dawn": {
-      "extension": "rose-pine-theme",
-      "path": "themes/rose-pine-dawn.json"
-    },
-    "Rosé Pine Moon": {
-      "extension": "rose-pine-theme",
-      "path": "themes/rose-pine-moon.json"
-    },
-    "macOS Classic Dark": {
-      "extension": "macos-classic",
-      "path": "themes/macos-classic.json"
-    },
-    "macOS Classic Dark2": {
-      "extension": "macos-classic",
-      "path": "themes/macos-classic.json"
-    },
-    "macOS Classic Light": {
-      "extension": "macos-classic",
-      "path": "themes/macos-classic.json"
-    },
-    "poimandres": {
-      "extension": "poimandres",
-      "path": "themes/poimandres.json"
-    },
-    "poimandres (no italics)": {
-      "extension": "poimandres",
-      "path": "themes/poimandres.json"
-    },
-    "poimandres blurry": {
-      "extension": "poimandres",
-      "path": "themes/poimandres.json"
-    },
-    "poimandres storm": {
-      "extension": "poimandres",
-      "path": "themes/poimandres-storm.json"
-    },
-    "poimandres storm (no italics)": {
-      "extension": "poimandres",
-      "path": "themes/poimandres-storm.json"
-    },
-    "poimandres white": {
-      "extension": "poimandres",
-      "path": "themes/poimandres-white.json"
-    },
-    "poimandres white (no italics)": {
-      "extension": "poimandres",
-      "path": "themes/poimandres-white.json"
-    }
-  },
+  "themes": {},
   "icon_themes": {
     "Material Icon Theme": {
       "extension": "material-icon-theme",

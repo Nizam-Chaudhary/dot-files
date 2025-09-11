@@ -44,7 +44,7 @@
   "theme": {
     "mode": "system",
     "light": "One Dark",
-    "dark": "Rosé Pine"
+    "dark": "Gruvbox Dark Hard"
   },
   "base_keymap": "VSCode",
   // Vim mode settings

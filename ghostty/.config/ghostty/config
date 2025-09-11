@@ -1,4 +1,4 @@
-theme = rose-pine
+theme = GruvboxDark
 font-family = "GeistMono"
 font-size = 14
 gtk-titlebar = false

@@ -1,7 +1,7 @@
 
 #### THEME ####
 general.import = [
-  "~/.config/alacritty/rose-pine.toml"
+  "~/.config/alacritty/gruvbox-dark.toml"
 ]
 
 ##### GENERAL #####
@@ -13,7 +13,7 @@ decorations = "full"
 decorations_theme_variant = "Dark"
 dynamic_padding = true
 opacity = 1
-startup_mode = "Windowed"
+startup_mode = "Maximized"
 
 [window.dimensions]
 columns = 100
