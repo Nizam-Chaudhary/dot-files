@@ -14,7 +14,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
 plugins=(
-  git fzf sudo npm node docker docker-compose eza
+  git fzf sudo npm node docker docker-compose
   bun kubectl
   zsh-syntax-highlighting zsh-autosuggestions zsh-history-substring-search
 )
@@ -44,14 +44,14 @@ bindkey ^H backward-delete-word
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='nvim'
+  export EDITOR='$EDITOR'
 fi
 
 
 ##### PATHS #####
 export PATH="$HOME/.local/bin:$PATH"
-export LC_ALL="en_IN.UTF-8"
-export LANG="en_IN.UTF-8"
+# export LC_ALL="en_IN.UTF-8"
+# export LANG="en_IN.UTF-8"
 
 
 ##### NVM #####
@@ -72,10 +72,6 @@ if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
   eval "$(fnm env)"
 fi
-
-
-##### HOMEBREW #####
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 ##### ZOXIDE #####
 eval "$(zoxide init zsh)"
@@ -101,5 +97,14 @@ alias n="ninja"
 alias c="clear"
 alias cat="bat"
 
+alias ls='eza -lh --group-directories-first --icons=auto'
+alias lsa='ls -a'
+alias lt='eza --tree --level=2 --long --icons --git'
+alias lta='lt -a'
+alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+
 ##### PNPM Completions #####
 source /usr/share/zsh/plugins/pnpm-shell-completion/pnpm-shell-completion.zsh
+
+##### Mise #####
+eval "$(mise activate zsh)"
