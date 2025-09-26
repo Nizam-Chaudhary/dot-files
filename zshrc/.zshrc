@@ -44,7 +44,7 @@ bindkey ^H backward-delete-word
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='$EDITOR'
+  export EDITOR='nvim'
 fi
 
 
@@ -95,7 +95,6 @@ alias make="make -j$(nproc)"
 alias ninja="ninja -j$(nproc)"
 alias n="ninja"
 alias c="clear"
-alias cat="bat"
 
 alias ls='eza -lh --group-directories-first --icons=auto'
 alias lsa='ls -a'
