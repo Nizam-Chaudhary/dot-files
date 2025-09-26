@@ -25,6 +25,9 @@ source $ZSH/oh-my-zsh.sh
 zstyle ':omz:update' mode auto
 zstyle ':omz:update' frequency 7
 
+##### HOMEBREW #####
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 ##### HISTORY #####
 export HISTCONTROL=ignoreboth
 export HISTIGNORE="&:[bf]g:c:clear:history:exit:q:pwd:* --help"
@@ -104,6 +107,3 @@ alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
 
 ##### PNPM Completions #####
 source /usr/share/zsh/plugins/pnpm-shell-completion/pnpm-shell-completion.zsh
-
-##### Mise #####
-eval "$(mise activate zsh)"
