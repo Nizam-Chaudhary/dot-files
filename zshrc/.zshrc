@@ -106,4 +106,4 @@ alias lta='lt -a'
 alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
 
 ##### PNPM Completions #####
-source /usr/share/zsh/plugins/pnpm-shell-completion/pnpm-shell-completion.zsh
+source /home/nizam/.oh-my-zsh/custom/plugins/pnpm-shell-completion/pnpm-shell-completion.plugin.zsh

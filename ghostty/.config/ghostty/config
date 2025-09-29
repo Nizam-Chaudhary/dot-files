@@ -1,5 +1,2 @@
-theme = GruvboxDark
-font-family = "GeistMono"
-font-size = 14
-gtk-titlebar = false
-gtk-adwaita = false
+theme = Gruvbox Dark
+font-family = "CaskaydiaCove Nerd Font Mono"
