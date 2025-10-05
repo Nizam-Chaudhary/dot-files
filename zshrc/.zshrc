@@ -8,10 +8,12 @@
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/k3d
 autoload -U compinit && compinit
+fpath+=($HOME/.zsh/pure)
+autoload -U promptinit; promptinit
 
 ##### OH-MY-ZSH #####
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
+ZSH_THEME=""
 
 plugins=(
   git fzf sudo npm node docker docker-compose
@@ -20,6 +22,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+prompt pure
 
 # Auto update OMZ without prompt (weekly)
 zstyle ':omz:update' mode auto
@@ -107,3 +110,10 @@ alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
 
 ##### PNPM Completions #####
 source /home/$USER/.oh-my-zsh/custom/plugins/pnpm-shell-completion/pnpm-shell-completion.plugin.zsh
+
+# fnm
+FNM_PATH="/home/nizam/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi
