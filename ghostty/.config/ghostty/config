@@ -1,5 +1,5 @@
 theme = Gruvbox Dark
 font-family = "CaskaydiaCove Nerd Font Mono"
-font-size = 14
+font-size = 16
 gtk-titlebar = false
 maximize = true

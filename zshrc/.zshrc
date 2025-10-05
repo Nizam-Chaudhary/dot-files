@@ -26,7 +26,7 @@ zstyle ':omz:update' mode auto
 zstyle ':omz:update' frequency 7
 
 ##### HOMEBREW #####
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 ##### HISTORY #####
 export HISTCONTROL=ignoreboth
