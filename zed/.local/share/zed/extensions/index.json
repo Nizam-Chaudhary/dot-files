@@ -38,7 +38,7 @@
       "manifest": {
         "id": "dockerfile",
         "name": "Dockerfile",
-        "version": "0.0.5",
+        "version": "0.0.6",
         "schema_version": 1,
         "description": "Dockerfile support.",
         "repository": "https://github.com/zed-extensions/dockerfile",
@@ -48,7 +48,7 @@
         ],
         "lib": {
           "kind": "Rust",
-          "version": "0.0.4"
+          "version": "0.7.0"
         },
         "themes": [],
         "icon_themes": [],
@@ -176,7 +176,7 @@
       "manifest": {
         "id": "html",
         "name": "HTML",
-        "version": "0.2.2",
+        "version": "0.2.3",
         "schema_version": 1,
         "description": "HTML support.",
         "repository": "https://github.com/zed-industries/zed",
@@ -185,7 +185,7 @@
         ],
         "lib": {
           "kind": "Rust",
-          "version": "0.1.0"
+          "version": "0.7.0"
         },
         "themes": [],
         "icon_themes": [],
@@ -204,8 +204,8 @@
             "language": "HTML",
             "languages": [],
             "language_ids": {
-              "HTML": "html",
-              "CSS": "css"
+              "CSS": "css",
+              "HTML": "html"
             },
             "code_action_kinds": null
           }
@@ -258,7 +258,7 @@
       "manifest": {
         "id": "material-icon-theme",
         "name": "Material Icon Theme",
-        "version": "1.0.0",
+        "version": "1.2.0",
         "schema_version": 1,
         "description": "Material Design icons.",
         "repository": "https://github.com/zed-extensions/material-icon-theme",
@@ -287,7 +287,7 @@
       "manifest": {
         "id": "mcp-server-context7",
         "name": "Context7 MCP Server",
-        "version": "0.0.3",
+        "version": "0.0.5",
         "schema_version": 1,
         "description": "Model Context Protocol Server for Context7",
         "repository": "https://github.com/akbxr/zed-mcp-server-context7",
@@ -296,7 +296,7 @@
         ],
         "lib": {
           "kind": "Rust",
-          "version": "0.5.0"
+          "version": "0.7.0"
         },
         "themes": [],
         "icon_themes": [],

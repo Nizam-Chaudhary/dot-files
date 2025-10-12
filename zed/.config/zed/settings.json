@@ -16,35 +16,35 @@
   "formatter": "language_server",
   "ui_font_size": 18,
   "buffer_font_size": 20,
-  "ui_font_family": "GeistMono Nerd Font Mono",
-  "buffer_font_family": "GeistMono Nerd Font Mono", 
-  "buffer_font_features": {
-    "calt": true, 
-    "cv01": 1,
-    "cv31": 1,  
-    "liga": true, 
-    "ss01": true, 
-    "ss02": true, 
-    "ss03": true,
-    "ss04": true, 
-    "ss05": true, 
-    "ss06": true, 
-    "ss07": true, 
-    "ss08": true, 
-    "ss09": true
-  },
+  "ui_font_family": "CaskaydiaCove Nerd Font Mono",
+  "buffer_font_family": "CaskaydiaCove Nerd Font Mono", 
+  // "buffer_font_features": {
+  //   "calt": true, 
+  //   "cv01": 1,
+  //   "cv31": 1,  
+  //   "liga": true, 
+  //   "ss01": true, 
+  //   "ss02": true, 
+  //   "ss03": true,
+  //   "ss04": true, 
+  //   "ss05": true, 
+  //   "ss06": true, 
+  //   "ss07": true, 
+  //   "ss08": true, 
+  //   "ss09": true
+  // },
   // Use zed commit editor
   "terminal": {
     "env": {
       "EDITOR": "zed --wait"
     },
     "font_size": 16,
-    "font_family": "GeistMono Nerd Font Mono"
+    "font_family": "CaskaydiaCove Nerd Font Mono"
   },
   "theme": {
     "mode": "system",
     "light": "One Dark",
-    "dark": "Gruvbox Dark Hard"
+    "dark": "One Dark"
   },
   "base_keymap": "VSCode",
   // Vim mode settings
