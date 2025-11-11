@@ -28,6 +28,7 @@
           }
         },
         "context_servers": {},
+        "agent_servers": {},
         "slash_commands": {},
         "snippets": null,
         "capabilities": []
@@ -38,7 +39,7 @@
       "manifest": {
         "id": "dockerfile",
         "name": "Dockerfile",
-        "version": "0.0.6",
+        "version": "0.1.0",
         "schema_version": 1,
         "description": "Dockerfile support.",
         "repository": "https://github.com/zed-extensions/dockerfile",
@@ -71,9 +72,15 @@
           }
         },
         "context_servers": {},
+        "agent_servers": {},
         "slash_commands": {},
         "snippets": null,
-        "capabilities": []
+        "capabilities": [],
+        "debug_adapters": {
+          "buildx-dockerfile": {
+            "schema_path": "./debug_adapter_schemas/buildx-dockerfile.json"
+          }
+        }
       },
       "dev": false
     },
@@ -106,6 +113,7 @@
         },
         "language_servers": {},
         "context_servers": {},
+        "agent_servers": {},
         "slash_commands": {},
         "snippets": null,
         "capabilities": []
@@ -166,6 +174,7 @@
         },
         "language_servers": {},
         "context_servers": {},
+        "agent_servers": {},
         "slash_commands": {},
         "snippets": null,
         "capabilities": []
@@ -211,6 +220,7 @@
           }
         },
         "context_servers": {},
+        "agent_servers": {},
         "slash_commands": {},
         "snippets": null,
         "capabilities": []
@@ -248,6 +258,7 @@
         },
         "language_servers": {},
         "context_servers": {},
+        "agent_servers": {},
         "slash_commands": {},
         "snippets": null,
         "capabilities": []
@@ -277,6 +288,7 @@
         "grammars": {},
         "language_servers": {},
         "context_servers": {},
+        "agent_servers": {},
         "slash_commands": {},
         "snippets": null,
         "capabilities": []
@@ -306,6 +318,7 @@
         "context_servers": {
           "mcp-server-context7": {}
         },
+        "agent_servers": {},
         "slash_commands": {},
         "snippets": null,
         "capabilities": []
@@ -344,6 +357,7 @@
         },
         "language_servers": {},
         "context_servers": {},
+        "agent_servers": {},
         "slash_commands": {},
         "snippets": null,
         "capabilities": []
@@ -380,6 +394,7 @@
         },
         "language_servers": {},
         "context_servers": {},
+        "agent_servers": {},
         "slash_commands": {},
         "snippets": null,
         "capabilities": []
