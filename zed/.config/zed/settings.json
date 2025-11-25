@@ -7,15 +7,28 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "ssh_connections": [
+    {
+      "host": "trustin-devstack",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/home/ubuntu/devstack/docker-compose.yaml"
+          ]
+        }
+      ]
+    }
+  ],
   "format_on_save": "off",
   "icon_theme": "Material Icon Theme",
   "show_edit_predictions": true,
   "features": {
-    "edit_prediction_provider": "copilot"
+    "edit_prediction_provider": "supermaven"
   },
   "formatter": "language_server",
-  "ui_font_size": 18,
-  "buffer_font_size": 20,
+  "ui_font_size": 24,
+  "buffer_font_size": 24,
   "ui_font_family": "CaskaydiaCove Nerd Font Mono",
   "buffer_font_family": "CaskaydiaCove Nerd Font Mono", 
   // "buffer_font_features": {
@@ -38,19 +51,15 @@
     "env": {
       "EDITOR": "zed --wait"
     },
-    "font_size": 16,
+    "font_size": 20.0,
     "font_family": "CaskaydiaCove Nerd Font Mono"
   },
-  "theme": {
-    "mode": "system",
-    "light": "One Dark",
-    "dark": "One Dark"
-  },
+  "theme": "Ayu Dark",
   "base_keymap": "VSCode",
   // Vim mode settings
   "vim_mode": false,
   // use relative line numbers
-  "relative_line_numbers": false,
+  "relative_line_numbers": "disabled",
   // Indentation, rainbow indentation
   "indent_guides": {
     "enabled": true,

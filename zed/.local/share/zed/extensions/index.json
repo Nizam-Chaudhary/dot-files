@@ -269,7 +269,7 @@
       "manifest": {
         "id": "material-icon-theme",
         "name": "Material Icon Theme",
-        "version": "1.2.0",
+        "version": "1.3.0",
         "schema_version": 1,
         "description": "Material Design icons.",
         "repository": "https://github.com/zed-extensions/material-icon-theme",
@@ -364,6 +364,88 @@
       },
       "dev": false
     },
+    "terraform": {
+      "manifest": {
+        "id": "terraform",
+        "name": "Terraform",
+        "version": "0.1.5",
+        "schema_version": 1,
+        "description": "Terraform support.",
+        "repository": "https://github.com/zed-extensions/terraform",
+        "authors": [
+          "Caius Durling <dev@caius.name>",
+          "Daniel Banck <dbanck@users.noreply.github.com>"
+        ],
+        "lib": {
+          "kind": "Rust",
+          "version": "0.1.0"
+        },
+        "themes": [],
+        "icon_themes": [],
+        "languages": [
+          "languages/terraform-vars",
+          "languages/terraform",
+          "languages/hcl"
+        ],
+        "grammars": {
+          "hcl": {
+            "repository": "https://github.com/MichaHoffmann/tree-sitter-hcl",
+            "rev": "e936d3fef8bac884661472dce71ad82284761eb1",
+            "path": null
+          }
+        },
+        "language_servers": {
+          "terraform-ls": {
+            "language": null,
+            "languages": [
+              "Terraform",
+              "Terraform Vars"
+            ],
+            "language_ids": {
+              "Terraform Vars": "terraform-vars",
+              "Terraform": "terraform"
+            },
+            "code_action_kinds": []
+          }
+        },
+        "context_servers": {},
+        "agent_servers": {},
+        "slash_commands": {},
+        "snippets": null,
+        "capabilities": []
+      },
+      "dev": false
+    },
+    "tokyo-night": {
+      "manifest": {
+        "id": "tokyo-night",
+        "name": "Tokyo Night Themes",
+        "version": "0.7.0",
+        "schema_version": 1,
+        "description": "Tokyo Night Themes",
+        "repository": "https://github.com/ssaunderss/zed-tokyo-night",
+        "authors": [
+          "ssaunderss <austinsaunders@me.com>"
+        ],
+        "lib": {
+          "kind": null,
+          "version": null
+        },
+        "themes": [
+          "themes/tokyo-night.json"
+        ],
+        "icon_themes": [],
+        "languages": [],
+        "grammars": {},
+        "language_servers": {},
+        "context_servers": {},
+        "agent_servers": {},
+        "slash_commands": {},
+        "snippets": null,
+        "capabilities": []
+      },
+      "dev": false
+    },
     "toml": {
       "manifest": {
         "id": "toml",
@@ -402,7 +484,24 @@
       "dev": false
     }
   },
-  "themes": {},
+  "themes": {
+    "Tokyo Night": {
+      "extension": "tokyo-night",
+      "path": "themes/tokyo-night.json"
+    },
+    "Tokyo Night Light": {
+      "extension": "tokyo-night",
+      "path": "themes/tokyo-night.json"
+    },
+    "Tokyo Night Moon": {
+      "extension": "tokyo-night",
+      "path": "themes/tokyo-night.json"
+    },
+    "Tokyo Night Storm": {
+      "extension": "tokyo-night",
+      "path": "themes/tokyo-night.json"
+    }
+  },
   "icon_themes": {
     "Material Icon Theme": {
       "extension": "material-icon-theme",
@@ -503,6 +602,18 @@
       "hidden": false,
       "grammar": "git_rebase"
     },
+    "HCL": {
+      "extension": "terraform",
+      "path": "languages/hcl",
+      "matcher": {
+        "path_suffixes": [
+          "hcl"
+        ],
+        "first_line_pattern": null
+      },
+      "hidden": false,
+      "grammar": "hcl"
+    },
     "HTML": {
       "extension": "html",
       "path": "languages/html",
@@ -555,6 +666,31 @@
       },
       "hidden": false,
       "grammar": "toml"
+    },
+    "Terraform": {
+      "extension": "terraform",
+      "path": "languages/terraform",
+      "matcher": {
+        "path_suffixes": [
+          "tf",
+          "tofu"
+        ],
+        "first_line_pattern": null
+      },
+      "hidden": false,
+      "grammar": "hcl"
+    },
+    "Terraform Vars": {
+      "extension": "terraform",
+      "path": "languages/terraform-vars",
+      "matcher": {
+        "path_suffixes": [
+          "tfvars"
+        ],
+        "first_line_pattern": null
+      },
+      "hidden": false,
+      "grammar": "hcl"
     },
     "env": {
       "extension": "env",
