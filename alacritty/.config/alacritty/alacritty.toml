@@ -31,19 +31,19 @@ multiplier = 3
 size = 14.0
 
 [font.normal]
-family = "GeistMono Nerd Font"
+family = "CaskaydiaCove Nerd Font Mono"
 style = "Regular"
 
 [font.bold]
-family = "GeistMono Nerd Font"
+family = "CaskaydiaCove Nerd Font Mono"
 style = "Bold"
 
 [font.italic]
-family = "GeistMono Nerd Font"
+family = "CaskaydiaCove Nerd Font Mono"
 style = "Italic"
 
 [font.bold_italic]
-family = "GeistMono Nerd Font"
+family = "CaskaydiaCove Nerd Font Mono"
 style = "Bold Italic"
 
 [colors]

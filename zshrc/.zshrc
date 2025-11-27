@@ -6,14 +6,13 @@
 ##### OHO MY ZSH COMPLETIONS #####
 # Custom completions (deno, zsh-completions plugin)
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/k3d
 autoload -U compinit && compinit
 fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 
 ##### OH-MY-ZSH #####
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME=""
+ZSH_THEME="robbyrussell"
 
 plugins=(
   git fzf sudo npm node docker docker-compose
@@ -22,14 +21,14 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-prompt pure
+# prompt pure
 
 # Auto update OMZ without prompt (weekly)
 zstyle ':omz:update' mode auto
 zstyle ':omz:update' frequency 7
 
 ##### HOMEBREW #####
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 ##### HISTORY #####
 export HISTCONTROL=ignoreboth
@@ -56,8 +55,8 @@ fi
 
 ##### PATHS #####
 export PATH="$HOME/.local/bin:$PATH"
-# export LC_ALL="en_IN.UTF-8"
-# export LANG="en_IN.UTF-8"
+export LC_ALL="en_IN.UTF-8"
+export LANG="en_IN.UTF-8"
 
 
 ##### NVM #####
@@ -109,11 +108,5 @@ alias lta='lt -a'
 alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
 
 ##### PNPM Completions #####
-source /home/$USER/.oh-my-zsh/custom/plugins/pnpm-shell-completion/pnpm-shell-completion.plugin.zsh
-
-# fnm
-FNM_PATH="/home/nizam/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
-fi
+# source /home/$USER/.oh-my-zsh/custom/plugins/pnpm-shell-completion/pnpm-shell-completion.plugin.zsh
+source /usr/share/zsh/plugins/pnpm-shell-completion/pnpm-shell-completion.zsh
