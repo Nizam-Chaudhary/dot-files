@@ -110,3 +110,6 @@ alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
 ##### PNPM Completions #####
 # source /home/$USER/.oh-my-zsh/custom/plugins/pnpm-shell-completion/pnpm-shell-completion.plugin.zsh
 source /usr/share/zsh/plugins/pnpm-shell-completion/pnpm-shell-completion.zsh
+
+# bun completions
+[ -s "/home/nizam/.bun/_bun" ] && source "/home/nizam/.bun/_bun"
