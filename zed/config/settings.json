@@ -9,12 +9,12 @@
 {
   "ssh_connections": [
     {
-      "host": "trustin-devstack",
+      "host": "erpforce-onboarding",
       "args": [],
       "projects": [
         {
           "paths": [
-            "/home/ubuntu/devstack/docker-compose.yaml"
+            "/home/ubuntu"
           ]
         }
       ]
@@ -27,8 +27,8 @@
     "edit_prediction_provider": "supermaven"
   },
   "formatter": "language_server",
-  "ui_font_size": 24,
-  "buffer_font_size": 24,
+  "ui_font_size": 20,
+  "buffer_font_size": 20,
   "ui_font_family": "CaskaydiaCove Nerd Font Mono",
   "buffer_font_family": "CaskaydiaCove Nerd Font Mono", 
   // "buffer_font_features": {
@@ -51,7 +51,7 @@
     "env": {
       "EDITOR": "zed --wait"
     },
-    "font_size": 20.0,
+    "font_size": 18,
     "font_family": "CaskaydiaCove Nerd Font Mono"
   },
   "theme": "Ayu Dark",
