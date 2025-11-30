@@ -8,9 +8,7 @@
         "schema_version": 1,
         "description": "Syntax highlighting for Docker Compose files",
         "repository": "https://github.com/eth0net/zed-docker-compose",
-        "authors": [
-          "eth0net <eth0net@pm.me>"
-        ],
+        "authors": ["eth0net <eth0net@pm.me>"],
         "lib": {
           "kind": "Rust",
           "version": "0.0.6"
@@ -53,9 +51,7 @@
         },
         "themes": [],
         "icon_themes": [],
-        "languages": [
-          "languages/dockerfile"
-        ],
+        "languages": ["languages/dockerfile"],
         "grammars": {
           "dockerfile": {
             "repository": "https://github.com/camdencheek/tree-sitter-dockerfile",
@@ -92,18 +88,14 @@
         "schema_version": 1,
         "description": "🔐 Environment support. ✰ and report issues ➩",
         "repository": "https://github.com/zarifpour/zed-env",
-        "authors": [
-          "Daniel Zarifpour <z@rifpour.xyz>"
-        ],
+        "authors": ["Daniel Zarifpour <z@rifpour.xyz>"],
         "lib": {
           "kind": null,
           "version": null
         },
         "themes": [],
         "icon_themes": [],
-        "languages": [
-          "languages/env"
-        ],
+        "languages": ["languages/env"],
         "grammars": {
           "env": {
             "repository": "https://github.com/zarifpour/tree-sitter-dotenv",
@@ -181,6 +173,63 @@
       },
       "dev": false
     },
+    "graphql": {
+      "manifest": {
+        "id": "graphql",
+        "name": "GraphQL",
+        "version": "1.0.3",
+        "schema_version": 1,
+        "description": "GraphQL extension for Zed",
+        "repository": "https://github.com/11bit/zed-extension-graphql",
+        "authors": ["Ivan Buryak <ivan.buryak@gmail.com>"],
+        "lib": {
+          "kind": "Rust",
+          "version": "0.7.0"
+        },
+        "themes": [],
+        "icon_themes": [],
+        "languages": ["languages/graphql"],
+        "grammars": {
+          "graphql": {
+            "repository": "https://github.com/11bit/tree-sitter-graphql",
+            "rev": "951bde9fb3145b5f676204231e35f8b21d21f7b3",
+            "path": null
+          }
+        },
+        "language_servers": {
+          "graphql": {
+            "language": "GraphQL",
+            "languages": [
+              "JavaScript",
+              "JSX",
+              "TypeScript",
+              "TSX",
+              "Vue.js",
+              "GraphQL",
+              "Astro",
+              "Svelte"
+            ],
+            "language_ids": {
+              "Astro": "astro",
+              "JSX": "javascriptreact",
+              "Svelte": "svelte",
+              "TSX": "typescriptreact",
+              "TypeScript": "typescript",
+              "GraphQL": "graphql",
+              "JavaScript": "javascript",
+              "Vue.js": "vuejs"
+            },
+            "code_action_kinds": null
+          }
+        },
+        "context_servers": {},
+        "agent_servers": {},
+        "slash_commands": {},
+        "snippets": null,
+        "capabilities": []
+      },
+      "dev": false
+    },
     "html": {
       "manifest": {
         "id": "html",
@@ -189,18 +238,14 @@
         "schema_version": 1,
         "description": "HTML support.",
         "repository": "https://github.com/zed-industries/zed",
-        "authors": [
-          "Isaac Clayton <slightknack@gmail.com>"
-        ],
+        "authors": ["Isaac Clayton <slightknack@gmail.com>"],
         "lib": {
           "kind": "Rust",
           "version": "0.7.0"
         },
         "themes": [],
         "icon_themes": [],
-        "languages": [
-          "languages/html"
-        ],
+        "languages": ["languages/html"],
         "grammars": {
           "html": {
             "repository": "https://github.com/tree-sitter/tree-sitter-html",
@@ -235,20 +280,14 @@
         "schema_version": 1,
         "description": "Syntax highlighting for log files.",
         "repository": "https://github.com/nervenes/zed-log",
-        "authors": [
-          "nervenes",
-          "notpeter",
-          "d1y"
-        ],
+        "authors": ["nervenes", "notpeter", "d1y"],
         "lib": {
           "kind": null,
           "version": null
         },
         "themes": [],
         "icon_themes": [],
-        "languages": [
-          "languages/log"
-        ],
+        "languages": ["languages/log"],
         "grammars": {
           "log": {
             "repository": "https://github.com/Tudyx/tree-sitter-log",
@@ -273,17 +312,13 @@
         "schema_version": 1,
         "description": "Material Design icons.",
         "repository": "https://github.com/zed-extensions/material-icon-theme",
-        "authors": [
-          "Zed Industries <support@zed.dev>"
-        ],
+        "authors": ["Zed Industries <support@zed.dev>"],
         "lib": {
           "kind": null,
           "version": null
         },
         "themes": [],
-        "icon_themes": [
-          "icon_themes/material-icon-theme.json"
-        ],
+        "icon_themes": ["icon_themes/material-icon-theme.json"],
         "languages": [],
         "grammars": {},
         "language_servers": {},
@@ -303,9 +338,7 @@
         "schema_version": 1,
         "description": "Model Context Protocol Server for Context7",
         "repository": "https://github.com/akbxr/zed-mcp-server-context7",
-        "authors": [
-          "Akbxr <hi@akbxr.com>"
-        ],
+        "authors": ["Akbxr <hi@akbxr.com>"],
         "lib": {
           "kind": "Rust",
           "version": "0.7.0"
@@ -333,21 +366,14 @@
         "schema_version": 1,
         "description": "SQL language support.",
         "repository": "https://github.com/zed-extensions/sql",
-        "authors": [
-          "nervenes",
-          "notpeter",
-          "phileix",
-          "tammyxiong"
-        ],
+        "authors": ["nervenes", "notpeter", "phileix", "tammyxiong"],
         "lib": {
           "kind": null,
           "version": null
         },
         "themes": [],
         "icon_themes": [],
-        "languages": [
-          "languages/sql"
-        ],
+        "languages": ["languages/sql"],
         "grammars": {
           "sql": {
             "repository": "https://github.com/DerekStride/tree-sitter-sql",
@@ -397,10 +423,7 @@
         "language_servers": {
           "terraform-ls": {
             "language": null,
-            "languages": [
-              "Terraform",
-              "Terraform Vars"
-            ],
+            "languages": ["Terraform", "Terraform Vars"],
             "language_ids": {
               "Terraform Vars": "terraform-vars",
               "Terraform": "terraform"
@@ -408,36 +431,6 @@
             "code_action_kinds": []
           }
         },
-        "context_servers": {},
-        "agent_servers": {},
-        "slash_commands": {},
-        "snippets": null,
-        "capabilities": []
-      },
-      "dev": false
-    },
-    "tokyo-night": {
-      "manifest": {
-        "id": "tokyo-night",
-        "name": "Tokyo Night Themes",
-        "version": "0.7.0",
-        "schema_version": 1,
-        "description": "Tokyo Night Themes",
-        "repository": "https://github.com/ssaunderss/zed-tokyo-night",
-        "authors": [
-          "ssaunderss <austinsaunders@me.com>"
-        ],
-        "lib": {
-          "kind": null,
-          "version": null
-        },
-        "themes": [
-          "themes/tokyo-night.json"
-        ],
-        "icon_themes": [],
-        "languages": [],
-        "grammars": {},
-        "language_servers": {},
         "context_servers": {},
         "agent_servers": {},
         "slash_commands": {},
@@ -464,9 +457,7 @@
         },
         "themes": [],
         "icon_themes": [],
-        "languages": [
-          "languages/toml"
-        ],
+        "languages": ["languages/toml"],
         "grammars": {
           "toml": {
             "repository": "https://github.com/tree-sitter/tree-sitter-toml",
@@ -482,26 +473,47 @@
         "capabilities": []
       },
       "dev": false
+    },
+    "tsgo": {
+      "manifest": {
+        "id": "tsgo",
+        "name": "tsgo",
+        "version": "0.0.4",
+        "schema_version": 1,
+        "description": "Native implementation of TypeScript compiler.",
+        "repository": "https://github.com/zed-extensions/tsgo",
+        "authors": ["Zed Industries <hello@zed.dev>"],
+        "lib": {
+          "kind": "Rust",
+          "version": "0.7.0"
+        },
+        "themes": [],
+        "icon_themes": [],
+        "languages": [],
+        "grammars": {},
+        "language_servers": {
+          "tsgo": {
+            "language": null,
+            "languages": ["TypeScript", "TSX", "JavaScript", "JSX"],
+            "language_ids": {
+              "TypeScript": "typescript",
+              "TSX": "typescriptreact",
+              "JavaScript": "javascript",
+              "JSX": "javascriptreact"
+            },
+            "code_action_kinds": null
+          }
+        },
+        "context_servers": {},
+        "agent_servers": {},
+        "slash_commands": {},
+        "snippets": null,
+        "capabilities": []
+      },
+      "dev": false
     }
   },
-  "themes": {
-    "Tokyo Night": {
-      "extension": "tokyo-night",
-      "path": "themes/tokyo-night.json"
-    },
-    "Tokyo Night Light": {
-      "extension": "tokyo-night",
-      "path": "themes/tokyo-night.json"
-    },
-    "Tokyo Night Moon": {
-      "extension": "tokyo-night",
-      "path": "themes/tokyo-night.json"
-    },
-    "Tokyo Night Storm": {
-      "extension": "tokyo-night",
-      "path": "themes/tokyo-night.json"
-    }
-  },
+  "themes": {},
   "icon_themes": {
     "Material Icon Theme": {
       "extension": "material-icon-theme",
@@ -513,11 +525,7 @@
       "extension": "dockerfile",
       "path": "languages/dockerfile",
       "matcher": {
-        "path_suffixes": [
-          "Dockerfile",
-          "Containerfile",
-          "dockerfile"
-        ],
+        "path_suffixes": ["Dockerfile", "Containerfile", "dockerfile"],
         "first_line_pattern": null
       },
       "hidden": false,
@@ -527,10 +535,7 @@
       "extension": "git-firefly",
       "path": "languages/gitattributes",
       "matcher": {
-        "path_suffixes": [
-          "gitattributes",
-          ".gitattributes"
-        ],
+        "path_suffixes": ["gitattributes", ".gitattributes"],
         "first_line_pattern": null
       },
       "hidden": false,
@@ -594,21 +599,27 @@
       "extension": "git-firefly",
       "path": "languages/gitrebase",
       "matcher": {
-        "path_suffixes": [
-          "git-rebase-todo"
-        ],
+        "path_suffixes": ["git-rebase-todo"],
         "first_line_pattern": null
       },
       "hidden": false,
       "grammar": "git_rebase"
     },
+    "GraphQL": {
+      "extension": "graphql",
+      "path": "languages/graphql",
+      "matcher": {
+        "path_suffixes": ["graphql", "gql", "graphqls"],
+        "first_line_pattern": null
+      },
+      "hidden": false,
+      "grammar": "graphql"
+    },
     "HCL": {
       "extension": "terraform",
       "path": "languages/hcl",
       "matcher": {
-        "path_suffixes": [
-          "hcl"
-        ],
+        "path_suffixes": ["hcl"],
         "first_line_pattern": null
       },
       "hidden": false,
@@ -618,11 +629,7 @@
       "extension": "html",
       "path": "languages/html",
       "matcher": {
-        "path_suffixes": [
-          "html",
-          "htm",
-          "shtml"
-        ],
+        "path_suffixes": ["html", "htm", "shtml"],
         "first_line_pattern": null
       },
       "hidden": false,
@@ -632,9 +639,7 @@
       "extension": "log",
       "path": "languages/log",
       "matcher": {
-        "path_suffixes": [
-          "log"
-        ],
+        "path_suffixes": ["log"],
         "first_line_pattern": null
       },
       "hidden": false,
@@ -644,9 +649,7 @@
       "extension": "sql",
       "path": "languages/sql",
       "matcher": {
-        "path_suffixes": [
-          "sql"
-        ],
+        "path_suffixes": ["sql"],
         "first_line_pattern": null
       },
       "hidden": false,
@@ -656,12 +659,7 @@
       "extension": "toml",
       "path": "languages/toml",
       "matcher": {
-        "path_suffixes": [
-          "Cargo.lock",
-          "toml",
-          "Pipfile",
-          "uv.lock"
-        ],
+        "path_suffixes": ["Cargo.lock", "toml", "Pipfile", "uv.lock"],
         "first_line_pattern": null
       },
       "hidden": false,
@@ -671,10 +669,7 @@
       "extension": "terraform",
       "path": "languages/terraform",
       "matcher": {
-        "path_suffixes": [
-          "tf",
-          "tofu"
-        ],
+        "path_suffixes": ["tf", "tofu"],
         "first_line_pattern": null
       },
       "hidden": false,
@@ -684,9 +679,7 @@
       "extension": "terraform",
       "path": "languages/terraform-vars",
       "matcher": {
-        "path_suffixes": [
-          "tfvars"
-        ],
+        "path_suffixes": ["tfvars"],
         "first_line_pattern": null
       },
       "hidden": false,
@@ -696,13 +689,7 @@
       "extension": "env",
       "path": "languages/env",
       "matcher": {
-        "path_suffixes": [
-          "conf",
-          "env",
-          "envrc",
-          "example",
-          "local"
-        ],
+        "path_suffixes": ["conf", "env", "envrc", "example", "local"],
         "first_line_pattern": null
       },
       "hidden": false,

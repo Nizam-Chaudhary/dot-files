@@ -7,20 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "ssh_connections": [
-    {
-      "host": "erpforce-onboarding",
-      "args": [],
-      "projects": [
-        {
-          "paths": [
-            "/home/ubuntu"
-          ]
-        }
-      ]
-    }
-  ],
-  "format_on_save": "off",
+  "format_on_save": "on",
   "icon_theme": "Material Icon Theme",
   "show_edit_predictions": true,
   "features": {
@@ -30,20 +17,20 @@
   "ui_font_size": 20,
   "buffer_font_size": 20,
   "ui_font_family": "CaskaydiaCove Nerd Font Mono",
-  "buffer_font_family": "CaskaydiaCove Nerd Font Mono", 
+  "buffer_font_family": "CaskaydiaCove Nerd Font Mono",
   // "buffer_font_features": {
-  //   "calt": true, 
+  //   "calt": true,
   //   "cv01": 1,
-  //   "cv31": 1,  
-  //   "liga": true, 
-  //   "ss01": true, 
-  //   "ss02": true, 
+  //   "cv31": 1,
+  //   "liga": true,
+  //   "ss01": true,
+  //   "ss02": true,
   //   "ss03": true,
-  //   "ss04": true, 
-  //   "ss05": true, 
-  //   "ss06": true, 
-  //   "ss07": true, 
-  //   "ss08": true, 
+  //   "ss04": true,
+  //   "ss05": true,
+  //   "ss06": true,
+  //   "ss07": true,
+  //   "ss08": true,
   //   "ss09": true
   // },
   // Use zed commit editor
@@ -54,7 +41,7 @@
     "font_size": 18,
     "font_family": "CaskaydiaCove Nerd Font Mono"
   },
-  "theme": "Ayu Dark",
+  "theme": "One Dark",
   "base_keymap": "VSCode",
   // Vim mode settings
   "vim_mode": false,
@@ -85,7 +72,7 @@
     "default_model": {
       "provider": "zed.dev",
       "model": "claude-sonnet-4"
-    },
+    }
   },
   // Inlay hints preconfigured by Zed: Go, Rust, Typescript and Svelte
   "inlay_hints": {
@@ -100,7 +87,35 @@
     }
   },
   "languages": {
+    "JavaScript": {
+      "formatter": "prettier",
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true
+      }
+    },
+    "TypeScript": {
+      "formatter": "prettier",
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true
+      },
+      "language_servers": ["tsgo"]
+    },
+    "TSX": {
+      "formatter": "prettier",
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true
+      }
+    },
+    "JSON": {
+      "formatter": "prettier"
+    },
+    "JSONC": {
+      "formatter": "prettier"
+    },
     "CSS": {
+      "formatter": "prettier"
+    },
+    "GraphQL": {
       "formatter": "prettier"
     },
     "Markdown": {
@@ -166,9 +181,6 @@
   "notification_panel": {
     "dock": "left"
   },
-  "chat_panel": {
-    "dock": "left"
-  },
   "prettier": {
     "allowed": true,
     "singleQuote": false,
@@ -183,8 +195,5 @@
     "useTabs": false,
     "bracketSpacing": true
   },
-  "remove_trailing_whitespace_on_save": false,
-  "snippets": {
-    "enabled": true
-  }
+  "remove_trailing_whitespace_on_save": false
 }
