@@ -63,7 +63,7 @@
   "search": {
     "button": false,
     "center_on_match": false,
-    "regex": true,
+    "regex": false,
   },
   "use_smartcase_search": true,
   "diagnostics": {
