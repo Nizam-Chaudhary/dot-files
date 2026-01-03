@@ -193,7 +193,7 @@ if ! command_exists fnm; then
   run curl -fsSL https://fnm.vercel.app/install | bash
 fi
 
-export PATH="$HOME/.fnm:$PATH"
+export PATH="$HOME/.local/share/fnm:$PATH"
 eval "$(fnm env)"
 
 run fnm install --lts
