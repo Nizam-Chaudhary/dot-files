@@ -393,7 +393,8 @@ cat <<'EOF'
 • Bruno          https://www.usebruno.com/downloads
 • TablePlus      https://tableplus.com/download
 • Obsidian       https://obsidian.md/download
-• Cursor         https://cursor.com /download
+• Cursor         https://cursor.com/download
+• Ghostty        https://ghostty.org/docs/install/binary#universal-appimage
 EOF
 
 # ==========================================================
