@@ -1,7 +1,7 @@
 
 #### THEME ####
 import = [
-  "~/.config/alacritty/gruvbox-dark.toml"
+  "~/.config/alacritty/catppuccin-mocha.toml"
 ]
 
 ##### GENERAL #####
@@ -12,7 +12,7 @@ WINIT_X11_SCALE_FACTOR = "1"
 decorations = "full"
 decorations_theme_variant = "Dark"
 dynamic_padding = true
-opacity = 1
+opacity = 0.95
 startup_mode = "Maximized"
 
 [window.dimensions]
@@ -28,22 +28,22 @@ history = 10000
 multiplier = 3
 
 [font]
-size = 14.0
+size = 12
 
 [font.normal]
-family = "CaskaydiaCove Nerd Font Mono"
+family = "JetBrains Mono Nerd Font Mono"
 style = "Regular"
 
 [font.bold]
-family = "CaskaydiaCove Nerd Font Mono"
+family = "JetBrains Mono Nerd Font Mono"
 style = "Bold"
 
 [font.italic]
-family = "CaskaydiaCove Nerd Font Mono"
+family = "JetBrains Mono Nerd Font Mono"
 style = "Italic"
 
 [font.bold_italic]
-family = "CaskaydiaCove Nerd Font Mono"
+family = "JetBrains Mono Nerd Font Mono"
 style = "Bold Italic"
 
 [colors]

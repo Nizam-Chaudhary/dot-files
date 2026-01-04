@@ -248,6 +248,22 @@ else
 fi
 
 # ==========================================================
+# Clone TPM
+# ==========================================================
+
+section "TPM (Tmux Plugin Manager)"
+
+# Clone TPM only if not already installed
+TPM_DIR="$HOME/.tmux/plugins/tpm"
+
+if [ -d "$TPM_DIR" ]; then
+  log_info "TPM already installed"
+else
+  run git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
+  log_ok "TPM installed successfully"
+fi
+
+# ==========================================================
 # Fonts
 # ==========================================================
 
@@ -524,16 +540,16 @@ fi
 # Rust (Optional)
 # ==========================================================
 
-section "Rust (Optional)"
+# section "Rust (Optional)"
 
-if ! command_exists rustc; then
-  log_info "Installing Rust..."
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
-  source "$HOME/.cargo/env"
-  log_ok "Rust installed ($(rustc --version))"
-else
-  log_info "Rust already installed ($(rustc --version))"
-fi
+# if ! command_exists rustc; then
+#   log_info "Installing Rust..."
+#   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
+#   source "$HOME/.cargo/env"
+#   log_ok "Rust installed ($(rustc --version))"
+# else
+#   log_info "Rust already installed ($(rustc --version))"
+# fi
 
 # ==========================================================
 # Dotfiles (Stow)

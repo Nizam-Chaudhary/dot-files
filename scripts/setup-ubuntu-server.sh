@@ -169,6 +169,22 @@ else
 fi
 
 # ==========================================================
+# Clone TPM
+# ==========================================================
+
+section "TPM (Tmux Plugin Manager)"
+
+# Clone TPM only if not already installed
+TPM_DIR="$HOME/.tmux/plugins/tpm"
+
+if [ -d "$TPM_DIR" ]; then
+  log_info "TPM already installed"
+else
+  run git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
+  log_ok "TPM installed successfully"
+fi
+
+# ==========================================================
 # ZSH Plugins
 # ==========================================================
 
