@@ -19,9 +19,11 @@ source "$ZSH/oh-my-zsh.sh"
 zstyle ':omz:update' mode auto
 zstyle ':omz:update' frequency 7
 
-# Brew (guarded)
-if command -v brew >/dev/null; then
-  eval "$(brew shellenv)"
+# Homebrew (proper guarded loading)
+BREW_PREFIX="/home/linuxbrew/.linuxbrew"
+
+if [ -x "$BREW_PREFIX/bin/brew" ]; then
+  eval "$("$BREW_PREFIX/bin/brew" shellenv)"
 fi
 
 # FZF (lazy + fast)
