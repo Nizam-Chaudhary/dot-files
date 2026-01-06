@@ -2,12 +2,23 @@
 set -Eeuo pipefail
 
 # ==========================================================
+# Ubuntu Guard
+# ==========================================================
+
+if ! grep -qi ubuntu /etc/os-release; then
+  echo "❌ This script is for Ubuntu only"
+  exit 1
+fi
+
+# ==========================================================
 # Configuration
 # ==========================================================
 
 DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dot-files}"
 PNPM_COMPLETION_VERSION="0.5.5"
 PNPM_COMPLETION_ARCH="x86_64-unknown-linux-gnu"
+
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 
 # ==========================================================
 # Logging
@@ -37,69 +48,42 @@ run() {
   "$@"
 }
 
-trap 'log_error "Script failed at line $LINENO with exit code $?"' ERR
+trap 'log_error "Script failed at line $LINENO"' ERR
 
 # ==========================================================
 # Helpers
 # ==========================================================
 
-command_exists() {
-  command -v "$1" >/dev/null 2>&1
-}
+command_exists() { command -v "$1" &>/dev/null; }
 
 package_installed() {
-  dpkg -l | grep -q "^ii  $1 "
+  dpkg -s "$1" &>/dev/null
+}
+
+retry() {
+  for _ in {1..3}; do
+    "$@" && return
+    sleep 2
+  done
+  return 1
 }
 
 sudo_keep_alive() {
   sudo -v
-  while true; do
-    sudo -n true
-    sleep 60
-    kill -0 "$$" || exit
-  done 2>/dev/null &
+  while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 }
 
 backup_if_exists() {
   local file="$1"
-  if [ -e "$file" ] && [ ! -L "$file" ]; then
-    local backup="${file}.backup.$(date +%Y%m%d_%H%M%S)"
-    log_warn "Backing up $file → $backup"
-    mv "$file" "$backup"
-  fi
-}
-
-check_prerequisites() {
-  if [ ! -d "$DOTFILES_DIR" ]; then
-    log_error "Dotfiles directory not found: $DOTFILES_DIR"
-    log_info "Please clone your dotfiles or set DOTFILES_DIR environment variable"
-    exit 1
-  fi
-}
-
-clone_or_update_repo() {
-  local repo="$1"
-  local dir="$2"
-  local name="$(basename "$dir")"
-
-  if [ -d "$dir" ]; then
-    log_info "Updating $name..."
-    (cd "$dir" && git pull -q) || log_warn "Failed to update $name"
-  else
-    log_info "Installing $name..."
-    run git clone -q "$repo" "$dir"
-    log_ok "$name installed"
-  fi
+  [[ -e "$file" && ! -L "$file" ]] || return
+  mv "$file" "${file}.backup.$(date +%Y%m%d_%H%M%S)"
 }
 
 # ==========================================================
-# Initialization
+# Init
 # ==========================================================
 
-SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-
-log_ok "Bootstrap complete — starting system setup 🚀"
-check_prerequisites
+log_ok "Starting Ubuntu Desktop setup 🚀"
 sudo_keep_alive
 
 # ==========================================================
@@ -108,99 +92,40 @@ sudo_keep_alive
 
 section "System Update"
 
-if command_exists nala; then
-  run sudo nala update
-  run sudo nala upgrade -y
-else
-  run sudo apt update -y
-  run sudo apt upgrade -y
-fi
-log_ok "System packages updated"
+retry sudo apt update
+retry sudo apt upgrade -y
+log_ok "System updated"
 
 # ==========================================================
-# Core Packages
+# Core Packages (APT)
 # ==========================================================
 
 section "Core Packages"
 
 CORE_PACKAGES=(
-  zsh
-  git
-  curl
-  wget
-  build-essential
-  vim
-  neovim
-  tmux
-  stow
-  btop
-  unzip
-  ca-certificates
-  gnupg
-  lsb-release
-  nala
-  aria2
-  htop
-  net-tools
-  dnsutils
-  jq
-  less
-  rsync
-  tree
-  ncdu
+  zsh git curl wget build-essential
+  vim neovim tmux stow
+  btop htop unzip jq tree ncdu rsync
+  ca-certificates gnupg lsb-release
+  aria2 net-tools dnsutils
   software-properties-common
   apt-transport-https
+  alacritty flatpak
 )
 
-PACKAGES_TO_INSTALL=()
-for pkg in "${CORE_PACKAGES[@]}"; do
-  if ! package_installed "$pkg"; then
-    PACKAGES_TO_INSTALL+=("$pkg")
-  fi
-done
+sudo apt install -y --no-install-recommends "${CORE_PACKAGES[@]}"
 
-if [ ${#PACKAGES_TO_INSTALL[@]} -gt 0 ]; then
-  log_info "Installing ${#PACKAGES_TO_INSTALL[@]} core packages..."
-  run sudo apt install -y "${PACKAGES_TO_INSTALL[@]}"
-  log_ok "Core packages installed"
+# Enable Flathub repository
+if ! flatpak remote-list | grep -q flathub; then
+  log_info "Adding Flathub remote..."
+  run sudo flatpak remote-add --if-not-exists flathub \
+    https://flathub.org/repo/flathub.flatpakrepo
+  log_ok "Flathub enabled"
 else
-  log_info "All core packages already installed"
+  log_info "Flathub already configured"
 fi
 
-# ==========================================================
-# Alacritty
-# ==========================================================
-
-section "Alacritty"
-
-if ! command_exists alacritty; then
-  if package_installed alacritty; then
-    log_info "Alacritty already installed"
-  else
-    run sudo apt install -y alacritty
-    log_ok "Alacritty installed"
-  fi
-else
-  log_info "Alacritty already installed ($(alacritty --version | head -n1))"
-fi
-
-# ==========================================================
-# Download Helper
-# ==========================================================
-
-section "Download Helper"
-
-if [ -f "$SCRIPT_DIR/download" ]; then
-  if ! command_exists download || ! cmp -s "$SCRIPT_DIR/download" /usr/local/bin/download; then
-    run sudo cp "$SCRIPT_DIR/download" /usr/local/bin/download
-    run sudo chmod +x /usr/local/bin/download
-    log_ok "Download helper installed/updated"
-  else
-    log_info "Download helper already installed"
-  fi
-else
-  log_warn "Download helper script not found at $SCRIPT_DIR/download"
-fi
+log_ok "Core packages installed"
 
 # ==========================================================
 # Oh My Zsh
@@ -208,60 +133,28 @@ fi
 
 section "Oh My Zsh"
 
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
-  log_info "Installing Oh My Zsh..."
+if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
   RUNZSH=no CHSH=no sh -c \
     "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  log_ok "Oh My Zsh installed"
-else
-  log_info "Oh My Zsh already installed, updating..."
-  (cd "$HOME/.oh-my-zsh" && git pull -q) || log_warn "Failed to update Oh My Zsh"
 fi
 
-# ==========================================================
-# Oh My Bash
-# ==========================================================
+ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
 
-section "Oh My Bash"
+for repo in \
+  zsh-users/zsh-autosuggestions \
+  zsh-users/zsh-syntax-highlighting \
+  zsh-users/zsh-completions \
+  zsh-users/zsh-history-substring-search
+do
+  dir="$ZSH_CUSTOM/plugins/$(basename "$repo")"
+  [[ -d "$dir" ]] || git clone "https://github.com/$repo" "$dir"
+done
 
-if [ ! -d "$HOME/.oh-my-bash" ]; then
-  log_info "Installing Oh My Bash..."
-  bash -c \
-    "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" --unattended || true
-  log_ok "Oh My Bash installed"
-else
-  log_info "Oh My Bash already installed, updating..."
-  (cd "$HOME/.oh-my-bash" && git pull -q) || log_warn "Failed to update Oh My Bash"
+if [[ "$SHELL" != "$(command -v zsh)" ]]; then
+  chsh -s "$(command -v zsh)"
 fi
 
-# ==========================================================
-# Default Shell
-# ==========================================================
-
-section "Default Shell"
-
-if [ "$SHELL" != "$(which zsh)" ]; then
-  run chsh -s "$(which zsh)"
-  log_ok "ZSH set as default shell (logout required)"
-else
-  log_info "ZSH already default shell"
-fi
-
-# ==========================================================
-# Clone TPM
-# ==========================================================
-
-section "TPM (Tmux Plugin Manager)"
-
-# Clone TPM only if not already installed
-TPM_DIR="$HOME/.tmux/plugins/tpm"
-
-if [ -d "$TPM_DIR" ]; then
-  log_info "TPM already installed"
-else
-  run git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
-  log_ok "TPM installed successfully"
-fi
+log_ok "ZSH configured"
 
 # ==========================================================
 # Fonts
@@ -269,12 +162,11 @@ fi
 
 section "Fonts"
 
-if [ -f "$SCRIPT_DIR/install-fonts.sh" ]; then
-  run chmod +x "$SCRIPT_DIR/install-fonts.sh"
-  run "$SCRIPT_DIR/install-fonts.sh"
-  log_ok "Fonts installed"
-else
-  log_warn "Font installation script not found at $SCRIPT_DIR/install-fonts.sh"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+
+if [[ -f "$SCRIPT_DIR/install-fonts.sh" ]]; then
+  chmod +x "$SCRIPT_DIR/install-fonts.sh"
+  "$SCRIPT_DIR/install-fonts.sh"
 fi
 
 # ==========================================================
@@ -284,59 +176,28 @@ fi
 section "Homebrew"
 
 if ! command_exists brew; then
-  log_info "Installing Homebrew..."
-  NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  
-  BREW_PREFIX="/home/linuxbrew/.linuxbrew"
-  if [ -d "$BREW_PREFIX" ]; then
-    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
-    eval "$($BREW_PREFIX/bin/brew shellenv)"
-  fi
-  log_ok "Homebrew installed"
+  NONINTERACTIVE=1 /bin/bash -c \
+    "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
 else
-  log_info "Homebrew already installed"
   eval "$(brew shellenv)"
 fi
 
 # ==========================================================
-# Brew Packages
+# Brew Packages (Modern CLI only)
 # ==========================================================
 
 section "Brew Packages"
 
 BREW_PACKAGES=(
-  gcc
-  fd
-  ripgrep
-  bat
-  tree
-  zoxide
-  fzf
-  eza
-  fastfetch
-  starship
-  git-delta
-  lazygit
-  lazydocker
-  tldr
+  fd ripgrep bat eza fzf zoxide
+  starship fastfetch git-delta
+  lazygit lazydocker tldr
 )
 
-for pkg in "${BREW_PACKAGES[@]}"; do
-  if ! brew list "$pkg" >/dev/null 2>&1; then
-    log_info "Installing $pkg..."
-    run brew install "$pkg"
-  else
-    log_info "$pkg already installed"
-  fi
-done
-
+brew install "${BREW_PACKAGES[@]}"
 log_ok "Brew packages installed"
-
-# Setup fzf key bindings
-if command_exists fzf && [ ! -f "$HOME/.fzf.zsh" ]; then
-  log_info "Setting up fzf key bindings..."
-  "$(brew --prefix)/opt/fzf/install" --key-bindings --completion --no-update-rc --no-bash --no-fish
-fi
 
 # ==========================================================
 # GUI Applications
@@ -344,140 +205,64 @@ fi
 
 section "GUI Applications"
 
-# Zed Editor
+# Zed
 if ! command_exists zed; then
-  log_info "Installing Zed..."
-  run curl -fsSL https://zed.dev/install.sh | sh
-  log_ok "Zed installed"
-else
-  log_info "Zed already installed"
+  retry curl -f https://zed.dev/install.sh | sh
 fi
 
 # VS Code
 if ! command_exists code; then
-  log_info "Installing VS Code..."
-  
-  run wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /tmp/microsoft.gpg
-  run sudo install -o root -g root -m 644 /tmp/microsoft.gpg /etc/apt/trusted.gpg.d/
-  run rm /tmp/microsoft.gpg
-  
-  run sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-  
-  run sudo apt update
-  run sudo apt install -y code
-  log_ok "VS Code installed"
-else
-  log_info "VS Code already installed ($(code --version | head -n1))"
+  curl -fsSL https://packages.microsoft.com/keys/microsoft.asc |
+    gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg >/dev/null
+  echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" |
+    sudo tee /etc/apt/sources.list.d/vscode.list
+  sudo apt update
+  sudo apt install -y code
 fi
 
-# Google Chrome
+# Chrome
 if ! command_exists google-chrome; then
-  log_info "Installing Google Chrome..."
-  
-  TMP_CHROME="/tmp/google-chrome-stable_current_amd64.deb"
-  run wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O "$TMP_CHROME"
-  run sudo apt install -y "$TMP_CHROME"
-  run rm "$TMP_CHROME"
-  
-  log_ok "Google Chrome installed"
-else
-  log_info "Google Chrome already installed ($(google-chrome --version))"
+  wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O /tmp/chrome.deb
+  sudo apt install -y /tmp/chrome.deb
+  rm /tmp/chrome.deb
 fi
 
 # ==========================================================
-# Docker
+# GUI Applications (Flatpak)
+# ==========================================================
+FLATPAK_GUI_APPS=(
+  md.obsidian.Obsidian
+)
+
+log_info "Installing Flatpak GUI applications..."
+flatpak install -y "${FLATPAK_GUI_APPS[@]}"
+
+log_ok "GUI applications installed"
+
+# ==========================================================
+# Docker (Official Repo)
 # ==========================================================
 
 section "Docker"
 
 if ! command_exists docker; then
-  log_info "Installing Docker..."
-  run curl -fsSL https://get.docker.com | sh
-  run sudo usermod -aG docker "$USER"
-  log_ok "Docker installed (logout required for group changes)"
-else
-  log_info "Docker already installed ($(docker --version))"
-  
-  # Check if user is in docker group
-  if ! groups | grep -q docker; then
-    log_warn "User not in docker group, adding..."
-    run sudo usermod -aG docker "$USER"
-    log_ok "Added to docker group (logout required)"
-  fi
+  sudo install -m 0755 -d /etc/apt/keyrings
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg |
+    sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+  echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+    https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" |
+    sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+  sudo apt update
+  sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 fi
 
-# Docker Compose
-if ! command_exists docker-compose && ! docker compose version >/dev/null 2>&1; then
-  log_info "Installing Docker Compose plugin..."
-  
-  DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
-  mkdir -p "$DOCKER_CONFIG/cli-plugins"
-  
-  curl -SL https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 \
-    -o "$DOCKER_CONFIG/cli-plugins/docker-compose"
-  chmod +x "$DOCKER_CONFIG/cli-plugins/docker-compose"
-  
-  log_ok "Docker Compose installed"
-else
-  log_info "Docker Compose already available"
-fi
+sudo systemctl enable docker --now
 
-# ==========================================================
-# ZSH Plugins
-# ==========================================================
-
-section "ZSH Plugins"
-
-ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
-
-clone_or_update_repo https://github.com/zsh-users/zsh-autosuggestions \
-  "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
-
-clone_or_update_repo https://github.com/zsh-users/zsh-syntax-highlighting \
-  "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
-
-clone_or_update_repo https://github.com/zsh-users/zsh-completions \
-  "$ZSH_CUSTOM/plugins/zsh-completions"
-
-clone_or_update_repo https://github.com/zsh-users/zsh-history-substring-search \
-  "$ZSH_CUSTOM/plugins/zsh-history-substring-search"
-
-log_ok "ZSH plugins installed/updated"
-
-# ==========================================================
-# pnpm-shell-completion
-# ==========================================================
-
-section "pnpm Shell Completion"
-
-PNPM_PLUGIN_DIR="$ZSH_CUSTOM/plugins/pnpm-shell-completion"
-
-if [ ! -d "$PNPM_PLUGIN_DIR" ]; then
-  log_info "Installing pnpm shell completion v${PNPM_COMPLETION_VERSION}"
-  
-  TMP_DIR="$(mktemp -d)"
-  trap "rm -rf '$TMP_DIR'" EXIT
-  
-  curl -fsSL \
-    "https://github.com/g-plane/pnpm-shell-completion/releases/download/v${PNPM_COMPLETION_VERSION}/pnpm-shell-completion_${PNPM_COMPLETION_ARCH}.tar.gz" \
-    | tar -xz -C "$TMP_DIR"
-  
-  if [ ! -f "$TMP_DIR/install.zsh" ]; then
-    log_error "install.zsh not found after extraction"
-    ls -la "$TMP_DIR"
-    exit 1
-  fi
-  
-  (
-    cd "$TMP_DIR"
-    run chmod +x install.zsh
-    run ./install.zsh "$ZSH_CUSTOM/plugins"
-  )
-  
-  log_ok "pnpm shell completion installed"
-else
-  log_info "pnpm shell completion already installed"
-fi
+groups "$USER" | grep -q docker || sudo usermod -aG docker "$USER"
+log_ok "Docker ready (logout required)"
 
 # ==========================================================
 # fnm + Node
@@ -486,181 +271,106 @@ fi
 section "Node (fnm)"
 
 if ! command_exists fnm; then
-  log_info "Installing fnm..."
-  run curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
-  log_ok "fnm installed"
+  curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
 fi
 
-# Ensure fnm is in PATH
 export PATH="$HOME/.local/share/fnm:$PATH"
-if command_exists fnm; then
-  eval "$(fnm env --use-on-cd)"
-fi
+eval "$(fnm env --use-on-cd)"
 
-# Install Node LTS if not present
-if ! fnm list 2>/dev/null | grep -q "lts"; then
-  log_info "Installing Node LTS..."
-  run fnm install --lts
-  run fnm default lts-latest
-  log_ok "Node LTS installed ($(node --version))"
-else
-  log_info "Node LTS already installed ($(node --version))"
-  fnm list
-fi
+fnm install --lts || true
+fnm default lts-latest
 
 # ==========================================================
-# pnpm
+# pnpm + Bun
 # ==========================================================
 
-section "pnpm"
+section "pnpm & Bun"
 
-if ! command_exists pnpm; then
-  log_info "Installing pnpm..."
-  run npm install -g pnpm
-  log_ok "pnpm installed ($(pnpm --version))"
-else
-  log_info "pnpm already installed ($(pnpm --version))"
-fi
+command_exists pnpm || npm install -g pnpm
+command_exists bun  || curl -fsSL https://bun.sh/install | bash
 
 # ==========================================================
-# Bun
-# ==========================================================
-
-section "Bun"
-
-if ! command_exists bun; then
-  log_info "Installing Bun..."
-  run curl -fsSL https://bun.sh/install | bash
-  log_ok "Bun installed"
-else
-  log_info "Bun already installed ($(bun --version))"
-fi
-
-# ==========================================================
-# Rust (Optional)
-# ==========================================================
-
-# section "Rust (Optional)"
-
-# if ! command_exists rustc; then
-#   log_info "Installing Rust..."
-#   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
-#   source "$HOME/.cargo/env"
-#   log_ok "Rust installed ($(rustc --version))"
-# else
-#   log_info "Rust already installed ($(rustc --version))"
-# fi
-
-# ==========================================================
-# Dotfiles (Stow)
+# Dotfiles
 # ==========================================================
 
 section "Dotfiles"
 
 cd "$DOTFILES_DIR"
 
-# Backup existing configs
 backup_if_exists "$HOME/.zshrc"
 backup_if_exists "$HOME/.bashrc"
-backup_if_exists "$HOME/.config/nvim"
-backup_if_exists "$HOME/.config/alacritty"
-backup_if_exists "$HOME/.zed"
-backup_if_exists "$HOME/.config/ghostty"
-backup_if_exists "$HOME/.config/starship.toml"
 backup_if_exists "$HOME/.tmux.conf"
 
-# Remove symlinks if they exist (stow will recreate)
 rm -f "$HOME/.zshrc" "$HOME/.bashrc" "$HOME/.tmux.conf"
-rm -rf "$HOME/.config/nvim" "$HOME/.config/alacritty" "$HOME/.zed" "$HOME/.config/ghostty"
 
-STOW_DIRS=(
-  alacritty
-  bashrc
-  zshrc
-  btop
-  starship
-  ghostty
-  git
-  kitty
-  nvim
-  tmux
-  zed
-)
+STOW_DIRS=(alacritty bashrc zshrc btop starship git nvim tmux zed)
 
-log_info "Stowing dotfiles..."
 for dir in "${STOW_DIRS[@]}"; do
-  if [ -d "$dir" ]; then
-    run stow -v "$dir" 2>&1 | grep -v "BUG in find_stowed_path" || true
-    log_ok "Stowed $dir"
-  else
-    log_warn "Directory $dir not found in $DOTFILES_DIR, skipping"
-  fi
+  [[ -d "$dir" ]] && stow "$dir"
 done
 
-log_ok "Dotfiles stowed"
+log_ok "Dotfiles applied"
 
 # ==========================================================
-# Final Setup
+# Manual GUI Tools (Not Installed by Script)
 # ==========================================================
 
-section "Final Configuration"
-
-# Create common directories
-mkdir -p "$HOME/.config"
-mkdir -p "$HOME/projects"
-mkdir -p "$HOME/bin"
-mkdir -p "$HOME/Downloads"
-
-log_ok "Common directories created"
-
-# ==========================================================
-# Manual Installations
-# ==========================================================
-
-section "Manual Installs"
+section "Manual GUI Tools"
 
 cat <<'EOF'
+The following tools are NOT installed automatically and must be installed manually:
 
-The following tools require manual installation:
+📦 Database & Dev Tools:
+  • DBeaver
+      https://dbeaver.io/download/
 
-📦 Database Tools:
-  • DBeaver         → https://dbeaver.io/download/
-  • MongoDB Compass → https://www.mongodb.com/try/download/compass
-  • Redis Insight   → https://redis.com/redis-enterprise/redis-insight/
-  • TablePlus       → https://tableplus.com/download
+  • MongoDB Compass
+      https://www.mongodb.com/try/download/compass
 
-📬 API Tools:
-  • Postman         → https://www.postman.com/downloads/
-  • Bruno           → https://www.usebruno.com/downloads
+  • Redis Insight
+      https://redis.com/redis-enterprise/redis-insight/
+
+  • TablePlus
+      https://tableplus.com/download
+
+📬 API & Testing:
+  • Postman
+      https://www.postman.com/downloads/
+
+  • Bruno
+      https://www.usebruno.com/downloads
 
 📝 Productivity:
-  • Obsidian        → https://obsidian.md/download
-  • Cursor          → https://cursor.com/download
+  • Obsidian
+      https://obsidian.md/download
 
-🖥️  Terminals:
-  • Ghostty         → https://ghostty.org/docs/install/binary#universal-appimage
+  • Cursor
+      https://cursor.sh
+
+🖥️ Terminal:
+  • Ghostty (AppImage)
+      https://ghostty.org/docs/install/binary#universal-appimage
 
 EOF
 
 # ==========================================================
-# Summary
+# Health Check
 # ==========================================================
 
-section "Setup Complete! 🎉"
+section "Health Check"
 
-log_ok "System setup complete"
+for cmd in git zsh docker node pnpm bun zed code google-chrome; do
+  command_exists "$cmd" && log_ok "$cmd OK" || log_warn "$cmd missing"
+done
+
+# ==========================================================
+# Done
+# ==========================================================
+
+section "Setup Complete 🎉"
+
+echo "✔ Ubuntu desktop ready"
+echo "✔ Dev environment configured"
+echo "✔ Logout required for Docker & shell"
 echo ""
-echo "📋 Summary:"
-echo "  ✓ Core packages and tools installed"
-echo "  ✓ Shell environment configured (ZSH + Oh My Zsh)"
-echo "  ✓ Development tools installed (Node, Bun, Docker, Rust)"
-echo "  ✓ GUI applications installed (VS Code, Chrome, Zed)"
-echo "  ✓ Modern CLI tools installed (eza, bat, ripgrep, fzf, etc.)"
-echo "  ✓ Dotfiles deployed"
-echo ""
-echo "⚠️  Important:"
-echo "  • Logout/login required for shell & docker group changes"
-echo "  • Run 'source ~/.zshrc' to apply ZSH configuration"
-echo "  • Check manual installations list above"
-echo ""
-log_info "Happy coding! 🚀"
+log_ok "Happy coding 🚀"
