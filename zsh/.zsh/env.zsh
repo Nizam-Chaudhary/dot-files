@@ -26,6 +26,9 @@ setopt AUTO_CD
 setopt INTERACTIVE_COMMENTS
 setopt NO_BEEP
 
+# Cargo
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+
 # Keybindings
 bindkey '^?' backward-delete-char
 

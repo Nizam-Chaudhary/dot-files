@@ -7,7 +7,7 @@ ZSH_THEME="" # Starship owns the prompt
 
 plugins=(
   git sudo docker docker-compose kubectl
-  bun pnpm-shell-completion
+  npm bun pnpm-shell-completion node
   zsh-history-substring-search
   zsh-autosuggestions
   zsh-syntax-highlighting
