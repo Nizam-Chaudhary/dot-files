@@ -186,6 +186,20 @@ AUR_GUI_APPS=(
 log_info "Installing GUI applications in one go..."
 yay -S --noconfirm --needed "${AUR_GUI_APPS[@]}"
 
+
+# ==========================================================
+# Fonts
+# ==========================================================
+
+section "Fonts"
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+
+if [[ -f "$SCRIPT_DIR/install-fonts.sh" ]]; then
+  chmod +x "$SCRIPT_DIR/install-fonts.sh"
+  "$SCRIPT_DIR/install-fonts.sh"
+fi
+
 # ==========================================================
 # GUI Applications (Flatpak)
 # ==========================================================
