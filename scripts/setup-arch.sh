@@ -118,7 +118,7 @@ CORE_PACKAGES=(
   fastfetch
   lazygit
   git-delta
-  tldr
+  tlrc
   alacritty
   docker
   docker-compose
@@ -289,16 +289,7 @@ section "Dotfiles"
 
 cd "$DOTFILES_DIR"
 
-STOW_DIRS=(
-  zshrc
-  bashrc
-  git
-  nvim
-  tmux
-  alacritty
-  starship
-  btop
-)
+STOW_DIRS=(alacritty bash btop fastfetch ghostty git kitty nvim starship tmux zed zsh)
 
 for dir in "${STOW_DIRS[@]}"; do
   [[ -d "$dir" ]] && stow "$dir"

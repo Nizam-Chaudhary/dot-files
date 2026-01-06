@@ -193,7 +193,7 @@ section "Brew Packages"
 BREW_PACKAGES=(
   fd ripgrep bat eza fzf zoxide
   starship fastfetch git-delta
-  lazygit lazydocker tldr
+  lazygit lazydocker tlrc
 )
 
 brew install "${BREW_PACKAGES[@]}"
@@ -303,7 +303,7 @@ backup_if_exists "$HOME/.tmux.conf"
 
 rm -f "$HOME/.zshrc" "$HOME/.bashrc" "$HOME/.tmux.conf"
 
-STOW_DIRS=(alacritty bashrc zshrc btop starship git nvim tmux zed)
+STOW_DIRS=(alacritty bash btop fastfetch ghostty git kitty nvim starship tmux zed zsh)
 
 for dir in "${STOW_DIRS[@]}"; do
   [[ -d "$dir" ]] && stow "$dir"
