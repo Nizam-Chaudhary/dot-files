@@ -19,6 +19,10 @@ startup_mode = "Maximized"
 columns = 100
 lines = 30
 
+[window.padding]
+x = 10
+y = 6
+
 [window.class]
 instance = "Alacritty"
 general = "Alacritty"
