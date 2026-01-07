@@ -69,14 +69,20 @@ retry() {
 }
 
 sudo_keep_alive() {
-  sudo -v
-  while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+  while true; do
+    sudo -n true
+    sleep 120
+    kill -0 "$$" || exit
+  done 2>/dev/null &
 }
 
 backup_if_exists() {
   local file="$1"
-  [[ -e "$file" && ! -L "$file" ]] || return
-  mv "$file" "${file}.backup.$(date +%Y%m%d_%H%M%S)"
+  if [[ -e "$file" && ! -L "$file" ]]; then
+    mv "$file" "${file}.backup.$(date +%Y%m%d_%H%M%S)"
+    log_info "Backed up $(basename "$file")"
+  fi
+  return 0
 }
 
 # ==========================================================
@@ -128,49 +134,63 @@ fi
 log_ok "Core packages installed"
 
 # ==========================================================
-# Oh My Zsh
+# Oh My Zsh + Oh My Bash
 # ==========================================================
 
-section "Oh My Zsh"
+section "Oh My Zsh & Oh My Bash"
+
+# --------------------------
+# Oh My Zsh
+# --------------------------
 
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
+  log_info "Installing Oh My Zsh"
   RUNZSH=no CHSH=no sh -c \
     "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+else
+  log_info "Oh My Zsh already installed"
 fi
 
 ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
 
-for repo in \
-  zsh-users/zsh-autosuggestions \
-  zsh-users/zsh-syntax-highlighting \
-  zsh-users/zsh-completions \
+ZSH_PLUGINS=(
+  zsh-users/zsh-autosuggestions
+  zsh-users/zsh-syntax-highlighting
+  zsh-users/zsh-completions
   zsh-users/zsh-history-substring-search
-do
+)
+
+for repo in "${ZSH_PLUGINS[@]}"; do
   dir="$ZSH_CUSTOM/plugins/$(basename "$repo")"
   [[ -d "$dir" ]] || git clone "https://github.com/$repo" "$dir"
 done
 
+# Set zsh as default shell (only if user wants zsh)
 if [[ "$SHELL" != "$(command -v zsh)" ]]; then
   chsh -s "$(command -v zsh)"
+  log_warn "Default shell changed to zsh (logout required)"
 fi
 
-log_ok "ZSH configured"
+log_ok "Oh My Zsh configured"
 
-# ==========================================================
-# Fonts
-# ==========================================================
+# --------------------------
+# Oh My Bash
+# --------------------------
 
-section "Fonts"
-
-SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-
-if [[ -f "$SCRIPT_DIR/install-fonts.sh" ]]; then
-  chmod +x "$SCRIPT_DIR/install-fonts.sh"
-  "$SCRIPT_DIR/install-fonts.sh"
+if [[ ! -d "$HOME/.oh-my-bash" ]]; then
+  log_info "Installing Oh My Bash"
+  bash -c \
+    "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" \
+    -- --unattended
+else
+  log_info "Oh My Bash already installed"
 fi
 
+log_ok "Oh My Bash configured"
+
+
 # ==========================================================
-# Homebrew (Linuxbrew)
+# Homebrew
 # ==========================================================
 
 section "Homebrew"
@@ -240,52 +260,61 @@ flatpak install -y "${FLATPAK_GUI_APPS[@]}"
 log_ok "GUI applications installed"
 
 # ==========================================================
-# Docker (Official Repo)
+# pnpm Shell Completion (FIXED)
+# ==========================================================
+
+section "pnpm Shell Completion"
+
+PNPM_PLUGIN_DIR="$ZSH_CUSTOM/plugins/pnpm-shell-completion"
+
+if [[ ! -d "$PNPM_PLUGIN_DIR" ]]; then
+  TMP_DIR="$(mktemp -d)"
+  curl -fsSL \
+    "https://github.com/g-plane/pnpm-shell-completion/releases/download/v${PNPM_COMPLETION_VERSION}/pnpm-shell-completion_${PNPM_COMPLETION_ARCH}.tar.gz" \
+    | tar -xz -C "$TMP_DIR"
+  (cd "$TMP_DIR" && ./install.zsh "$ZSH_CUSTOM/plugins")
+fi
+
+log_ok "pnpm completion ready"
+
+# ==========================================================
+# Docker
 # ==========================================================
 
 section "Docker"
 
 if ! command_exists docker; then
-  sudo install -m 0755 -d /etc/apt/keyrings
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg |
-    sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-
-  echo \
-    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
-    https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" |
-    sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-  sudo apt update
-  sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+  curl -fsSL https://get.docker.com | sh
+  sudo systemctl enable docker --now
 fi
 
-sudo systemctl enable docker --now
-
 groups "$USER" | grep -q docker || sudo usermod -aG docker "$USER"
+
 log_ok "Docker ready (logout required)"
 
 # ==========================================================
-# fnm + Node
+# Node (fnm)
 # ==========================================================
 
-section "Node (fnm)"
+section "Node"
 
 if ! command_exists fnm; then
   curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
 fi
 
 export PATH="$HOME/.local/share/fnm:$PATH"
-eval "$(fnm env --use-on-cd)"
+eval "$(fnm env)" || true
 
-fnm install --lts || true
+fnm list | grep -q lts || fnm install --lts
 fnm default lts-latest
 
 # ==========================================================
-# pnpm + Bun
+# pnpm & Bun
 # ==========================================================
 
 section "pnpm & Bun"
 
+command_exists npm || log_error "npm missing (Node install failed)"
 command_exists pnpm || npm install -g pnpm
 command_exists bun  || curl -fsSL https://bun.sh/install | bash
 
@@ -300,13 +329,12 @@ cd "$DOTFILES_DIR"
 backup_if_exists "$HOME/.zshrc"
 backup_if_exists "$HOME/.bashrc"
 backup_if_exists "$HOME/.tmux.conf"
+backup_if_exists "$HOME/.config/zed"
 
-rm -f "$HOME/.zshrc" "$HOME/.bashrc" "$HOME/.tmux.conf"
+rm -f "$HOME/.zshrc" "$HOME/.bashrc" "$HOME/.tmux.conf" "$HOME/.config/zed"
 
-STOW_DIRS=(alacritty bash btop fastfetch ghostty git kitty nvim starship tmux zed zsh)
-
-for dir in "${STOW_DIRS[@]}"; do
-  [[ -d "$dir" ]] && stow "$dir"
+for dir in alacritty bash btop fastfetch ghostty kitty nvim starship tmux zed zsh; do
+  [[ -d "$dir" ]] && stow --verbose "$dir"
 done
 
 log_ok "Dotfiles applied"
@@ -368,9 +396,5 @@ done
 # ==========================================================
 
 section "Setup Complete 🎉"
-
-echo "✔ Ubuntu desktop ready"
-echo "✔ Dev environment configured"
-echo "✔ Logout required for Docker & shell"
-echo ""
+log_ok "Logout required for Docker & shell"
 log_ok "Happy coding 🚀"
