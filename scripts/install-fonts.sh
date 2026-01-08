@@ -8,8 +8,11 @@ set -Eeuo pipefail
 FONT_DIR="${FONT_DIR:-$HOME/.local/share/fonts}"
 NERD_FONTS_VERSION="v3.4.0"
 NERD_FONTS_BASE_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/${NERD_FONTS_VERSION}"
+INPUT_MONO_URL="https://input.djr.com/build/?fontSelection=whole&a=0&g=0&i=0&l=0&zero=0&asterisk=0&braces=0&preset=default&line-height=1.2&accept=I+do&email="
 
-# Font definitions: name, filename, display_name
+# Font definitions: name, filename|url, display_name
+# For Nerd Fonts: filename is used with NERD_FONTS_BASE_URL
+# For Input Mono: use special URL format "INPUT_MONO_URL|InputMono.zip"
 declare -A FONTS=(
   ["JetBrainsMono"]="JetBrainsMono.zip|JetBrainsMono Nerd Font"
   ["CascadiaCode"]="CascadiaCode.zip|Cascadia Code Nerd Font"
@@ -19,10 +22,11 @@ declare -A FONTS=(
   ["Meslo"]="Meslo.zip|Meslo Nerd Font"
   ["SourceCodePro"]="SourceCodePro.zip|SauceCodePro Nerd Font"
   ["UbuntuMono"]="UbuntuMono.zip|UbuntuMono Nerd Font"
+  ["InputMono"]="INPUT_MONO_URL|InputMono.zip|Input Mono"
 )
 
 # Default fonts to install (can be overridden with -f flag)
-DEFAULT_FONTS=("JetBrainsMono" "CascadiaCode" "GeistMono")
+DEFAULT_FONTS=("JetBrainsMono" "InputMono")
 
 # ==========================================================
 # Logging
@@ -42,7 +46,7 @@ show_usage() {
   cat <<EOF
 Usage: $(basename "$0") [OPTIONS]
 
-Install Nerd Fonts for development environments.
+Install fonts (Nerd Fonts and Input Mono) for development environments.
 
 OPTIONS:
   -f, --font FONT     Install specific font(s) (can be used multiple times)
@@ -93,7 +97,25 @@ get_font_info() {
   local font_key="$1"
   local info="${FONTS[$font_key]}"
   
-  echo "${info%%|*}" "${info##*|}"
+  # Handle Input Mono which has format: "INPUT_MONO_URL|InputMono.zip|Input Mono"
+  if [[ "$font_key" == "InputMono" ]]; then
+    local parts=($(echo "$info" | tr '|' '\n'))
+    echo "${parts[1]}" "${parts[2]}"
+  else
+    # Other fonts: "filename|display_name"
+    echo "${info%%|*}" "${info##*|}"
+  fi
+}
+
+get_font_url() {
+  local font_key="$1"
+  local filename="$2"
+  
+  if [[ "$font_key" == "InputMono" ]]; then
+    echo "$INPUT_MONO_URL"
+  else
+    echo "${NERD_FONTS_BASE_URL}/${filename}"
+  fi
 }
 
 # ==========================================================
@@ -110,9 +132,15 @@ install_font() {
   fi
   
   read -r filename display_name <<< "$(get_font_info "$font_key")"
-  local url="${NERD_FONTS_BASE_URL}/${filename}"
+  local url=$(get_font_url "$font_key" "$filename")
   local zip_file="${TMP_DIR}/${filename}"
-  local font_subdir="${FONT_DIR}/NerdFonts/${font_key}"
+  
+  # Use different subdirectory structure for Input Mono vs Nerd Fonts
+  if [[ "$font_key" == "InputMono" ]]; then
+    local font_subdir="${FONT_DIR}/InputMono"
+  else
+    local font_subdir="${FONT_DIR}/NerdFonts/${font_key}"
+  fi
   
   # Check if already installed by checking the font directory
   if [ "$update_mode" = "false" ] && [ -d "$font_subdir" ] && [ "$(find "$font_subdir" -type f \( -iname "*.ttf" -o -iname "*.otf" \) | wc -l)" -gt 0 ]; then
@@ -175,7 +203,7 @@ install_font() {
 
 list_fonts() {
   echo ""
-  echo "Available Nerd Fonts:"
+  echo "Available Fonts:"
   echo "═══════════════════════════════════════════════════════"
   
   for font_key in $(echo "${!FONTS[@]}" | tr ' ' '\n' | sort); do
@@ -194,7 +222,7 @@ list_fonts() {
 
 list_installed_fonts() {
   echo ""
-  echo "Installed Nerd Fonts:"
+  echo "Installed Fonts:"
   echo "═══════════════════════════════════════════════════════"
   
   local found=0
@@ -208,7 +236,7 @@ list_installed_fonts() {
   done
   
   if [ $found -eq 0 ]; then
-    echo "  No Nerd Fonts installed"
+    echo "  No fonts installed"
   fi
   
   echo ""
@@ -345,7 +373,7 @@ main() {
   
   if [ $success_count -gt 0 ]; then
     log_info "Restart your terminal or applications to use the new fonts"
-    log_info "Run 'fc-list | grep -i nerd' to verify installation"
+    log_info "Run 'fc-list | grep -i font' to verify installation"
   fi
 }
 

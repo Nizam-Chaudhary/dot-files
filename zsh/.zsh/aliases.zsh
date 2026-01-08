@@ -21,3 +21,6 @@ alias lta='lt -a'
 
 # FZF
 alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+
+# Zoxide
+alias cd="z"
