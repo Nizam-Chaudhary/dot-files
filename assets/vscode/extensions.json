@@ -1,0 +1,72 @@
+{
+  "recommendations": [
+    // my extensions, ofc :P
+    "antfu.browse-lite",
+    "antfu.iconify",
+    "antfu.slidev",
+    "antfu.vite",
+    "antfu.where-am-i",
+    "antfu.open-in-github-button",
+    "lokalise.i18n-ally",
+
+    // themes & icons
+    "antfu.icons-carbon",
+    "antfu.theme-vitesse",
+    "file-icons.file-icons",
+    "Catppuccin.catppuccin-vsc-icons",
+
+    // life savers!
+    "dbaeumer.vscode-eslint",
+    "GitHub.copilot",
+    "usernamehw.errorlens",
+    "streetsidesoftware.code-spell-checker",
+    
+    // up to you
+    "eamodio.gitlens",
+    "EditorConfig.EditorConfig",
+    "github.vscode-github-actions",
+    "GitHub.vscode-pull-request-github",
+    "johnsoncodehk.vscode-tsconfig-helper",
+    "mpontus.tab-cycle",
+    "naumovs.color-highlight",
+    "WakaTime.vscode-wakatime",
+    "znck.grammarly",
+
+    // mine
+    "bradlc.vscode-tailwindcss",
+    "vincaslt.highlight-matching-tag",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "htmlhint.vscode-htmlhint",
+    "ms-azuretools.vscode-containers",
+    "redhat.vscode-yaml",
+    "adpyke.vscode-sql-formatter",
+    "christian-kohler.path-intellisense",
+    "ahmadalli.vscode-nginx-conf",
+    "tamasfe.even-better-toml",
+    "yoavbls.pretty-ts-errors",
+    "hashicorp.terraform",
+    "biomejs.biome",
+    "golang.go",
+    "qufiwefefwoyn.inline-sql-syntax",
+    "typescriptteam.native-preview",
+    "antfu.icons-carbon",
+    "antfu.theme-vitesse",
+    "catppuccin.catppuccin-vsc-icons",
+    "github.copilot",
+    "github.copilot-chat",
+    "usernamehw.errorlens",
+    "streetsidesoftware.code-spell-checker",
+    
+    // disabled
+    "ms-vscode-remote.remote-containers",
+    "github.vscode-github-actions",
+    "ms-kubernetes-tools.vscode-kubernetes-tools",
+    "pkief.material-icon-theme",
+    "vscodevim.vim",
+    "sainnhe.gruvbox-material",
+    "antfu.unocss",
+    "Vue.volar",
+    "chrmarti.regex"
+  ]
+}
