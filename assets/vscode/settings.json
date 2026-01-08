@@ -19,13 +19,13 @@
   "workbench.tree.expandMode": "singleClick",
   "workbench.tree.indent": 10,
   "editor.fontSize": 16,
-  "editor.inlineSuggest.fontFamily": "Input Mono",
+  "editor.inlineSuggest.fontFamily": "Input Mono, monospace",
   "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font Mono",
   "terminal.integrated.fontSize": 13,
   "chat.fontFamily": "JetBrainsMono Nerd Font Mono",
   "chat.fontSize": 14,
   "chat.editor.fontFamily": "JetBrainsMono Nerd Font Mono",
-
+  
   // ========== Editor ==========
   "debug.onTaskErrors": "debugAnyway",
   "diffEditor.ignoreTrimWhitespace": false,
@@ -59,9 +59,10 @@
   "scm.diffDecorationsGutterWidth": 2,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "line",
-  "terminal.integrated.fontWeight": "300",
+  "terminal.integrated.fontWeight": "400",
   "terminal.integrated.persistentSessionReviveProcess": "never",
   "terminal.integrated.tabs.enabled": true,
+  "terminal.integrated.suggest.enabled": false,
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.limit.enabled": true,
@@ -91,26 +92,32 @@
     "**/CHANGELOG*": true,
     "**/LICENSE*": true
   },
-
+  
   // ==========  Global Level Config, needs to put in User Settings ==========
   "window.dialogStyle": "custom",
   "window.nativeTabs": true, // this is great, macOS only
   "window.title": "${rootName}", // this make tabs more readable
   "window.titleBarStyle": "custom",
   "extensions.autoUpdate": "onlyEnabledExtensions",
-
+  
   // ========== Extension configs ==========
   "emmet.showSuggestionsAsSnippets": true,
   "emmet.triggerExpansionOnTab": false,
-  "errorLens.enabledDiagnosticLevels": ["warning", "error"],
-  "errorLens.excludeBySource": ["cSpell", "Grammarly", "eslint"],
+  "errorLens.enabledDiagnosticLevels": [
+    "warning",
+    "error"
+  ],
+  "errorLens.excludeBySource": [
+    "cSpell",
+    "Grammarly",
+    "eslint"
+  ],
   "prettify-ts.enabled": false,
   "vs-kubernetes": {
     "vscode-kubernetes.kubectl-path-linux": "/home/nizam/.local/state/vs-kubernetes/tools/kubectl/kubectl",
     "vscode-kubernetes.helm-path-linux": "/home/nizam/.local/state/vs-kubernetes/tools/helm/linux-amd64/helm",
     "vscode-kubernetes.minikube-path-linux": "/home/nizam/.local/state/vs-kubernetes/tools/minikube/linux-amd64/minikube"
   },
-
   // ESLint config: https://github.com/antfu/eslint-config
   "eslint.codeAction.showDocumentation": {
     "enable": true
@@ -118,19 +125,60 @@
   "eslint.quiet": true,
   // Silent the stylistic rules in you IDE, but still auto fix them
   "eslint.rules.customizations": [
-    { "rule": "style/*", "severity": "off" },
-    { "rule": "format/*", "severity": "off" },
-    { "rule": "*-indent", "severity": "off" },
-    { "rule": "*-spacing", "severity": "off" },
-    { "rule": "*-spaces", "severity": "off" },
-    { "rule": "*-order", "severity": "off" },
-    { "rule": "*-dangle", "severity": "off" },
-    { "rule": "*-newline", "severity": "off" },
-    { "rule": "*quotes", "severity": "off" },
-    { "rule": "*semi", "severity": "off" }
+    {
+      "rule": "style/*",
+      "severity": "off"
+    },
+    {
+      "rule": "format/*",
+      "severity": "off"
+    },
+    {
+      "rule": "*-indent",
+      "severity": "off"
+    },
+    {
+      "rule": "*-spacing",
+      "severity": "off"
+    },
+    {
+      "rule": "*-spaces",
+      "severity": "off"
+    },
+    {
+      "rule": "*-order",
+      "severity": "off"
+    },
+    {
+      "rule": "*-dangle",
+      "severity": "off"
+    },
+    {
+      "rule": "*-newline",
+      "severity": "off"
+    },
+    {
+      "rule": "*quotes",
+      "severity": "off"
+    },
+    {
+      "rule": "*semi",
+      "severity": "off"
+    }
   ],
-  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "html", "markdown", "json", "jsonc", "yaml", "toml"],
-
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "html",
+    "markdown",
+    "json",
+    "jsonc",
+    "yaml",
+    "toml"
+  ],
   "github.copilot.enable": {
     "*": true,
     "markdown": true,
@@ -194,44 +242,37 @@
   "iconify.annotations": true,
   "iconify.inplace": true,
   "svg.preview.mode": "svg",
-
   // I only use Prettier for manually formatting
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "prettier.enable": false,
   "prettier.printWidth": 200,
   "prettier.semi": false,
   "prettier.singleQuote": true,
-
   "biome.requireConfiguration": true,
-
   "[nginx]": {
     "editor.defaultFormatter": "ahmadalli.vscode-nginx-conf"
   },
-
   "[terraform]": {
     "editor.defaultFormatter": "hashicorp.terraform"
   },
-
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
-
   "[dockercompose]": {
     "editor.insertSpaces": true,
     "editor.tabSize": 2,
     "editor.autoIndent": "advanced",
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
-
   "[github-actions-workflow]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
-
+  
   // ========== TypeScript / JavaScript ==========
   "typescript.experimental.useTsgo": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "javascript.updateImportsOnFileMove.enabled": "always",
-
+  
   // ========== File Nesting ==========
   // updated 2026-01-03 16:02
   // https://github.com/antfu/vscode-file-nesting-config
@@ -337,5 +378,6 @@
     "*.w": "$(capture).*.w, I$(capture).w",
     "*.wat": "$(capture).wasm",
     "*.xaml": "$(capture).xaml.cs"
-  }
+  },
+  "window.newWindowProfile": "Default"
 }
