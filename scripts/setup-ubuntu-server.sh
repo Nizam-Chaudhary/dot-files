@@ -71,10 +71,11 @@ sudo_keep_alive() {
 
 backup_if_exists() {
   local file="$1"
-  [[ -e "$file" && ! -L "$file" ]] || return
-  local backup="${file}.backup.$(date +%Y%m%d_%H%M%S)"
-  log_warn "Backing up $file → $backup"
-  mv "$file" "$backup"
+  if [[ -e "$file" && ! -L "$file" ]]; then
+    mv "$file" "${file}.backup.$(date +%Y%m%d_%H%M%S)"
+    log_info "Backed up $(basename "$file")"
+  fi
+  return 0
 }
 
 # ==========================================================
@@ -101,10 +102,10 @@ retry sudo apt upgrade -y
 log_ok "System updated"
 
 # ==========================================================
-# Core Server Packages
+# Core Packages (Server)
 # ==========================================================
 
-section "Core Packages (Server)"
+section "Core Packages"
 
 PACKAGES=(
   zsh git curl wget build-essential
@@ -114,7 +115,7 @@ PACKAGES=(
   net-tools dnsutils
   software-properties-common
   apt-transport-https
-  ripgrep
+  ripgrep aria2
 )
 
 sudo apt install -y --no-install-recommends "${PACKAGES[@]}"
@@ -133,21 +134,41 @@ fi
 
 ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
 
-for repo in \
-  zsh-users/zsh-autosuggestions \
-  zsh-users/zsh-syntax-highlighting \
-  zsh-users/zsh-completions \
+ZSH_PLUGINS=(
+  zsh-users/zsh-autosuggestions
+  zsh-users/zsh-syntax-highlighting
+  zsh-users/zsh-completions
   zsh-users/zsh-history-substring-search
-do
+)
+
+for repo in "${ZSH_PLUGINS[@]}"; do
   dir="$ZSH_CUSTOM/plugins/$(basename "$repo")"
   [[ -d "$dir" ]] || git clone "https://github.com/$repo" "$dir"
 done
 
 if [[ "$SHELL" != "$(command -v zsh)" ]]; then
   chsh -s "$(command -v zsh)"
+  log_warn "Default shell changed to zsh (logout required)"
 fi
 
-log_ok "ZSH configured"
+log_ok "Oh My Zsh configured"
+
+# ==========================================================
+# Oh My Bash
+# ==========================================================
+
+section "Oh My Bash"
+
+if [[ ! -d "$HOME/.oh-my-bash" ]]; then
+  log_info "Installing Oh My Bash"
+  bash -c \
+    "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" \
+    -- --unattended
+else
+  log_info "Oh My Bash already installed"
+fi
+
+log_ok "Oh My Bash configured"
 
 # ==========================================================
 # TPM (tmux plugin manager)
@@ -160,7 +181,7 @@ TPM_DIR="$HOME/.tmux/plugins/tpm"
 log_ok "TPM ready"
 
 # ==========================================================
-# Homebrew (Optional but Supported)
+# Homebrew
 # ==========================================================
 
 section "Homebrew"
@@ -175,7 +196,7 @@ else
 fi
 
 # ==========================================================
-# Brew CLI Tools
+# Brew Packages
 # ==========================================================
 
 section "Brew Packages"
@@ -200,17 +221,18 @@ if ! command_exists fnm; then
 fi
 
 export PATH="$HOME/.local/share/fnm:$PATH"
-eval "$(fnm env --use-on-cd)"
+eval "$(fnm env)" || true
 
-fnm install --lts || true
+fnm list | grep -q lts || fnm install --lts
 fnm default lts-latest
 
 # ==========================================================
-# pnpm + Bun
+# pnpm & Bun
 # ==========================================================
 
 section "pnpm & Bun"
 
+command_exists npm || log_error "npm missing (Node install failed)"
 command_exists pnpm || npm install -g pnpm
 command_exists bun  || curl -fsSL https://bun.sh/install | bash
 
@@ -267,7 +289,7 @@ rm -rf "$HOME/.config/nvim" "$HOME/.config/starship.toml"
 STOW_DIRS=(bash btop fastfetch nvim starship tmux zsh)
 
 for dir in "${STOW_DIRS[@]}"; do
-  [[ -d "$dir" ]] && stow "$dir"
+  [[ -d "$dir" ]] && stow --verbose "$dir"
 done
 
 log_ok "Dotfiles applied"
@@ -286,8 +308,17 @@ Optional tools (install manually if needed):
 • pgcli / mycli
 • redis-cli
 • mongosh
-
 EOF
+
+# ==========================================================
+# Health Check
+# ==========================================================
+
+section "Health Check"
+
+for cmd in git zsh docker node pnpm bun tmux nvim; do
+  command_exists "$cmd" && log_ok "$cmd OK" || log_warn "$cmd missing"
+done
 
 # ==========================================================
 # Done
