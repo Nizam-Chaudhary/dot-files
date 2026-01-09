@@ -1,130 +1,32 @@
 {
-  "context_servers": {
-    "mcp-server-context7": {
-      "enabled": true,
-      "settings": {
-        "context7_api_key": ""
-      }
-    }
+  // =============== Appearance & Theme ===============
+  "theme": {
+    "mode": "dark",
+    "light": "Vitesse Refined Light",
+    "dark": "Vitesse Refined Black",
   },
-  "edit_predictions": {
-    "enabled_in_text_threads": true,
-    "mode": "eager",
-  },
-  "disable_ai": false,
-  "git": {
-    "inline_blame": {
-      "show_commit_summary": false,
-    },
-    "gutter_debounce": 0,
-    "git_gutter": "tracked_files",
-  },
-  "active_pane_modifiers": {
-    "border_size": 1.0,
-  },
-  "window_decorations": "client",
-  "use_system_window_tabs": false,
-  "bottom_dock_layout": "contained",
-  "preview_tabs": {
-    "enabled": true,
-  },
+  "icon_theme": "Material Icon Theme",
   "tab_bar": {
     "show_nav_history_buttons": false,
   },
   "tabs": {
-    "show_close_button": "hover",
-    "show_diagnostics": "off",
-    "close_position": "right",
     "file_icons": true,
     "git_status": true,
+    "show_close_button": "always",
   },
   "title_bar": {
-    "show_menus": false,
-    "show_user_picture": true,
-    "show_user_menu": true,
-    "show_onboarding_banner": true,
-    "show_project_items": true,
-    "show_branch_name": true,
     "show_branch_icon": true,
   },
-  "debugger": {
-    "dock": "bottom",
-    "button": true,
-  },
-  "status_bar": {
-    "cursor_position_button": true,
-    "active_language_button": true,
-  },
-  "file_finder": {
-    "git_status": true,
-    "modal_max_width": "large",
-  },
-  "seed_search_query_from_cursor": "selection",
-  "search": {
-    "button": false,
-    "center_on_match": false,
-    "regex": false,
-  },
-  "use_smartcase_search": false,
-  "diagnostics": {
-    "button": true,
-    "inline": {
-      "update_debounce_ms": 100,
-      "enabled": true,
-    },
-    "include_warnings": false,
-  },
-  "colorize_brackets": true,
-  "lsp_document_colors": "inlay",
-  "show_completions_on_input": true,
-  "show_whitespaces": "selection",
-  "tab_size": 2,
-  "toolbar": {
-    "code_actions": false,
-    "selections_menu": true,
-    "quick_actions": true,
-    "breadcrumbs": true,
-  },
-  "minimap": {
-    "max_width_columns": 80,
-    "thumb_border": "full",
-    "display_in": "active_editor",
-    "show": "auto",
-  },
-  "scrollbar": {
-    "show": "auto",
-  },
-  "gutter": {
-    "runnables": true,
-    "line_numbers": true,
-  },
-  "show_signature_help_after_edits": true,
-  "auto_signature_help": false,
-  "autoscroll_on_clicks": true,
-  "fast_scroll_sensitivity": 5.0,
-  "scroll_sensitivity": 2.0,
-  "hide_mouse": "on_typing",
-  "cursor_shape": "block",
-  "agent_buffer_font_size": 14.0,
-  "agent_ui_font_size": 18.0,
+
+  // =============== Font & Typography ===============
+  "ui_font_family": "Input Mono",
+  "ui_font_size": 20,
+  "buffer_font_family": "Input Mono",
+  "buffer_font_size": 20,
+  "buffer_font_weight": 400,
   "buffer_line_height": {
     "custom": 1.6,
   },
-  "buffer_font_weight": 400.0,
-  "redact_private_values": false,
-  "use_system_prompts": false,
-  "use_system_path_prompts": false,
-  "format_on_save": "off",
-  "icon_theme": "Material Icon Theme",
-  "show_edit_predictions": true,
-  "features": {
-    "edit_prediction_provider": "copilot",
-  },
-  "formatter": "language_server",
-  "ui_font_size": 20,
-  "buffer_font_size": 20,
-  "ui_font_family": "CaskaydiaCove Nerd Font Mono",
-  "buffer_font_family": "CaskaydiaCove Nerd Font Mono",
   // "buffer_font_features": {
   //   "calt": true,
   //   "cv01": 1,
@@ -140,88 +42,102 @@
   //   "ss08": true,
   //   "ss09": true
   // },
-  // Use zed commit editor
-  "terminal": {
-    "font_weight": 400.0,
-    "shell": "system",
-    "dock": "bottom",
-    "button": true,
-    "env": {
-      "EDITOR": "zed --wait",
-    },
-    "font_size": 17.0,
-    "font_family": "CaskaydiaCove Nerd Font Mono",
-  },
-  "theme": {
-    "mode": "dark",
-    "light": "Kanagawa",
-    "dark": "Kanagawa",
-  },
+
+  // =============== Editor Behavior ===============
   "base_keymap": "VSCode",
-  // Vim mode settings
   "vim_mode": false,
-  // use relative line numbers
   "relative_line_numbers": "disabled",
-  // Indentation, rainbow indentation
+  "formatter": "language_server",
+  "format_on_save": "off",
+  "remove_trailing_whitespace_on_save": false,
+  "tab_size": 2,
+  "colorize_brackets": true,
   "indent_guides": {
-    "background_coloring": "disabled",
     "enabled": true,
-    "coloring": "indent_aware",
-    "active_line_width": 2,
     "line_width": 1,
+    "active_line_width": 2,
+    "coloring": "indent_aware",
   },
-  // Use Copilot Chat AI as default
+  "scrollbar": {
+    "show": "auto",
+  },
+  "minimap": {
+    "show": "auto",
+    "display_in": "active_editor",
+    "max_width_columns": 80,
+    "thumb_border": "full",
+  },
+  "toolbar": {
+    "code_actions": true,
+  },
+
+  // =============== AI, Copilot & Agent ===============
+  "show_edit_predictions": true,
+  "edit_predictions": {
+    "enabled_in_text_threads": false,
+    "mode": "eager",
+  },
+  "features": {
+    "edit_prediction_provider": "zed",
+  },
   "agent": {
     "always_allow_tool_actions": true,
-    "dock": "right",
-    "default_profile": "write",
-    "inline_assistant_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-4.1",
-    },
     "default_model": {
-      "provider": "copilot_chat",
       "model": "gpt-4.1",
+      "provider": "copilot_chat",
+    },
+    "default_profile": "write",
+    "dock": "right",
+    "inline_assistant_model": {
+      "model": "gpt-4.1",
+      "provider": "copilot_chat",
     },
   },
-  // Inlay hints preconfigured by Zed: Go, Rust, Typescript and Svelte
+  "agent_buffer_font_size": 16,
+  "agent_ui_font_size": 20,
+  "context_servers": {
+    "mcp-server-context7": {
+      "enabled": true,
+      "settings": {
+        "context7_api_key": "",
+      },
+    },
+  },
+
+  // =============== Language Specific & LSP ===============
+  "show_signature_help_after_edits": true,
+  "diagnostics": {
+    "include_warnings": false,
+    "inline": {
+      "enabled": true,
+      "update_debounce_ms": 100,
+    },
+  },
   "inlay_hints": {
     "enabled": false,
   },
-  // LSP
+  "lsp_document_colors": "inlay",
   "lsp": {
-    "tailwindcss-language-server": {
-      "settings": {
-        "classAttributes": ["class", "className", "ngClass", "styles"],
-      },
-    },
     "biome": {
       "settings": {
         "require_config_file": true,
       },
     },
+    "tailwindcss-language-server": {
+      "settings": {
+        "classAttributes": ["class", "className", "ngClass", "styles"],
+      },
+    },
   },
   "languages": {
-    "JavaScript": {
+    "CSS": {
       "formatter": "prettier",
-      "language_servers": ["!vtsls", "!typescript-language-server", "tsgo", "..."],
-      "code_actions_on_format": {
-        "source.fixAll.eslint": true,
-      },
     },
-    "TypeScript": {
+    "GraphQL": {
       "formatter": "prettier",
-      "language_servers": ["!vtsls", "!typescript-language-server", "tsgo", "..."],
-      "code_actions_on_format": {
-        "source.fixAll.eslint": true,
-      },
     },
-    "TSX": {
+    "HTML": {
       "formatter": "prettier",
-      "language_servers": ["!vtsls", "!typescript-language-server", "tsgo", "..."],
-      "code_actions_on_format": {
-        "source.fixAll.eslint": true,
-      },
     },
     "JSON": {
       "formatter": "prettier",
@@ -229,28 +145,105 @@
     "JSONC": {
       "formatter": "prettier",
     },
-    "CSS": {
+    "JavaScript": {
       "formatter": "prettier",
-    },
-    "GraphQL": {
-      "formatter": "prettier",
+      "language_servers": [
+        "!vtsls",
+        "!typescript-language-server",
+        "tsgo",
+        "...",
+      ],
     },
     "Markdown": {
       "formatter": "prettier",
     },
+    "TSX": {
+      "formatter": "prettier",
+      "language_servers": [
+        "!vtsls",
+        "!typescript-language-server",
+        "tsgo",
+        "...",
+      ],
+    },
+    "TypeScript": {
+      "formatter": "prettier",
+      "language_servers": [
+        "!vtsls",
+        "!typescript-language-server",
+        "tsgo",
+        "...",
+      ],
+    },
     "YAML": {
       "formatter": "prettier",
     },
-    "HTML": {
-      "formatter": "prettier",
-    },
   },
-  // File syntax highlighting
+  "prettier": {
+    "allowed": true,
+    "arrowParens": "always",
+    "plugins": [
+      "prettier-plugin-organize-imports",
+      "prettier-plugin-tailwindcss",
+    ],
+    "tabWidth": 2,
+  },
+
+  // =============== Panels & UI Layout ===============
+  "active_pane_modifiers": {
+    "border_size": 2,
+  },
+  "project_panel": {
+    "default_width": 400,
+    "dock": "right",
+  },
+  "outline_panel": {
+    "default_width": 400,
+    "dock": "right",
+  },
+  "git_panel": {
+    "default_width": 400,
+    "dock": "right",
+    "status_style": "label_color",
+    "tree_view": false,
+  },
+  "collaboration_panel": {
+    "button": true,
+    "default_width": 280
+  },
+  "notification_panel": {
+    "button": true,
+    "dock": "left",
+    "default_width": 280
+  },
+  "debugger": {
+    "button": true,
+    "dock": "bottom",
+  },
+
+  // =============== Terminal ===============
+  "terminal": {
+    "button": true,
+    "dock": "bottom",
+    "env": {
+      "EDITOR": "zed --wait",
+    },
+    "font_family": "CaskaydiaCove Nerd Font Mono",
+    "font_size": 19,
+    "font_weight": 400,
+    "shell": "system",
+  },
+
+  // =============== Project, Files & Search ===============
+  "file_finder": {
+    "git_status": true,
+    "include_ignored": "smart",
+    "modal_max_width": "large",
+  },
   "file_types": {
     "Dockerfile": ["Dockerfile", "Dockerfile.*"],
     "JSON": ["json", "jsonc", "*.code-snippets"],
   },
-  // File scan exclusions, hide on the file explorer and search
   "file_scan_exclusions": [
     "**/.git",
     "**/.svn",
@@ -260,7 +253,6 @@
     "**/Thumbs.db",
     "**/.classpath",
     "**/.settings",
-    // above is default from Zed
     "**/out",
     "**/.turbo",
     "**/.vscode-test",
@@ -270,60 +262,22 @@
     "**/.nyc_output",
     "**/report",
   ],
-  // Turn off telemetry
-  "telemetry": {
-    "diagnostics": false,
-    "metrics": false,
+  "git": {
+    "git_gutter": "tracked_files",
+    "gutter_debounce": 100,
+    "inline_blame": {
+      "show_commit_summary": true,
+      "delay_ms": 100
+    },
   },
-  // Move all panel to the right
-  "project_panel": {
-    "sort_mode": "directories_first",
-    "hide_hidden": false,
-    "hide_root": false,
-    "sticky_scroll": true,
-    "indent_size": 20.0,
-    "folder_icons": true,
-    "file_icons": true,
-    "entry_spacing": "comfortable",
+  "search": {
     "button": true,
-    "dock": "left",
-    "git_status": true,
-    "default_width": 360,
+    "center_on_match": false,
+    "regex": false,
   },
-  "outline_panel": {
-    "button": true,
-    "dock": "right",
-    "default_width": 360,
-  },
-  "git_panel": {
-    "status_style": "label_color",
-    "button": true,
-    "sort_by_path": false,
-    "tree_view": true,
-    "dock": "right",
-    "default_width": 360,
-  },
-  "collaboration_panel": {
-    "dock": "left",
-    "button": false,
-  },
-  // Move some unnecessary panels to the left
-  "notification_panel": {
-    "button": false,
-    "dock": "left",
-  },
+  "seed_search_query_from_cursor": "selection",
 
-  "prettier": {
-    "allowed": true,
-    "plugins": [
-      "prettier-plugin-organize-imports",
-      "prettier-plugin-tailwindcss",
-    ],
-    "arrowParens": "always",
-    "tabWidth": 2,
-  },
-  "remove_trailing_whitespace_on_save": true,
-
+  // =============== Auto-installed Extensions ===============
   "auto_install_extensions": {
     "basher": true,
     "biome": true,
@@ -334,9 +288,7 @@
     "env": true,
     "git-firefly": true,
     "github-actions": true,
-    "tsgo": true,
-    // "gruvbox-material": true,
-    "kanagawa-themes": true,
+    "graphql": true,
     "html": true,
     "ini": true,
     "log": true,
@@ -350,6 +302,16 @@
     "sql": true,
     "terraform": true,
     "toml": true,
-    "graphql": true
+    "tsgo": true,
+    "vitesse-theme-refined": true,
   },
+
+  // =============== Miscellaneous ===============
+  "redact_private_values": false,
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "use_system_path_prompts": false,
+  "use_system_prompts": false,
 }
