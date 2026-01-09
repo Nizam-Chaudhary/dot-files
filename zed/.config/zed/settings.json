@@ -181,7 +181,7 @@
     },
     "default_model": {
       "provider": "copilot_chat",
-      "model": "gpt-4.1",
+      "model": "gpt-5-mini",
     },
   },
   // Inlay hints preconfigured by Zed: Go, Rust, Typescript and Svelte
@@ -299,7 +299,7 @@
     "status_style": "label_color",
     "button": true,
     "sort_by_path": false,
-    "tree_view": true,
+    "tree_view": false,
     "dock": "right",
     "default_width": 360,
   },
