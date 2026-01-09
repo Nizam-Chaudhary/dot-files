@@ -9,7 +9,19 @@
   {
     "context": "Editor",
     "bindings": {
-      "alt-f": "editor::FormatSelections"
+      "alt-f": "editor::FormatSelections",
     }
-  }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-alt-b": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-b": "workspace::ToggleRightDock"
+    }
+  },
 ]

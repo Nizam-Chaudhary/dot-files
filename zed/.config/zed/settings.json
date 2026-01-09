@@ -82,6 +82,7 @@
   },
   "agent": {
     "always_allow_tool_actions": true,
+    "default_width": 400,
     "default_model": {
       "model": "gpt-4.1",
       "provider": "copilot_chat",
