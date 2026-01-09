@@ -1,0 +1,10 @@
+# ~/.config/bat/config
+
+# Set the theme
+--theme="zenburn"
+
+# Specify which elements to display (line numbers and git changes)
+--style="numbers,changes"
+
+# Set the tab width
+--tabs=2

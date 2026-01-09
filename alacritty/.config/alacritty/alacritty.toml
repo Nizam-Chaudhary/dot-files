@@ -1,7 +1,7 @@
 
 #### THEME ####
 import = [
-  "~/.config/alacritty/catppuccin-mocha.toml"
+  "~/.config/alacritty/vesper.toml"
 ]
 
 ##### GENERAL #####
@@ -32,23 +32,11 @@ history = 10000
 multiplier = 3
 
 [font]
-size = 12
-
-[font.normal]
-family = "JetBrains Mono Nerd Font Mono"
-style = "Regular"
-
-[font.bold]
-family = "JetBrains Mono Nerd Font Mono"
-style = "Bold"
-
-[font.italic]
-family = "JetBrains Mono Nerd Font Mono"
-style = "Italic"
-
-[font.bold_italic]
-family = "JetBrains Mono Nerd Font Mono"
-style = "Bold Italic"
+normal = { family = "CaskaydiaCove Nerd Font Mono", style = "Regular" }
+bold = { family = "CaskaydiaCove Nerd Font Mono", style = "Bold" }
+italic = { family = "CaskaydiaCove Nerd Font Mono", style = "Italic" }
+bold_italic = { family = "CaskaydiaCove Nerd Font Mono", style = "Bold Italic" }
+size = 15
 
 [colors]
 draw_bold_text_with_bright_colors = true

@@ -1,6 +1,11 @@
-theme = Catppuccin Mocha
-font-family = "JetBrainsMono Nerd Font Mono"
-font-size = 12
+theme = Vesper
+font-family = "CaskaydiaCove Nerd Font Mono"
+font-size = 14
 gtk-titlebar = false
 maximize = true
-shell-integration-features = ssh-terminfo,ssh-env
+shell-integration = zsh
+window-padding-x = 8
+window-padding-y = 8
+cursor-style = bar
+cursor-style-blink = false
+shell-integration-features = ssh-terminfo,ssh-env,no-cursor
