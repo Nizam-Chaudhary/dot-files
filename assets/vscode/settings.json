@@ -18,14 +18,13 @@
   "workbench.startupEditor": "newUntitledFile",
   "workbench.tree.expandMode": "singleClick",
   "workbench.tree.indent": 10,
-  "editor.fontSize": 16,
+  "editor.fontSize": 15,
   "editor.inlineSuggest.fontFamily": "Input Mono, monospace",
-  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font Mono",
+  "terminal.integrated.fontFamily": "CaskaydiaCove Nerd Font Mono",
   "terminal.integrated.fontSize": 13,
-  "chat.fontFamily": "JetBrainsMono Nerd Font Mono",
+  "chat.fontFamily": "Input Mono, monospace",
   "chat.fontSize": 14,
-  "chat.editor.fontFamily": "JetBrainsMono Nerd Font Mono",
-  
+  "chat.editor.fontFamily": "Input Mono, monospace",
   // ========== Editor ==========
   "debug.onTaskErrors": "debugAnyway",
   "diffEditor.ignoreTrimWhitespace": false,
@@ -38,7 +37,7 @@
   "editor.unicodeHighlight.invisibleCharacters": false,
   "editor.stickyScroll.enabled": true,
   "editor.hover.sticky": true,
-  "window.zoomLevel": 0.5,
+  "window.zoomLevel": 1,
   "editor.linkedEditing": true,
   "editor.smoothScrolling": true,
   "editor.mouseWheelScrollSensitivity": 1,
@@ -92,14 +91,12 @@
     "**/CHANGELOG*": true,
     "**/LICENSE*": true
   },
-  
   // ==========  Global Level Config, needs to put in User Settings ==========
   "window.dialogStyle": "custom",
   "window.nativeTabs": true, // this is great, macOS only
   "window.title": "${rootName}", // this make tabs more readable
   "window.titleBarStyle": "custom",
   "extensions.autoUpdate": "onlyEnabledExtensions",
-  
   // ========== Extension configs ==========
   "emmet.showSuggestionsAsSnippets": true,
   "emmet.triggerExpansionOnTab": false,
@@ -267,12 +264,10 @@
   "[github-actions-workflow]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
-  
   // ========== TypeScript / JavaScript ==========
   "typescript.experimental.useTsgo": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "javascript.updateImportsOnFileMove.enabled": "always",
-  
   // ========== File Nesting ==========
   // updated 2026-01-03 16:02
   // https://github.com/antfu/vscode-file-nesting-config
