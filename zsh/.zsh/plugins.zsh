@@ -1,7 +1,13 @@
 # ===============================
+# ZSH Completions
+# ===============================
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+autoload -U compinit && compinit
+source "$ZSH/oh-my-zsh.sh"
+
+# ===============================
 # OH-MY-ZSH & PLUGINS
 # ===============================
-
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="" # Starship owns the prompt
 
