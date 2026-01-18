@@ -1,5 +1,13 @@
 # ~/.config/tmux/tmux.conf
 
+<!--toc:start-->
+
+- [~/.config/tmux/tmux.conf](#configtmuxtmuxconf)
+  - [Install](#install) - [Keybinding Changes (Cheatsheet)](#keybinding-changes-cheatsheet)
+  - [1. Window Management](#1-window-management)
+  - [2. Session Management](#2-session-management) - [How to use the Modern Session Switcher (`SessionX`)](#how-to-use-the-modern-session-switcher-sessionx)
+  <!--toc:end-->
+
 ## Install
 
 Once everything has been installed it's time to run TPM, install first:

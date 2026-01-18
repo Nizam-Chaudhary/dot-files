@@ -1,5 +1,5 @@
 # File system
-if command -v eza &> /dev/null; then
+if command -v eza &>/dev/null; then
   alias ls='eza -lh --group-directories-first --icons=auto'
   alias lsa='ls -a'
   alias lt='eza --tree --level=2 --long --icons --git'
@@ -8,7 +8,7 @@ fi
 
 alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
 
-if command -v zoxide &> /dev/null; then
+if command -v zoxide &>/dev/null; then
   alias cd="zd"
   zd() {
     if [ $# -eq 0 ]; then
@@ -21,6 +21,15 @@ if command -v zoxide &> /dev/null; then
   }
 fi
 
+function y() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
+}
+
 open() {
   xdg-open "$@" >/dev/null 2>&1 &
 }
@@ -31,6 +40,17 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 # Editors
+if command -v nvim >/dev/null 2>&1; then
+  export EDITOR="nvim"
+  export VISUAL="nvim"
+elif command -v vim >/dev/null 2>&1; then
+  export EDITOR="vim"
+  export VISUAL="vim"
+else
+  export EDITOR="vi"
+  export VISUAL="vi"
+fi
+
 alias vi=nvim
 alias vim=nvim
 
