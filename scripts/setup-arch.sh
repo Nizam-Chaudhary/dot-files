@@ -30,9 +30,9 @@ CYAN='\033[0;36m'
 
 log_ts() { date +"%Y-%m-%d %H:%M:%S"; }
 
-log_info()  { printf "[%s] ${BLUE}INFO${NC}  %s\n" "$(log_ts)" "$*"; }
-log_ok()    { printf "[%s] ${GREEN}OK${NC}    %s\n" "$(log_ts)" "$*"; }
-log_warn()  { printf "[%s] ${YELLOW}WARN${NC}  %s\n" "$(log_ts)" "$*"; }
+log_info() { printf "[%s] ${BLUE}INFO${NC}  %s\n" "$(log_ts)" "$*"; }
+log_ok() { printf "[%s] ${GREEN}OK${NC}    %s\n" "$(log_ts)" "$*"; }
+log_warn() { printf "[%s] ${YELLOW}WARN${NC}  %s\n" "$(log_ts)" "$*"; }
 log_error() { printf "[%s] ${RED}ERROR${NC} %s\n" "$(log_ts)" "$*"; }
 
 section() {
@@ -74,7 +74,7 @@ is_installed() {
     "/usr/local/bin"
     "/usr/bin"
   )
-  
+
   # Check standard PATH first
   if command -v "$cmd" &>/dev/null; then
     return 0
@@ -104,7 +104,11 @@ sudo_keep_alive() {
   log_info "Requesting sudo privileges..."
   sudo -v
   # Keep-alive: update existing sudo time stamp until script has finished
-  while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+  while true; do
+    sudo -n true
+    sleep 60
+    kill -0 "$$" || exit
+  done 2>/dev/null &
 }
 
 # ==========================================================
@@ -126,7 +130,7 @@ CORE_PACKAGES=(
   unzip jq tree ncdu rsync fd ripgrep bat eza fzf zoxide mise
   starship fastfetch lazygit git-delta ghostty docker bash-completion
   docker-compose docker-machine docker-buildx flatpak obsidian dbeaver qbittorrent
-  lazydocker usbmuxd ifuse libplist gvfs gvfs-afc yazi
+  lazydocker usbmuxd ifuse libplist gvfs gvfs-afc yazi glow
   gvfs-gphoto2 gvfs-mtp gvfs-smb
 )
 
@@ -216,7 +220,7 @@ if [[ ! -d "$ZINIT_HOME" ]]; then
   log_info "Installing Zinit to $ZINIT_HOME..."
   mkdir -p "$(dirname "$ZINIT_HOME")"
   git clone --depth=1 https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-  
+
   sudo chsh -s /usr/bin/zsh "$USER"
   log_ok "Zinit installed successfully"
 else
@@ -293,7 +297,7 @@ fi
 # --------------------------
 if [[ -d /usr/share/bash-completion/completions ]]; then
   log_info "Setting up pnpm bash completion..."
-  pnpm completion bash > /tmp/pnpm.bash
+  pnpm completion bash >/tmp/pnpm.bash
   sudo mv /tmp/pnpm.bash /usr/share/bash-completion/completions/pnpm
   log_ok "pnpm bash completion installed"
 else

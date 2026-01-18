@@ -29,9 +29,9 @@ CYAN='\033[0;36m'
 
 log_ts() { date +"%Y-%m-%d %H:%M:%S"; }
 
-log_info()  { printf "[%s] ${BLUE}INFO${NC}  %s\n" "$(log_ts)" "$*"; }
-log_ok()    { printf "[%s] ${GREEN}OK${NC}    %s\n" "$(log_ts)" "$*"; }
-log_warn()  { printf "[%s] ${YELLOW}WARN${NC}  %s\n" "$(log_ts)" "$*"; }
+log_info() { printf "[%s] ${BLUE}INFO${NC}  %s\n" "$(log_ts)" "$*"; }
+log_ok() { printf "[%s] ${GREEN}OK${NC}    %s\n" "$(log_ts)" "$*"; }
+log_warn() { printf "[%s] ${YELLOW}WARN${NC}  %s\n" "$(log_ts)" "$*"; }
 log_error() { printf "[%s] ${RED}ERROR${NC} %s\n" "$(log_ts)" "$*"; }
 
 section() {
@@ -73,7 +73,7 @@ is_installed() {
     "/usr/local/bin"
     "/usr/bin"
   )
-  
+
   # Check standard PATH first
   if command -v "$cmd" &>/dev/null; then
     return 0
@@ -103,7 +103,11 @@ sudo_keep_alive() {
   log_info "Requesting sudo privileges..."
   sudo -v
   # Keep-alive: update existing sudo time stamp until script has finished
-  while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+  while true; do
+    sudo -n true
+    sleep 60
+    kill -0 "$$" || exit
+  done 2>/dev/null &
 }
 
 retry() {
@@ -130,10 +134,15 @@ retry sudo apt update
 retry sudo apt upgrade -y
 
 CORE_PACKAGES=(
-  build-essential git curl wget zsh neovim vim tmux stow btop htop
-  unzip jq tree ncdu rsync ca-certificates gnupg lsb-release
-  aria2 net-tools dnsutils software-properties-common apt-transport-https
-  alacritty flatpak bash-completion
+  build-essential
+  ca-certificates
+  gnupg
+  lsb-release
+  net-tools
+  dnsutils
+  software-properties-common
+  apt-transport-https
+  flatpak
 )
 
 sudo apt install -y --no-install-recommends "${CORE_PACKAGES[@]}"
@@ -160,7 +169,7 @@ if ! is_installed brew; then
   NONINTERACTIVE=1 /bin/bash -c \
     "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-  echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> "$HOME/.bash_profile"
+  echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>"$HOME/.bash_profile"
   log_ok "Homebrew installed"
 else
   eval "$(brew shellenv)"
@@ -173,9 +182,11 @@ fi
 section "Brew Packages"
 
 BREW_PACKAGES=(
-  fd ripgrep bat eza fzf zoxide mise
-  starship fastfetch git-delta
+  fd ripgrep bat eza fzf zoxide mise neovim
+  starship fastfetch git-delta glow
   lazygit lazydocker tlrc yazi rip2
+  git curl wget zsh vim tmux stow btop htop unzip
+  jq tree ncdu rsync aria2 alacritty bash-completion
 )
 
 brew install "${BREW_PACKAGES[@]}"
@@ -325,7 +336,7 @@ if is_installed mise; then
 
   # Activate mise in current shell to make tools available
   log_info "Activating mise environment..."
-  
+
   # Set PROMPT_COMMAND if not already set (required by mise activate)
   export PROMPT_COMMAND="${PROMPT_COMMAND:-}"
 
@@ -347,7 +358,7 @@ section "pnpm-shell-completion (Bash + Zsh)"
 if [[ -d /usr/share/bash-completion/completions ]]; then
   log_info "Setting up pnpm bash completion..."
   if is_installed pnpm; then
-    pnpm completion bash > /tmp/pnpm.bash
+    pnpm completion bash >/tmp/pnpm.bash
     sudo mv /tmp/pnpm.bash /usr/share/bash-completion/completions/pnpm
     log_ok "pnpm bash completion installed"
   else
