@@ -12,16 +12,16 @@ WINIT_X11_SCALE_FACTOR = "1"
 decorations_theme_variant = "Dark"
 dynamic_padding = true
 opacity = 0.95
-# startup_mode = "Maximized"
+startup_mode = "Maximized"
 # decorations = "None"
 
 [window.dimensions]
 columns = 100
 lines = 30
 
-[window.padding]
-x = 14
-y = 14
+#[window.padding]
+#x = 14
+#y = 14
 
 [window.class]
 instance = "Alacritty"
