@@ -1,0 +1,9 @@
+services:
+  dotfiles-arch:
+    container_name: dotfiles-arch
+    build:
+      context: ..
+      dockerfile: Dockerfiles/Dockerfile.arch
+    stdin_open: true
+    tty: true
+    command: bash

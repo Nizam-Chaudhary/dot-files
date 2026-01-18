@@ -1,0 +1,32 @@
+if command -v mise &> /dev/null; then
+  eval "$(mise activate bash)"
+fi
+
+if command -v starship &> /dev/null; then
+  eval "$(starship init bash)"
+fi
+
+if command -v zoxide &> /dev/null; then
+  eval "$(zoxide init bash)"
+fi
+
+if command -v try &> /dev/null; then
+  eval "$(try init ~/Work/tries)"
+fi
+
+if command -v fzf &> /dev/null; then
+  if [[ -f /usr/share/fzf/completion.bash ]]; then
+    source /usr/share/fzf/completion.bash
+  fi
+  if [[ -f /usr/share/fzf/key-bindings.bash ]]; then
+    source /usr/share/fzf/key-bindings.bash
+  fi
+fi
+
+if command -v /home/linuxbrew/.linuxbrew/bin/brew &> /dev/null; then
+  brew() {
+    unfunction brew
+    eval "$("$BREW_PREFIX/bin/brew" shellenv)"
+    brew "$@"
+  }
+fi

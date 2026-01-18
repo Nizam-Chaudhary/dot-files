@@ -1,0 +1,61 @@
+{
+  "recommendations": [
+    "antfu.iconify",
+    "antfu.where-am-i",
+    "antfu.open-in-github-button",
+    "lokalise.i18n-ally",
+
+    // themes & icons
+    "antfu.icons-carbon",
+    "antfu.theme-vitesse",
+    "file-icons.file-icons",
+
+    // life savers!
+    "dbaeumer.vscode-eslint",
+    "github.copilot-chat",
+    "usernamehw.errorlens",
+    "streetsidesoftware.code-spell-checker",
+
+    // up to you
+    "eamodio.gitlens",
+    "EditorConfig.EditorConfig",
+    "johnsoncodehk.vscode-tsconfig-helper",
+    "mpontus.tab-cycle",
+    "naumovs.color-highlight",
+    "znck.grammarly",
+
+    // mine
+    "bradlc.vscode-tailwindcss",
+    "vincaslt.highlight-matching-tag",
+    "esbenp.prettier-vscode",
+    "htmlhint.vscode-htmlhint",
+    "redhat.vscode-yaml",
+    "adpyke.vscode-sql-formatter",
+    "christian-kohler.path-intellisense",
+    "ahmadalli.vscode-nginx-conf",
+    "tamasfe.even-better-toml",
+    "yoavbls.pretty-ts-errors",
+    "hashicorp.terraform",
+    "biomejs.biome",
+    "golang.go",
+    "qufiwefefwoyn.inline-sql-syntax",
+    "typescriptteam.native-preview",
+    "pkief.material-icon-theme",
+    "davidanson.vscode-markdownlint",
+
+    // disabled
+    // "antfu.vite",
+    // "antfu.browse-lite",
+    // "antfu.slidev",
+    // "WakaTime.vscode-wakatime",
+    // "Catppuccin.catppuccin-vsc-icons",
+    // "ms-vscode-remote.remote-containers",
+    // "ms-azuretools.vscode-containers"
+    // "github.vscode-github-actions",
+    // "GitHub.vscode-pull-request-github",
+    // "ms-kubernetes-tools.vscode-kubernetes-tools",
+    // "vscodevim.vim",
+    // "vue.volar",
+    // "chrmarti.regex",
+  ]
+}

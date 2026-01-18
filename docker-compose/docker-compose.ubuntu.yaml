@@ -1,0 +1,9 @@
+services:
+  dotfiles-ubuntu:
+    container_name: dotfiles-ubuntu
+    build:
+      context: ..
+      dockerfile: Dockerfiles/Dockerfile.ubuntu
+    stdin_open: true
+    tty: true
+    command: bash

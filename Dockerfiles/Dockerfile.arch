@@ -1,0 +1,39 @@
+FROM archlinux:latest
+
+# Avoid interactive prompts
+ENV TERM=xterm-256color
+
+# ----------------------------------------------------------
+# Base system + tools
+# ----------------------------------------------------------
+RUN pacman -Syu --noconfirm \
+    && pacman -S --noconfirm \
+        git \
+        stow \
+        curl \
+        ca-certificates \
+        sudo \
+        base-devel \
+    && pacman -Scc --noconfirm
+
+# ----------------------------------------------------------
+# Create non-root test user
+# ----------------------------------------------------------
+ARG USERNAME=test
+ARG UID=1000
+ARG GID=1000
+
+RUN groupadd -g ${GID} ${USERNAME} \
+    && useradd -m -u ${UID} -g ${GID} -s /bin/bash ${USERNAME} \
+    && echo "${USERNAME} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/${USERNAME} \
+    && chmod 0440 /etc/sudoers.d/${USERNAME}
+
+# ----------------------------------------------------------
+# Switch to user context
+# ----------------------------------------------------------
+USER ${USERNAME}
+ENV HOME=/home/${USERNAME}
+WORKDIR ${HOME}
+
+# Optional: default shell
+SHELL ["/bin/bash", "-lc"]

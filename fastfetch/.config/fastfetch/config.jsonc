@@ -1,0 +1,87 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+
+  "logo": {
+    "color": { "1": "green", "2": "red" },
+    "padding": {
+      "top": 2,
+      "right": 6,
+      "left": 2,
+    },
+  },
+
+  "display": {
+    "separator": " : ",
+  },
+
+  "modules": [
+    {
+      "type": "custom",
+      "format": "\u001b[36m    コンピューター",
+    },
+    {
+      "type": "custom",
+      "format": "┌──────────────────────────────────────────┐",
+    },
+
+    {
+      "type": "host",
+      "key": " PC",
+      "keyColor": "red",
+    },
+    { "type": "os", "key": "   OS", "keyColor": "red" },
+    { "type": "kernel", "key": "   Kernel", "keyColor": "red" },
+    { "type": "packages", "key": "   Packages", "keyColor": "green" },
+    { "type": "display", "key": "   Display", "keyColor": "green" },
+    { "type": "wm", "key": "   WM", "keyColor": "yellow" },
+    { "type": "terminal", "key": "   Terminal", "keyColor": "yellow" },
+
+    {
+      "type": "custom",
+      "format": "└──────────────────────────────────────────┘",
+    },
+
+    "break",
+
+    {
+      "type": "title",
+      "key": "  ",
+    },
+    {
+      "type": "custom",
+      "format": "┌──────────────────────────────────────────┐",
+    },
+
+    { "type": "cpu", "key": "   CPU", "keyColor": "blue" },
+    { "type": "gpu", "key": "   GPU", "keyColor": "blue" },
+    {
+      "type": "gpu",
+      "key": "   GPU Driver",
+      "format": "{3}",
+      "keyColor": "magenta",
+    },
+    { "type": "memory", "key": "  ﬙ Memory", "keyColor": "magenta" },
+
+    {
+      "type": "command",
+      "key": "  󱦟 OS Age",
+      "keyColor": "31",
+      "text": "birth=$(stat -c %W /); now=$(date +%s); echo $(( (now - birth) / 86400 )) days",
+    },
+
+    { "type": "uptime", "key": "  󱫐 Uptime", "keyColor": "red" },
+
+    {
+      "type": "custom",
+      "format": "└──────────────────────────────────────────┘",
+    },
+
+    {
+      "type": "colors",
+      "paddingLeft": 2,
+      "symbol": "circle",
+    },
+
+    "break",
+  ],
+}

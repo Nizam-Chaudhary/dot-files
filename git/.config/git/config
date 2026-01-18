@@ -1,0 +1,67 @@
+# --- Identity & Security ---
+[user]
+    name = Nizam Chaudhary
+    email = ChaudharyNizam10@gmail.com
+    signingkey = 15BB97EB9B4B26E7
+
+[commit]
+    gpgsign = true
+    verbose = true
+
+[tag]
+    sort = -version:refname
+
+# --- General Settings ---
+[core]
+    editor = vim
+    pager = delta
+
+[init]
+    defaultBranch = main
+
+[pull]
+    rebase = false
+
+[push]
+    autoSetupRemote = true
+
+[column]
+    ui = auto
+
+# --- Aliases ---
+[alias]
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+
+# --- Diff & Merge Logic ---
+[diff]
+    algorithm = histogram    # Superior diffing for complex code moves
+    colorMoved = plain       # Highlights blocks of code that were moved
+    mnemonicPrefix = true    # Shows 'i/' (index) and 'w/' (worktree) instead of 'a/' and 'b/'
+
+[merge]
+    conflictStyle = zdiff3   # Shows original text alongside the two changes
+
+[rerere]
+    enabled = true           # "Reuse Recorded Resolution" - remembers how you fixed conflicts
+    autoupdate = true        
+
+[branch]
+    sort = -committerdate    # Most recently used branches appear first
+
+# --- Delta (Enhanced UI) ---
+[delta]
+    navigate = true          # Use 'n' and 'N' to jump between files
+    side-by-side = true      # Split view diffs
+    line-numbers = true
+    dark = true            # Uncomment if you use a dark terminal theme
+
+[interactive]
+    diffFilter = delta --color-only
+
+# --- Credentials ---
+[credential]
+    credentialStore = gpg
+    helper = /usr/lib/git-core/git-credential-libsecret
