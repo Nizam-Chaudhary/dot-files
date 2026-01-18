@@ -64,6 +64,7 @@ STOW_PACKAGES=(
   starship
   tmux
   typora
+  yazi
   zed
   zsh
 )
@@ -115,51 +116,51 @@ is_our_symlink() {
 
 check_symlink_at_path() {
   local pkg="$1"
-  local rel_path="$2"  # relative path from package (e.g., ".config/alacritty")
+  local rel_path="$2" # relative path from package (e.g., ".config/alacritty")
   local check_path="$HOME/$rel_path"
-  
+
   # If it's a symlink pointing to our repo, it's linked
   if is_our_symlink "$check_path"; then
     return 0
   fi
-  
+
   # If it's a directory (not symlink), check if it contains our symlinks
   if [[ -d "$check_path" && ! -L "$check_path" ]]; then
     # Directory exists but isn't a symlink - check contents
     local pkg_source="$REPO_ROOT/$pkg/$rel_path"
-    
+
     # Check all items that should be in this directory
     if [[ -d "$pkg_source" ]]; then
       local all_items_linked=true
       local has_items=false
-      
+
       while IFS= read -r -d '' item; do
         [[ -z "$item" ]] && continue
         has_items=true
-        
+
         local item_name="$(basename "$item")"
         local item_dest="$check_path/$item_name"
-        
+
         # Recursively check this item
         if ! check_symlink_at_path "$pkg" "$rel_path/$item_name"; then
           all_items_linked=false
           break
         fi
       done < <(find "$pkg_source" -mindepth 1 -maxdepth 1 -print0 2>/dev/null || true)
-      
+
       # If we found items and they're all linked, consider this path linked
       [[ "$has_items" == "true" && "$all_items_linked" == "true" ]] && return 0
     fi
   fi
-  
+
   # If it's a file, it must be a symlink to be considered linked
   if [[ -f "$check_path" && ! -L "$check_path" ]]; then
     return 1
   fi
-  
+
   # Path doesn't exist - not linked
   [[ ! -e "$check_path" ]] && return 1
-  
+
   # Default: not linked
   return 1
 }
@@ -178,9 +179,9 @@ has_all_symlinks() {
   while IFS= read -r -d '' item; do
     [[ -z "$item" ]] && continue
     has_content=true
-    
+
     local name="$(basename "$item")"
-    
+
     # Check if this item is properly symlinked
     if ! check_symlink_at_path "$pkg" "$name"; then
       all_linked=false
@@ -210,7 +211,7 @@ has_any_symlinks() {
   # Check if ANY symlink from this package exists
   while IFS= read -r -d '' item; do
     [[ -z "$item" ]] && continue
-    
+
     local name="$(basename "$item")"
     local rel="${item#$pkg/}"
     local check_path="$HOME/$rel"
@@ -302,15 +303,14 @@ safe_remove() {
   local path="$1"
 
   case "$path" in
-    "$HOME/.config" | "$HOME" | "/" )
-      log_error "Refusing to remove dangerous path: $path"
-      return 1
-      ;;
+  "$HOME/.config" | "$HOME" | "/")
+    log_error "Refusing to remove dangerous path: $path"
+    return 1
+    ;;
   esac
 
   rm -rf "$path"
 }
-
 
 backup_paths_for_package() {
   local pkg="$1"
@@ -334,13 +334,12 @@ backup_paths_for_package() {
     fi
   done < <(list_stow_targets "$pkg")
 
-  if (( count > 0 )); then
+  if ((count > 0)); then
     log_info "Backed up $count item(s) from: $pkg"
   else
     log_skip "No items to backup for: $pkg"
   fi
 }
-
 
 create_backup_archive() {
   if [[ ! -d "$BACKUP_STAGING" ]] || [[ -z "$(ls -A "$BACKUP_STAGING" 2>/dev/null)" ]]; then
@@ -384,7 +383,7 @@ do_unstow() {
 
 do_stow() {
   local pkg="$1"
-  
+
   if stow --target="$HOME" "$pkg" 2>/dev/null; then
     add_to_history "$pkg"
     return 0
