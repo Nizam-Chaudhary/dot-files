@@ -22,7 +22,7 @@
   "ui_font_family": "JetBrainsMonoNL Nerd Font",
   "ui_font_size": 20,
   "buffer_font_family": "JetBrainsMonoNL Nerd Font",
-  "buffer_font_size": 20,
+  "buffer_font_size": 18,
   "buffer_font_weight": 400,
   "buffer_line_height": {
     "custom": 1.6
@@ -230,7 +230,7 @@
       "EDITOR": "zed --wait"
     },
     "font_family": "JetBrainsMonoNL Nerd Font",
-    "font_size": 19,
+    "font_size": 16,
     "font_weight": 400,
     "shell": "system"
   },
