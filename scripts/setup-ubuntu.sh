@@ -143,6 +143,7 @@ CORE_PACKAGES=(
   software-properties-common
   apt-transport-https
   flatpak
+  alacritty
 )
 
 sudo apt install -y --no-install-recommends "${CORE_PACKAGES[@]}"
@@ -186,7 +187,7 @@ BREW_PACKAGES=(
   starship fastfetch git-delta glow
   lazygit lazydocker tlrc yazi rip2
   git curl wget zsh vim tmux stow btop htop unzip
-  jq tree ncdu rsync aria2 alacritty bash-completion
+  jq tree ncdu rsync aria2 bash-completion
 )
 
 brew install "${BREW_PACKAGES[@]}"
@@ -366,39 +367,6 @@ if [[ -d /usr/share/bash-completion/completions ]]; then
   fi
 else
   log_warn "bash-completion not found, skipping bash completion"
-fi
-
-# --------------------------
-# pnpm-shell-completion (zsh)
-# --------------------------
-PNPM_PLUGIN_DIR="$ZSH_CUSTOM/plugins/pnpm-shell-completion"
-
-if [[ ! -d "$PNPM_PLUGIN_DIR" ]]; then
-  log_info "Installing pnpm-shell-completion (Zsh only)..."
-  TMP_DIR="$(mktemp -d)"
-
-  if curl -fsSL \
-    "https://github.com/g-plane/pnpm-shell-completion/releases/download/v${PNPM_COMPLETION_VERSION}/pnpm-shell-completion_${PNPM_COMPLETION_ARCH}.tar.gz" \
-    -o "$TMP_DIR/pnpm.tar.gz"; then
-
-    tar -xzf "$TMP_DIR/pnpm.tar.gz" -C "$TMP_DIR"
-
-    if [[ -f "$TMP_DIR/install.zsh" ]]; then
-      (
-        cd "$TMP_DIR"
-        zsh ./install.zsh "$ZSH_CUSTOM/plugins"
-      )
-      log_ok "pnpm-shell-completion installed for Zsh"
-    else
-      log_warn "install.zsh not found in pnpm-shell-completion archive"
-    fi
-  else
-    log_warn "Failed to download pnpm-shell-completion"
-  fi
-
-  rm -rf "$TMP_DIR"
-else
-  log_info "pnpm-shell-completion already installed"
 fi
 
 # ==========================================================

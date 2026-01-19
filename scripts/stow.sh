@@ -329,7 +329,7 @@ backup_paths_for_package() {
       if ! is_our_symlink "$dest"; then
         stage_for_backup "$dest"
         BACKUP_LIST+=("$dest")
-        ((count++))
+        ((++count))
       fi
     fi
   done < <(list_stow_targets "$pkg")

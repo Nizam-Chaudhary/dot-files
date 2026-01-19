@@ -304,40 +304,6 @@ else
   log_warn "bash-completion not found, skipping bash completion"
 fi
 
-# --------------------------
-# pnpm-shell-completion (zsh)
-# --------------------------
-section "pnpm-shell-completion (Bash + Zsh)"
-PNPM_PLUGIN_DIR="$ZSH_CUSTOM/plugins/pnpm-shell-completion"
-
-if [[ ! -d "$PNPM_PLUGIN_DIR" ]]; then
-  log_info "Installing pnpm-shell-completion (Zsh only)..."
-  TMP_DIR="$(mktemp -d)"
-
-  if curl -fsSL \
-    "https://github.com/g-plane/pnpm-shell-completion/releases/download/v${PNPM_COMPLETION_VERSION}/pnpm-shell-completion_${PNPM_COMPLETION_ARCH}.tar.gz" \
-    -o "$TMP_DIR/pnpm.tar.gz"; then
-
-    tar -xzf "$TMP_DIR/pnpm.tar.gz" -C "$TMP_DIR"
-
-    if [[ -f "$TMP_DIR/install.zsh" ]]; then
-      (
-        cd "$TMP_DIR"
-        zsh ./install.zsh "$ZSH_CUSTOM/plugins"
-      )
-      log_ok "pnpm-shell-completion installed for Zsh"
-    else
-      log_warn "install.zsh not found in pnpm-shell-completion archive"
-    fi
-  else
-    log_warn "Failed to download pnpm-shell-completion"
-  fi
-
-  rm -rf "$TMP_DIR"
-else
-  log_info "pnpm-shell-completion already installed"
-fi
-
 # ==========================================================
 # Cleanup & Finalize
 # ==========================================================
