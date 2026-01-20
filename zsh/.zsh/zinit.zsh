@@ -24,5 +24,5 @@ zinit wait"0" lucid for \
 zinit ice wait"1" lucid from"gh-r" as"program" atclone"./install.sh" atpull"%atclone"
 zinit light g-plane/pnpm-shell-completion
 
-zinit ice depth=1
-zinit light jeffreytse/zsh-vi-mode
+# zinit ice depth=1
+# zinit light jeffreytse/zsh-vi-mode
