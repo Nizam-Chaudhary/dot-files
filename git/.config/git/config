@@ -1,11 +1,12 @@
 # --- Identity & Security ---
-[user]
-    name = Nizam Chaudhary
-    email = ChaudharyNizam10@gmail.com
-    signingkey = 15BB97EB9B4B26E7
+# [user]
+#     name = Nizam Chaudhary
+#     email = ChaudharyNizam10@gmail.com
+#     signingkey = 15BB97EB9B4B26E7
 
 [commit]
-    gpgsign = true
+#    gpgsign = true
+    gpgsign = false
     verbose = true
 
 [tag]
@@ -62,6 +63,6 @@
     diffFilter = delta --color-only
 
 # --- Credentials ---
-[credential]
-    credentialStore = gpg
-    helper = /usr/lib/git-core/git-credential-libsecret
+# [credential]
+#    credentialStore = gpg
+#    helper = /usr/lib/git-core/git-credential-libsecret
