@@ -23,10 +23,6 @@ if command -v fzf &> /dev/null; then
   fi
 fi
 
-if command -v /home/linuxbrew/.linuxbrew/bin/brew &> /dev/null; then
-  brew() {
-    unfunction brew
-    eval "$("$BREW_PREFIX/bin/brew" shellenv)"
-    brew "$@"
-  }
+if [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
