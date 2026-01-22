@@ -59,6 +59,7 @@ STOW_PACKAGES=(
   git
   kitty
   lazydocker
+  lazygit
   nvim
   opencode
   starship
