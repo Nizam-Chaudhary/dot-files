@@ -248,6 +248,29 @@ else
 fi
 
 # ==========================================================
+# Atuin Setup (Shell History Manager)
+# ==========================================================
+section "Atuin Setup"
+
+export PATH="$HOME/.local/bin:$PATH"
+
+if is_installed atuin; then
+  log_ok "Atuin already installed — skipping"
+else
+  log_info "Installing Atuin..."
+
+  # Official install script
+  run curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+
+  if is_installed atuin; then
+    log_ok "Atuin installed successfully"
+  else
+    log_error "Atuin installation failed"
+    return 1
+  fi
+fi
+
+# ==========================================================
 # Dotfiles (stow.sh)
 # ==========================================================
 section "Dotfiles Setup"

@@ -144,6 +144,7 @@ CORE_PACKAGES=(
   apt-transport-https
   flatpak
   alacritty
+  fzf
 )
 
 sudo apt install -y --no-install-recommends "${CORE_PACKAGES[@]}"
@@ -183,7 +184,7 @@ fi
 section "Brew Packages"
 
 BREW_PACKAGES=(
-  fd ripgrep bat eza fzf zoxide mise neovim
+  fd ripgrep bat eza zoxide mise neovim
   starship fastfetch git-delta glow
   lazygit lazydocker tlrc yazi rip2
   git curl wget zsh vim tmux stow btop htop unzip
@@ -301,6 +302,29 @@ if [[ -f "$FONTS_SCRIPT" ]]; then
   log_ok "Fonts installed successfully"
 else
   log_warn "install-fonts.sh not found at $FONTS_SCRIPT - skipping font installation"
+fi
+
+# ==========================================================
+# Atuin Setup (Shell History Manager)
+# ==========================================================
+section "Atuin Setup"
+
+export PATH="$HOME/.local/bin:$PATH"
+
+if is_installed atuin; then
+  log_ok "Atuin already installed — skipping"
+else
+  log_info "Installing Atuin..."
+
+  # Official install script
+  run curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+
+  if is_installed atuin; then
+    log_ok "Atuin installed successfully"
+  else
+    log_error "Atuin installation failed"
+    return 1
+  fi
 fi
 
 # ==========================================================
