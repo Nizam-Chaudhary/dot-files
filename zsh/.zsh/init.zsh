@@ -23,10 +23,6 @@ if command -v fzf &> /dev/null; then
   fi
 fi
 
-if [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-
 # Load atuin env if present
 if [[ -f "$HOME/.atuin/bin/env" ]]; then
   source "$HOME/.atuin/bin/env"

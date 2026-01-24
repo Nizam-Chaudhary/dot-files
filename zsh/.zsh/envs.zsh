@@ -2,6 +2,11 @@
 export SUDO_EDITOR="$EDITOR"
 export BAT_THEME=ansi
 
+# Homebrew
+if [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 # zed
 export PATH="$HOME/.local/bin:$PATH"
 
