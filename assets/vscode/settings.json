@@ -9,7 +9,7 @@
   "workbench.fontAliasing": "antialiased",
   "workbench.colorTheme": "Catppuccin Mocha",
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.list.smoothScrolling": false,
+  "workbench.list.smoothScrolling": true,
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.tree.expandMode": "singleClick",
@@ -38,7 +38,7 @@
   "window.menuBarVisibility": "visible",
   "window.zoomLevel": 0.5,
   "editor.linkedEditing": true,
-  "editor.smoothScrolling": false,
+  "editor.smoothScrolling": true,
   "editor.mouseWheelScrollSensitivity": 1,
   "editor.codeActionsOnSave": {
     "source.fixAll": "never",
@@ -239,7 +239,7 @@
   },
 
   // ========== TypeScript / JavaScript ==========
-  "typescript.experimental.useTsgo": true,
+  "typescript.experimental.useTsgo": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "javascript.updateImportsOnFileMove.enabled": "always",
 
