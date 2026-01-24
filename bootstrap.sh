@@ -14,6 +14,7 @@ FONTS_SCRIPT="$SCRIPTS_DIR/install-fonts.sh"
 ARCH_SCRIPT="$SCRIPTS_DIR/setup-arch.sh"
 UBUNTU_SCRIPT="$SCRIPTS_DIR/setup-ubuntu.sh"
 UBUNTU_SERVER_SCRIPT="$SCRIPTS_DIR/setup-ubuntu-server.sh"
+UBUNTU_WSL_SCRIPT="$SCRIPTS_DIR/setup-ubuntu-wsl.sh"
 
 # ==========================================================
 # Enhanced Logging
@@ -73,6 +74,7 @@ OPTIONS:
   -d, --dotfiles        Setup dotfiles (stow)
   -a, --arch            Setup Arch Linux
   -u, --ubuntu          Setup Ubuntu Desktop
+  -w, --wsl             Setup WSL Ubuntu
   -s, --server          Setup Ubuntu Server
   -h, --help            Show this help message
 
@@ -112,6 +114,10 @@ else
         ;;
       -u|--ubuntu)
         ACTION="ubuntu"
+        shift
+        ;;
+      -w|--wsl)
+        ACTION="wsl"
         shift
         ;;
       -s|--server)
@@ -161,6 +167,11 @@ case "$ACTION" in
     section "Setup Ubuntu Server"
     ensure_executable "$UBUNTU_SERVER_SCRIPT"
     run "$UBUNTU_SERVER_SCRIPT"
+    ;;
+  wsl)
+    section "Setup WSL Ubuntu Distro"
+    ensure_executable "$UBUNTU_WSL_SCRIPT"
+    run "$UBUNTU_WSL_SCRIPT"
     ;;
   *)
     log_error "No valid action specified"

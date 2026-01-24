@@ -13,8 +13,6 @@ fi
 # Configuration
 # ==========================================================
 DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
-PNPM_COMPLETION_VERSION="0.5.5"
-PNPM_COMPLETION_ARCH="x86_64-unknown-linux-gnu"
 
 # ==========================================================
 # Enhanced Logging
@@ -278,7 +276,7 @@ if [[ ! -d "$ZINIT_HOME" ]]; then
   log_info "Installing Zinit to $ZINIT_HOME..."
   mkdir -p "$(dirname "$ZINIT_HOME")"
   git clone --depth=1 https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-  sudo chsh -s /usr/bin/zsh "$USER"
+  # sudo chsh -s /usr/bin/zsh "$USER"
   log_ok "Zinit installed successfully"
 else
   log_info "Zinit already present; pulling updates..."

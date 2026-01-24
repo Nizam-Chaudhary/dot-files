@@ -14,8 +14,6 @@ fi
 # ==========================================================
 DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
 AUR_HELPER="yay"
-PNPM_COMPLETION_VERSION="0.5.5"
-PNPM_COMPLETION_ARCH="x86_64-unknown-linux-gnu"
 
 # ==========================================================
 # Enhanced Logging

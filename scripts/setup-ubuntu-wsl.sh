@@ -10,6 +10,13 @@ if ! grep -qi ubuntu /etc/os-release; then
 fi
 
 # ==========================================================
+# WSL Detection
+# ==========================================================
+is_wsl() {
+  grep -qi microsoft /proc/version 2>/dev/null
+}
+
+# ==========================================================
 # Configuration
 # ==========================================================
 DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
@@ -17,7 +24,6 @@ DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
 # ==========================================================
 # Enhanced Logging
 # ==========================================================
-# Colors
 NC='\033[0m'
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -28,9 +34,9 @@ CYAN='\033[0;36m'
 log_ts() { date +"%Y-%m-%d %H:%M:%S"; }
 
 log_info() { printf "[%s] ${BLUE}INFO${NC}  %s\n" "$(log_ts)" "$*"; }
-log_ok() { printf "[%s] ${GREEN}OK${NC}    %s\n" "$(log_ts)" "$*"; }
+log_ok()   { printf "[%s] ${GREEN}OK${NC}    %s\n" "$(log_ts)" "$*"; }
 log_warn() { printf "[%s] ${YELLOW}WARN${NC}  %s\n" "$(log_ts)" "$*"; }
-log_error() { printf "[%s] ${RED}ERROR${NC} %s\n" "$(log_ts)" "$*"; }
+log_error(){ printf "[%s] ${RED}ERROR${NC} %s\n" "$(log_ts)" "$*"; }
 
 section() {
   echo -e "\n${CYAN}══════════════════════════════════════════════════════"
@@ -38,53 +44,18 @@ section() {
   echo -e "══════════════════════════════════════════════════════${NC}"
 }
 
-ensure_executable() {
-  local script="$1"
-
-  if [[ ! -f "$script" ]]; then
-    log_error "$(basename "$script") not found"
-    exit 1
-  fi
-
-  if [[ ! -x "$script" ]]; then
-    log_warn "$(basename "$script") is not executable — fixing"
-    chmod +x "$script"
-  fi
-}
+trap 'log_error "Script failed at line $LINENO"' ERR
 
 run() {
   log_info "Executing: $*"
   "$@"
 }
 
-trap 'log_error "Script failed at line $LINENO"' ERR
-
 # ==========================================================
-# Advanced Binary/Command Check
+# Command Check
 # ==========================================================
-# Checks /usr/bin, /usr/local/bin, ~/.local/bin, and current PATH
 is_installed() {
-  local cmd="$1"
-  local extra_paths=(
-    "$HOME/.local/bin"
-    "$HOME/.local/share/bin"
-    "/usr/local/bin"
-    "/usr/bin"
-  )
-
-  # Check standard PATH first
-  if command -v "$cmd" &>/dev/null; then
-    return 0
-  fi
-
-  # Check specific potential locations not yet in PATH
-  for path in "${extra_paths[@]}"; do
-    if [[ -x "$path/$cmd" ]]; then
-      return 0
-    fi
-  done
-
-  return 1
+  command -v "$1" &>/dev/null
 }
 
 # ==========================================================
@@ -98,9 +69,7 @@ check_prerequisites() {
 }
 
 sudo_keep_alive() {
-  log_info "Requesting sudo privileges..."
   sudo -v
-  # Keep-alive: update existing sudo time stamp until script has finished
   while true; do
     sudo -n true
     sleep 60
@@ -117,17 +86,23 @@ retry() {
 }
 
 # ==========================================================
-# Start Setup
+# Initialization
 # ==========================================================
 section "Initialization"
-log_ok "Starting Ubuntu Server setup 🚀"
+log_ok "Starting Ubuntu setup 🚀"
 check_prerequisites
-sudo_keep_alive
+
+if is_wsl; then
+  log_info "WSL detected — skipping sudo keep-alive"
+else
+  sudo_keep_alive
+fi
 
 # ==========================================================
 # System Update & Core Packages
 # ==========================================================
 section "System Update & Core Packages"
+
 retry sudo apt update
 retry sudo apt upgrade -y
 
@@ -151,27 +126,30 @@ log_ok "Core packages installed"
 # ==========================================================
 section "Homebrew"
 
+BREW_ENV='eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"'
+
 if ! is_installed brew; then
   log_info "Installing Homebrew..."
   NONINTERACTIVE=1 /bin/bash -c \
     "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-  echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>"$HOME/.bash_profile"
-  log_ok "Homebrew installed"
-else
-  eval "$(brew shellenv)"
-  log_info "Homebrew already installed"
 fi
 
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+grep -qxF "$BREW_ENV" "$HOME/.bashrc" || echo "$BREW_ENV" >>"$HOME/.bashrc"
+grep -qxF "$BREW_ENV" "$HOME/.bash_profile" || echo "$BREW_ENV" >>"$HOME/.bash_profile"
+
+log_ok "Homebrew ready"
+
 # ==========================================================
-# Brew Packages (Modern CLI)
+# Brew Packages
 # ==========================================================
 section "Brew Packages"
 
 BREW_PACKAGES=(
   fd ripgrep bat eza zoxide mise neovim
   starship fastfetch git-delta glow
-  lazygit lazydocker tlrc yazi rip2
+  lazygit tlrc yazi rip2
   git curl wget zsh vim tmux stow
   btop htop unzip jq tree ncdu rsync
   aria2 bash-completion
@@ -181,41 +159,12 @@ brew install "${BREW_PACKAGES[@]}"
 log_ok "Brew packages installed"
 
 # ==========================================================
-# Docker Setup
-# ==========================================================
-section "Docker Setup"
-
-# Skip Docker installation if running inside a Docker container
-if [ -f /.dockerenv ] || grep -sq 'docker\|lxc' /proc/1/cgroup 2>/dev/null; then
-  log_info "Running inside a Docker container, skipping Docker installation"
-else
-  if ! is_installed docker; then
-    log_info "Installing Docker..."
-    curl -fsSL https://get.docker.com | sh
-    sudo systemctl enable docker --now
-    log_ok "Docker installed"
-  else
-    log_info "Docker already installed"
-  fi
-
-  # Add user to docker group
-  if groups "$USER" | grep -q "\bdocker\b"; then
-    log_info "User already in docker group"
-  else
-    log_info "Adding $USER to docker group..."
-    run sudo usermod -aG docker "$USER"
-    log_warn "You will need to log out and back in for docker group changes to take effect"
-  fi
-fi
-
-# ==========================================================
 # TPM (tmux plugin manager)
 # ==========================================================
 section "TPM"
 
 TPM_DIR="$HOME/.tmux/plugins/tpm"
 if [[ ! -d "$TPM_DIR" ]]; then
-  log_info "Installing TPM..."
   git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
   log_ok "TPM installed"
 else
@@ -223,153 +172,98 @@ else
 fi
 
 # ==========================================================
-# Zinit (Plugin Manager for Zsh)
+# Zinit
 # ==========================================================
+section "Zinit"
 
-section "Zinit Installation"
-
-# Inline directory definition
 ZINIT_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/zinit.git"
 
 if [[ ! -d "$ZINIT_HOME" ]]; then
-  log_info "Installing Zinit to $ZINIT_HOME..."
   mkdir -p "$(dirname "$ZINIT_HOME")"
   git clone --depth=1 https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-  # sudo chsh -s /usr/bin/zsh "$USER"
-  log_ok "Zinit installed successfully"
+  # sudo chsh -s /usr/bin/zsh "$USER" || log_warn "chsh failed (expected on WSL)"
+  log_ok "Zinit installed"
 else
-  log_info "Zinit already present; pulling updates..."
   git -C "$ZINIT_HOME" pull --quiet
+  log_info "Zinit updated"
 fi
 
-# Ensure completion cache exists
 mkdir -p "$HOME/.zsh/cache"
 
 # ==========================================================
-# Atuin Setup (Shell History Manager)
+# Atuin
 # ==========================================================
-section "Atuin Setup"
+section "Atuin"
 
 export PATH="$HOME/.local/bin:$PATH"
 
-if is_installed atuin; then
-  log_ok "Atuin already installed — skipping"
+if ! is_installed atuin; then
+  curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+  log_ok "Atuin installed"
 else
-  log_info "Installing Atuin..."
-
-  # Official install script
-  run curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
-
-  if is_installed atuin; then
-    log_ok "Atuin installed successfully"
-  else
-    log_error "Atuin installation failed"
-    return 1
-  fi
+  log_info "Atuin already installed"
 fi
 
 # ==========================================================
-# Dotfiles (stow.sh)
+# Dotfiles
 # ==========================================================
-section "Dotfiles Setup"
+section "Dotfiles"
 
 STOW_SCRIPT="$DOTFILES_DIR/scripts/stow.sh"
 
 if [[ -x "$STOW_SCRIPT" ]]; then
-  log_info "Running stow.sh (paths, shell config, mise activation)..."
-  ensure_executable "$STOW_SCRIPT"
   run "$STOW_SCRIPT"
-  log_ok "Dotfiles stowed successfully"
+  log_ok "Dotfiles stowed"
 else
-  log_error "stow.sh not found or not executable at $STOW_SCRIPT"
+  log_error "stow.sh not executable: $STOW_SCRIPT"
 fi
 
 # ==========================================================
 # Mise Runtime Setup
 # ==========================================================
-section "Mise Runtime Setup"
-
-export PATH="$HOME/.local/bin:$PATH"
+section "Mise"
 
 if is_installed mise; then
-  log_info "Installing runtimes via mise..."
-  run mise install node@22
-  run mise install bun@latest
-  run mise install pnpm@latest
-  run mise use -g node@22
-  run mise use -g bun@latest
-  run mise use -g pnpm@latest
-
-  # Activate mise in current shell to make tools available
-  log_info "Activating mise environment..."
-
-  # Set PROMPT_COMMAND if not already set (required by mise activate)
-  export PROMPT_COMMAND="${PROMPT_COMMAND:-}"
-
+  mise install node@22 bun@latest pnpm@latest
+  mise use -g node@22 bun@latest pnpm@latest
   eval "$(mise activate bash)"
-
-  log_ok "Node.js, Bun and PNPM installed via mise"
+  log_ok "Node, Bun, PNPM installed via mise"
 else
-  log_error "mise not found — runtime setup skipped"
+  log_warn "mise not found — skipping runtimes"
 fi
 
 # ==========================================================
-# pnpm Shell Completion
+# pnpm Completion
 # ==========================================================
-section "pnpm-shell-completion (Bash + Zsh)"
+section "pnpm Completion"
 
-# --------------------------
-# pnpm-shell-completion (bash)
-# --------------------------
-if [[ -d /usr/share/bash-completion/completions ]]; then
-  log_info "Setting up pnpm bash completion..."
-  if is_installed pnpm; then
-    pnpm completion bash >/tmp/pnpm.bash
-    sudo mv /tmp/pnpm.bash /usr/share/bash-completion/completions/pnpm
-    log_ok "pnpm bash completion installed"
-  else
-    log_warn "pnpm not yet available, skipping bash completion"
-  fi
+if is_installed pnpm && [[ -d /usr/share/bash-completion/completions ]]; then
+  pnpm completion bash | sudo tee /usr/share/bash-completion/completions/pnpm >/dev/null
+  log_ok "pnpm bash completion installed"
 else
-  log_warn "bash-completion not found, skipping bash completion"
+  log_warn "pnpm or bash-completion missing — skipping"
 fi
-
-# ==========================================================
-# Manual Tools (Server)
-# ==========================================================
-section "Manual Tools"
-
-cat <<'EOF'
-Optional tools (install manually if needed):
-
-🔧 Container & Kubernetes:
-  • k9s - Kubernetes CLI manager
-  • ctop - Container metrics
-
-🗄️ Database CLIs:
-  • pgcli / mycli - PostgreSQL/MySQL clients
-  • redis-cli - Redis client
-  • mongosh - MongoDB shell
-
-EOF
 
 # ==========================================================
 # Health Check
 # ==========================================================
 section "Health Check"
 
-for cmd in git zsh docker node pnpm bun tmux nvim mise; do
+for cmd in git zsh node pnpm bun tmux nvim mise brew; do
   is_installed "$cmd" && log_ok "$cmd OK" || log_warn "$cmd missing"
 done
 
+if is_wsl; then
+  log_info "Docker handled externally via Docker Desktop (WSL integration)"
+fi
+
 # ==========================================================
-# Cleanup & Finalize
+# Cleanup
 # ==========================================================
 section "Cleanup"
 
-log_info "Cleaning up unnecessary packages..."
 sudo apt autoremove -y
 sudo apt autoclean
 
 log_ok "Setup Complete 🎉"
-log_warn "Please logout or restart your shell to apply all changes."
+log_warn "Restart your shell or WSL session to apply all changes"
