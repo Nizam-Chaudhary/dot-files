@@ -174,7 +174,7 @@ BREW_PACKAGES=(
   lazygit lazydocker tlrc yazi rip2
   git curl wget zsh vim tmux stow
   btop htop unzip jq tree ncdu rsync
-  aria2
+  aria2  fzf
 )
 
 brew install "${BREW_PACKAGES[@]}"

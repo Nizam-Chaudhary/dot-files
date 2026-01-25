@@ -14,13 +14,8 @@ if command -v try &> /dev/null; then
   eval "$(try init ~/Work/tries)"
 fi
 
-if command -v fzf &> /dev/null; then
-  if [[ -f /usr/share/fzf/completion.zsh ]]; then
-    source /usr/share/fzf/completion.zsh
-  fi
-  if [[ -f /usr/share/fzf/key-bindings.zsh ]]; then
-    source /usr/share/fzf/key-bindings.zsh
-  fi
+if command -v fzf &>/dev/null; then
+  source <(fzf --zsh)
 fi
 
 # Load atuin env if present
