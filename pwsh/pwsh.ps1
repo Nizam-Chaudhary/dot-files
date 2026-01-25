@@ -126,6 +126,9 @@ function y {
 # zoxide
 if (Get-Command zoxide -ErrorAction SilentlyContinue) {
     (& zoxide init powershell) | Out-String | Invoke-Expression
+    
+    # Override cd to use zoxide
+    Set-Alias -Name cd -Value z -Option AllScope -Force
 }
 
 # open (xdg-open equivalent)
