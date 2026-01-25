@@ -5,7 +5,6 @@
 #     signingkey = 15BB97EB9B4B26E7
 
 [commit]
-#    gpgsign = true
     gpgsign = false
     verbose = true
 
@@ -63,11 +62,14 @@
     diffFilter = delta --color-only
 
 # --- Credentials ---
-# [credential]
-#    credentialStore = gpg
-#    helper = /usr/lib/git-core/git-credential-libsecret
+[credential]
+    credentialStore = gpg
+    helper = /usr/local/bin/git-credential-manager
 
 # WSL
 # [credential]
 # 	helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
 # 	credentialStore = wincred
+
+[credential "https://dev.azure.com"]
+	useHttpPath = true

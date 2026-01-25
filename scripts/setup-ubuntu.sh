@@ -186,7 +186,7 @@ BREW_PACKAGES=(
   starship fastfetch git-delta glow
   lazygit lazydocker tlrc yazi rip2
   git curl wget zsh vim tmux stow btop htop unzip
-  jq tree ncdu rsync aria2 bash-completion
+  jq tree ncdu rsync aria2
 )
 
 brew install "${BREW_PACKAGES[@]}"
@@ -218,13 +218,13 @@ else
 fi
 
 # Flatpak GUI Apps
-FLATPAK_GUI_APPS=(
-  md.obsidian.Obsidian
-)
+# FLATPAK_GUI_APPS=(
+#   md.obsidian.Obsidian
+# )
 
-log_info "Installing Flatpak GUI applications..."
-flatpak install -y flathub "${FLATPAK_GUI_APPS[@]}"
-log_ok "Flatpak GUI applications installed"
+# log_info "Installing Flatpak GUI applications..."
+# flatpak install -y flathub "${FLATPAK_GUI_APPS[@]}"
+# log_ok "Flatpak GUI applications installed"
 
 # ==========================================================
 # Docker Setup
@@ -317,12 +317,7 @@ else
   # Official install script
   run curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
 
-  if is_installed atuin; then
-    log_ok "Atuin installed successfully"
-  else
-    log_error "Atuin installation failed"
-    return 1
-  fi
+  log_ok "Atuin installed successfully"
 fi
 
 # ==========================================================

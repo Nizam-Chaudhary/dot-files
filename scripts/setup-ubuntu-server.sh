@@ -174,7 +174,7 @@ BREW_PACKAGES=(
   lazygit lazydocker tlrc yazi rip2
   git curl wget zsh vim tmux stow
   btop htop unzip jq tree ncdu rsync
-  aria2 bash-completion
+  aria2
 )
 
 brew install "${BREW_PACKAGES[@]}"
@@ -246,26 +246,17 @@ fi
 mkdir -p "$HOME/.zsh/cache"
 
 # ==========================================================
-# Atuin Setup (Shell History Manager)
+# Atuin
 # ==========================================================
-section "Atuin Setup"
+section "Atuin"
 
 export PATH="$HOME/.local/bin:$PATH"
 
-if is_installed atuin; then
-  log_ok "Atuin already installed — skipping"
+if ! is_installed atuin; then
+  curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+  log_ok "Atuin installed"
 else
-  log_info "Installing Atuin..."
-
-  # Official install script
-  run curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
-
-  if is_installed atuin; then
-    log_ok "Atuin installed successfully"
-  else
-    log_error "Atuin installation failed"
-    return 1
-  fi
+  log_info "Atuin already installed"
 fi
 
 # ==========================================================

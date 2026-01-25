@@ -152,7 +152,7 @@ BREW_PACKAGES=(
   lazygit tlrc yazi rip2
   git curl wget zsh vim tmux stow
   btop htop unzip jq tree ncdu rsync
-  aria2 bash-completion
+  aria2
 )
 
 brew install "${BREW_PACKAGES[@]}"
