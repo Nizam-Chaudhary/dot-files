@@ -44,18 +44,74 @@ Link-File `
   -Source "$DOTFILES\git\.config/git/config" `
   -Target "$HOME\.gitconfig"
 
-# # ==============================
-# # Neovim
-# # ==============================
-# Link-File `
-#   -Source "$DOTFILES\nvim\.config\nvim" `
-#   -Target "$HOME\AppData\Local\nvim"
+# ==============================
+# Neovim
+# ==============================
+Link-File `
+  -Source "$DOTFILES\nvim\.config\nvim" `
+  -Target "$HOME\AppData\Local\nvim"
 
-# # ==============================
-# # Alacritty
-# # ==============================
-# Link-File `
-#   -Source "$DOTFILES\alacritty\alacritty.toml" `
-#   -Target "$HOME\AppData\Roaming\alacritty\alacritty.toml"
+# ==============================
+# Alacritty
+# ==============================
+Link-File `
+  -Source "$DOTFILES\alacritty\.config\alacritty" `
+  -Target "$HOME\AppData\Roaming\alacritty"
 
-# Write-Host "`n✔ Dotfiles linked successfully"
+# ==============================
+# Bat
+# ==============================
+Link-File `
+  -Source "$DOTFILES\bat\.config\bat" `
+  -Target "$HOME\AppData\Roaming\bat"
+
+# ==============================
+# btop
+# ==============================
+Link-File `
+  -Source "$DOTFILES\btop\.config\btop" `
+  -Target "$HOME\AppData\Roaming\btop"
+
+# ==============================
+# eza
+# ==============================
+Link-File `
+  -Source "$DOTFILES\eza\.config\eza" `
+  -Target "$HOME\AppData\Roaming\eza"
+
+# ==============================
+# eza
+# ==============================
+Link-File `
+  -Source "$DOTFILES\fastfetch\.config\fastfetch" `
+  -Target "$HOME\AppData\Roaming\fastfetch"
+
+# ==============================
+# starship
+# ==============================
+Link-File `
+  -Source "$DOTFILES\starship\.config\starship.toml" `
+  -Target "$HOME\.config/starship.toml"
+
+# ==============================
+# yazi
+# ==============================
+Link-File `
+  -Source "$DOTFILES\yazi\.config\yazi" `
+  -Target "$HOME\AppData\Roaming\yazi"
+
+# ==============================
+# zed
+# ==============================
+Link-File `
+  -Source "$DOTFILES\zed\.config\zed" `
+  -Target "$HOME\AppData\Roaming\zed"
+
+# ==============================
+# powershell
+# ==============================
+Link-File `
+  -Source "$DOTFILES\pwsh\pwsh.ps1" `
+  -Target "$HOME\OneDrive\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
+
+Write-Host "`n✔ Dotfiles linked successfully"

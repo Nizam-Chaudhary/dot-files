@@ -19,6 +19,8 @@ else {
 Set-Alias vi nvim -ErrorAction SilentlyContinue
 Set-Alias vim nvim -ErrorAction SilentlyContinue
 
+Set-Alias c cls -ErrorAction SilentlyContinue
+
 
 # ==================================================
 # ReadLine & Completion

@@ -8,9 +8,9 @@ The steps are ordered so that **system-level changes come first**, followed by *
 
 ## 0. Prerequisites
 
-* Windows 11 (or Windows 10 22H2+)
-* Administrator access
-* Stable internet connection
+- Windows 11 (or Windows 10 22H2+)
+- Administrator access
+- Stable internet connection
 
 Open **Windows Terminal (Admin)** or **PowerShell (Admin)** for the system steps.
 
@@ -20,10 +20,11 @@ Open **Windows Terminal (Admin)** or **PowerShell (Admin)** for the system steps
 
 ### 1.1 Windows Update
 
-* Open **Settings → Windows Update**
-* Click **Check for updates**
-* Install all available updates
-* Reboot if required
+- Open **Settings → Windows Update**
+- Click **Check for updates**
+- Install all available updates
+- Enable sudo
+- Reboot if required
 
 Repeat until no updates remain.
 
@@ -39,11 +40,10 @@ winget upgrade --source msstore --all
 
 1. Run **Windows Update** again (many drivers come via WU)
 2. Install OEM tools if required:
-
-   * Intel Driver & Support Assistant
-   * AMD Adrenalin
-   * NVIDIA GeForce Experience
-   * Laptop vendor utilities (Dell / Lenovo / HP)
+   - Intel Driver & Support Assistant
+   - AMD Adrenalin
+   - NVIDIA GeForce Experience
+   - Laptop vendor utilities (Dell / Lenovo / HP / Acer)
 
 Reboot after driver installation.
 
@@ -59,9 +59,9 @@ winget install -e --id Google.Chrome
 
 ### 3.2 Google Account Setup
 
-* Open Chrome
-* Sign in with Google account
-* Enable sync (bookmarks, passwords, extensions)
+- Open Chrome
+- Sign in with Google account
+- Enable sync (bookmarks, passwords, extensions)
 
 ---
 
@@ -75,8 +75,8 @@ wsl --install
 
 This enables:
 
-* Windows Subsystem for Linux
-* Virtual Machine Platform
+- Windows Subsystem for Linux
+- Virtual Machine Platform
 
 Reboot when prompted.
 
@@ -88,8 +88,8 @@ wsl --install -d Ubuntu
 
 On first launch:
 
-* Create Linux username
-* Set password
+- Create Linux username
+- Set password
 
 ### 4.3 Update Ubuntu
 
@@ -217,6 +217,7 @@ winget install Gyan.FFmpeg 7zip.7zip jqlang.jq oschwartz10612.Poppler sharkdp.fd
 ```
 
 Install powershell modules:
+
 ```powershell
 Install-Module PSReadLine -Force
 Install-Module CompletionPredictor
@@ -231,31 +232,33 @@ Install-Module PSFzf
 
 ### 11.1 Repository Structure (Current)
 
+Make npm globals install available
+
+```powershell
+$UserPath = [Environment]::GetEnvironmentVariable("Path", "User")
+
+if ($UserPath -notlike "*$env:LOCALAPPDATA\mise\shims*") {
+  [Environment]::SetEnvironmentVariable(
+    "Path",
+    "$UserPath;$env:LOCALAPPDATA\mise\shims",
+    "User"
+  )
+}
+```
+
 Your dotfiles are **Unix-first**, with clear separation:
 
-* `bash/`, `zsh/` → Linux shells
-* `pwsh/` → PowerShell config
-* `.config/*` → app configs (nvim, git, bat, starship, etc.)
+- `bash/`, `zsh/` → Linux shells
+- `pwsh/` → PowerShell config
+- `.config/*` → app configs (nvim, git, bat, starship, etc.)
 
 ### 11.2 Stow Alternatives on Windows
 
-GNU Stow works poorly on Windows paths. Recommended options:
+Run script to stow the config files for windows
 
-**Option A — PowerShell Symlinks (recommended)**
-
-* Use `New-Item -ItemType SymbolicLink`
-* Scripted via `scripts/setup-pwsh.bat`
-
-**Option B — chezmoi**
-
-* Cross-platform
-* Native Windows support
-* Template & condition support
-
-**Option C — Git worktrees + manual linking**
-
-* Lowest magic
-* Highest control
+```powershell
+./scripts/stow-windows.ps1
+```
 
 ---
 
@@ -278,11 +281,11 @@ cd ~/dotfiles
 
 This configures:
 
-* bash / zsh
-* nvim
-* tmux
-* git
-* cli tools
+- bash / zsh
+- nvim
+- tmux
+- git
+- cli tools
 
 ---
 
@@ -304,32 +307,32 @@ $PROFILE
 
 Features:
 
-* eza-based ls
-* fzf integration
-* zoxide
-* yazi cwd sync
-* git helpers
-* starship prompt
+- eza-based ls
+- fzf integration
+- zoxide
+- yazi cwd sync
+- git helpers
+- starship prompt
 
 ---
 
 ## 14. Final Checklist
 
-* [ ] Windows fully updated
-* [ ] Drivers installed
-* [ ] WSL Ubuntu working
-* [ ] PowerShell 7 default
-* [ ] Git + SSH + GPG configured
-* [ ] CLI tools installed
-* [ ] Dotfiles applied (WSL + PowerShell)
+- [ ] Windows fully updated
+- [ ] Drivers installed
+- [ ] WSL Ubuntu working
+- [ ] PowerShell 7 default
+- [ ] Git + SSH + GPG configured
+- [ ] CLI tools installed
+- [ ] Dotfiles applied (WSL + PowerShell)
 
 ---
 
 ## Notes
 
-* Prefer **WSL for Linux workflows**
-* Prefer **PowerShell for Windows-native tooling**
-* Keep dotfiles **source of truth** in Git
+- Prefer **WSL for Linux workflows**
+- Prefer **PowerShell for Windows-native tooling**
+- Keep dotfiles **source of truth** in Git
 
 ---
 
