@@ -189,6 +189,10 @@ BREW_PACKAGES=(
 )
 
 brew install "${BREW_PACKAGES[@]}"
+
+brew unlink util-linux
+brew install bash-completion
+
 log_ok "Brew packages installed"
 
 # ==========================================================
