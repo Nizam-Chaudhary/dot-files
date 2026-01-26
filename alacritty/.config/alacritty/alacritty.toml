@@ -1,6 +1,6 @@
 
 #### THEME ####
-import = ["~/.config/alacritty/themes/catppuccin-mocha.toml"]
+general.import = ["~/.config/alacritty/themes/catppuccin-mocha.toml"]
 
 ##### GENERAL #####
 [env]
