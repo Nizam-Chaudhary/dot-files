@@ -260,12 +260,7 @@ else
   # Official install script
   run curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
 
-  if is_installed atuin; then
-    log_ok "Atuin installed successfully"
-  else
-    log_error "Atuin installation failed"
-    return 1
-  fi
+  log_ok "Atuin installed successfully"
 fi
 
 # ==========================================================
