@@ -39,6 +39,15 @@
     "pkief.material-icon-theme",
     "davidanson.vscode-markdownlint",
     "catppuccin.catppuccin-vsc",
+
+    "gruntfuggly.todo-tree",
+    "rust-lang.rust-analyzer",
+    "oven.bun-vscode",
+    "stylelint.vscode-stylelint",
+    // "tobias-z.vscode-harpoon",
+    "vue.volar",
+    "wayou.vscode-todo-highlight",
+
     // disabled
     // "antfu.vite",
     // "antfu.browse-lite",
@@ -49,7 +58,7 @@
     "ms-azuretools.vscode-containers",
     "github.vscode-github-actions",
     // "GitHub.vscode-pull-request-github",
-    "ms-kubernetes-tools.vscode-kubernetes-tools",
+    "ms-kubernetes-tools.vscode-kubernetes-tools"
     // "vscodevim.vim",
     // "vue.volar",
     // "chrmarti.regex",
