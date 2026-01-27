@@ -20,9 +20,9 @@
 
   // =============== Font & Typography ===============
   "ui_font_family": "JetBrainsMonoNL Nerd Font",
-  "ui_font_size": 20,
+  "ui_font_size": 22,
   "buffer_font_family": "JetBrainsMonoNL Nerd Font",
-  "buffer_font_size": 18,
+  "buffer_font_size": 20,
   "buffer_font_weight": 400,
   "buffer_line_height": {
     "custom": 1.6
@@ -147,35 +147,35 @@
     "JSONC": {
       "formatter": "prettier"
     },
-    "JavaScript": {
-      "formatter": "prettier",
-      "language_servers": [
-        "!vtsls",
-        "!typescript-language-server",
-        "tsgo",
-        "..."
-      ]
-    },
     "Markdown": {
       "formatter": "prettier"
     },
+    "JavaScript": {
+      "formatter": "prettier"
+      // "language_servers": [
+      //   "!vtsls",
+      //   "!typescript-language-server",
+      //   "tsgo",
+      //   "..."
+      // ]
+    },
     "TSX": {
-      "formatter": "prettier",
-      "language_servers": [
-        "!vtsls",
-        "!typescript-language-server",
-        "tsgo",
-        "..."
-      ]
+      "formatter": "prettier"
+      // "language_servers": [
+      //   "!vtsls",
+      //   "!typescript-language-server",
+      //   "tsgo",
+      //   "..."
+      // ]
     },
     "TypeScript": {
-      "formatter": "prettier",
-      "language_servers": [
-        "!vtsls",
-        "!typescript-language-server",
-        "tsgo",
-        "..."
-      ]
+      "formatter": "prettier"
+      // "language_servers": [
+      //   "!vtsls",
+      //   "!typescript-language-server",
+      //   "tsgo",
+      //   "..."
+      // ]
     },
     "YAML": {
       "formatter": "prettier"
@@ -184,10 +184,7 @@
   "prettier": {
     "allowed": true,
     "arrowParens": "always",
-    "plugins": [
-      "prettier-plugin-organize-imports",
-      "prettier-plugin-tailwindcss"
-    ],
+    "plugins": ["prettier-plugin-organize-imports", "prettier-plugin-tailwindcss"],
     "tabWidth": 2
   },
 
