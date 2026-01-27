@@ -4,18 +4,15 @@
     "antfu.where-am-i",
     "antfu.open-in-github-button",
     "lokalise.i18n-ally",
-
     // themes & icons
     "antfu.icons-carbon",
     "antfu.theme-vitesse",
     "file-icons.file-icons",
-
     // life savers!
     "dbaeumer.vscode-eslint",
     "github.copilot-chat",
     "usernamehw.errorlens",
     "streetsidesoftware.code-spell-checker",
-
     // up to you
     "eamodio.gitlens",
     "EditorConfig.EditorConfig",
@@ -23,7 +20,6 @@
     "mpontus.tab-cycle",
     "naumovs.color-highlight",
     "znck.grammarly",
-
     // mine
     "bradlc.vscode-tailwindcss",
     "vincaslt.highlight-matching-tag",
@@ -42,6 +38,15 @@
     "typescriptteam.native-preview",
     "pkief.material-icon-theme",
     "davidanson.vscode-markdownlint",
+    "catppuccin.catppuccin-vsc",
+
+    "gruntfuggly.todo-tree",
+    "rust-lang.rust-analyzer",
+    "oven.bun-vscode",
+    "stylelint.vscode-stylelint",
+    // "tobias-z.vscode-harpoon",
+    "vue.volar",
+    "wayou.vscode-todo-highlight",
 
     // disabled
     // "antfu.vite",
@@ -49,11 +54,11 @@
     // "antfu.slidev",
     // "WakaTime.vscode-wakatime",
     // "Catppuccin.catppuccin-vsc-icons",
-    // "ms-vscode-remote.remote-containers",
-    // "ms-azuretools.vscode-containers"
-    // "github.vscode-github-actions",
+    "ms-vscode-remote.remote-containers",
+    "ms-azuretools.vscode-containers",
+    "github.vscode-github-actions",
     // "GitHub.vscode-pull-request-github",
-    // "ms-kubernetes-tools.vscode-kubernetes-tools",
+    "ms-kubernetes-tools.vscode-kubernetes-tools"
     // "vscodevim.vim",
     // "vue.volar",
     // "chrmarti.regex",

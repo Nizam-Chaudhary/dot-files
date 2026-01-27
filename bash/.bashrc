@@ -12,3 +12,4 @@ alias la='ls -la'
 alias oc='opencode'
 alias c='clear'
 alias rip="rip --graveyard ~/.local/share/Trash"
+

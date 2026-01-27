@@ -14,8 +14,6 @@ fi
 # ==========================================================
 DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
 AUR_HELPER="yay"
-PNPM_COMPLETION_VERSION="0.5.5"
-PNPM_COMPLETION_ARCH="x86_64-unknown-linux-gnu"
 
 # ==========================================================
 # Enhanced Logging
@@ -245,6 +243,24 @@ if [[ -f "$FONTS_SCRIPT" ]]; then
   log_ok "Fonts installed successfully"
 else
   log_warn "install-fonts.sh not found at $FONTS_SCRIPT - skipping font installation"
+fi
+
+# ==========================================================
+# Atuin Setup (Shell History Manager)
+# ==========================================================
+section "Atuin Setup"
+
+export PATH="$HOME/.local/bin:$PATH"
+
+if is_installed atuin; then
+  log_ok "Atuin already installed — skipping"
+else
+  log_info "Installing Atuin..."
+
+  # Official install script
+  run curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+
+  log_ok "Atuin installed successfully"
 fi
 
 # ==========================================================

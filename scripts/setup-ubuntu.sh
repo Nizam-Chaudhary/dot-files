@@ -13,8 +13,6 @@ fi
 # Configuration
 # ==========================================================
 DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
-PNPM_COMPLETION_VERSION="0.5.5"
-PNPM_COMPLETION_ARCH="x86_64-unknown-linux-gnu"
 
 # ==========================================================
 # Enhanced Logging
@@ -183,14 +181,18 @@ fi
 section "Brew Packages"
 
 BREW_PACKAGES=(
-  fd ripgrep bat eza fzf zoxide mise neovim
+  fd ripgrep bat eza zoxide mise neovim
   starship fastfetch git-delta glow
   lazygit lazydocker tlrc yazi rip2
   git curl wget zsh vim tmux stow btop htop unzip
-  jq tree ncdu rsync aria2 bash-completion
+  jq tree ncdu rsync aria2 fzf
 )
 
 brew install "${BREW_PACKAGES[@]}"
+
+brew unlink util-linux
+brew install bash-completion
+
 log_ok "Brew packages installed"
 
 # ==========================================================
@@ -219,13 +221,13 @@ else
 fi
 
 # Flatpak GUI Apps
-FLATPAK_GUI_APPS=(
-  md.obsidian.Obsidian
-)
+# FLATPAK_GUI_APPS=(
+#   md.obsidian.Obsidian
+# )
 
-log_info "Installing Flatpak GUI applications..."
-flatpak install -y flathub "${FLATPAK_GUI_APPS[@]}"
-log_ok "Flatpak GUI applications installed"
+# log_info "Installing Flatpak GUI applications..."
+# flatpak install -y flathub "${FLATPAK_GUI_APPS[@]}"
+# log_ok "Flatpak GUI applications installed"
 
 # ==========================================================
 # Docker Setup
@@ -277,7 +279,7 @@ if [[ ! -d "$ZINIT_HOME" ]]; then
   log_info "Installing Zinit to $ZINIT_HOME..."
   mkdir -p "$(dirname "$ZINIT_HOME")"
   git clone --depth=1 https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-  sudo chsh -s /usr/bin/zsh "$USER"
+  # sudo chsh -s /usr/bin/zsh "$USER"
   log_ok "Zinit installed successfully"
 else
   log_info "Zinit already present; pulling updates..."
@@ -301,6 +303,24 @@ if [[ -f "$FONTS_SCRIPT" ]]; then
   log_ok "Fonts installed successfully"
 else
   log_warn "install-fonts.sh not found at $FONTS_SCRIPT - skipping font installation"
+fi
+
+# ==========================================================
+# Atuin Setup (Shell History Manager)
+# ==========================================================
+section "Atuin Setup"
+
+export PATH="$HOME/.local/bin:$PATH"
+
+if is_installed atuin; then
+  log_ok "Atuin already installed — skipping"
+else
+  log_info "Installing Atuin..."
+
+  # Official install script
+  run curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+
+  log_ok "Atuin installed successfully"
 fi
 
 # ==========================================================

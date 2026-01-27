@@ -13,6 +13,9 @@ window-theme = ghostty
 confirm-close-surface=false
 resize-overlay = never
 gtk-toolbar-style = flat
+maximize = true
+#background-opacity = 0.8 # kde plasma
+#background-blur = true # kde plasma
 
 # Cursor styling
 cursor-style = "block"
