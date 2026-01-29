@@ -141,10 +141,13 @@ CORE_PACKAGES=(
   software-properties-common
   apt-transport-https
   flatpak
-  alacritty
+  zsh
+  delta
 )
 
 sudo apt install -y --no-install-recommends "${CORE_PACKAGES[@]}"
+
+sudo snap install alacritty --classic
 
 # Enable Flathub repository
 if ! flatpak remote-list | grep -q flathub; then
@@ -182,16 +185,13 @@ section "Brew Packages"
 
 BREW_PACKAGES=(
   fd ripgrep bat eza zoxide mise neovim
-  starship fastfetch git-delta glow
+  starship fastfetch glow
   lazygit lazydocker tlrc yazi rip2
   git curl wget zsh vim tmux stow btop htop unzip
   jq tree ncdu rsync aria2 fzf
 )
 
 brew install "${BREW_PACKAGES[@]}"
-
-brew unlink util-linux
-brew install bash-completion
 
 log_ok "Brew packages installed"
 
