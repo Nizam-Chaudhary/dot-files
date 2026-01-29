@@ -69,8 +69,6 @@ zinit wait"0" lucid atpull"%atclone" atclone"_fix-omz-plugin" for \
     OMZP::git-auto-fetch \
     OMZP::git-extras \
     OMZP::history \
-    OMZP::ssh-agent \
-    OMZP::gpg-agent \
     OMZP::command-not-found \
     OMZP::history-substring-search \
     OMZP::systemd \
@@ -88,8 +86,8 @@ zinit wait"0" lucid atpull"%atclone" atclone"_fix-omz-plugin" for \
     OMZP::ruby \
     OMZP::golang \
     OMZP::node \
-   OMZP::deno \
-   OMZP::nestjs \
+    OMZP::deno \
+    OMZP::nestjs \
     OMZP::npm \
     OMZP::nvm \
     OMZP::fnm \
@@ -130,6 +128,8 @@ zinit wait"1" lucid atpull"%atclone" atclone"_fix-omz-plugin" for \
 #    OMZP::ng \
 #    OMZP::pass \
 #    OMZP::redis-cli \
+    # OMZP::ssh-agent \
+    # OMZP::gpg-agent \
 #    OMZP::suse
 
 # alias-finder config

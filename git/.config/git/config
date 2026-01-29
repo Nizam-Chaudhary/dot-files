@@ -62,14 +62,14 @@
     diffFilter = delta --color-only
 
 # --- Credentials ---
-# [credential]
-#     credentialStore = gpg
-#     helper = /usr/local/bin/git-credential-manager
+[credential]
+    credentialStore = gpg
+    helper = /usr/local/bin/git-credential-manager
 
 # WSL
 # [credential]
 # 	helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
 # 	credentialStore = wincred
 
-# [credential "https://dev.azure.com"]
-# 	useHttpPath = true
+[credential "https://dev.azure.com"]
+  	useHttpPath = true
