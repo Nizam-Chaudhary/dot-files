@@ -129,7 +129,7 @@ CORE_PACKAGES=(
   starship fastfetch lazygit git-delta ghostty docker bash-completion
   docker-compose docker-machine docker-buildx flatpak obsidian dbeaver qbittorrent
   lazydocker usbmuxd ifuse libplist gvfs gvfs-afc yazi glow
-  gvfs-gphoto2 gvfs-mtp gvfs-smb
+  gvfs-gphoto2 gvfs-mtp gvfs-smb less
 )
 
 sudo pacman -S --noconfirm --needed "${CORE_PACKAGES[@]}"
