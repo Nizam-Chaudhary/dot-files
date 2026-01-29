@@ -2,9 +2,6 @@
 # ZSH MAIN ENTRY
 # ==========================================================
 
-# Performance Plugin Manager
-source ~/.zsh/zinit.zsh
-
 # Core environment and shell settings (Immediate)
 source ~/.zsh/envs.zsh
 source ~/.zsh/shell.zsh
@@ -12,6 +9,9 @@ source ~/.zsh/shell.zsh
 # Logic modules
 source ~/.zsh/aliases.zsh
 source ~/.zsh/functions.zsh
+
+# Performance Plugin Manager
+source ~/.zsh/zinit.zsh
 
 # Post-init scripts
 source ~/.zsh/init.zsh
