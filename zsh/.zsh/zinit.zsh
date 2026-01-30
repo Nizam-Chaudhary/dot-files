@@ -95,7 +95,7 @@ zinit wait"0" lucid atpull"%atclone" atclone"_fix-omz-plugin" for \
     OMZP::pm2
 
 # --- Cloud & Containers ---
-zinit wait"1" lucid atpull"%atclone" atclone"_fix-omz-plugin" for \
+zinit wait"0" lucid atpull"%atclone" atclone"_fix-omz-plugin" for \
     OMZP::docker \
     OMZP::docker-compose \
     OMZP::podman \
@@ -110,7 +110,7 @@ zinit wait"1" lucid atpull"%atclone" atclone"_fix-omz-plugin" for \
     OMZP::terraform
 
 # --- Database & Tools ---
-zinit wait"1" lucid atpull"%atclone" atclone"_fix-omz-plugin" for \
+zinit wait"0" lucid atpull"%atclone" atclone"_fix-omz-plugin" for \
     OMZP::postgres \
     OMZP::mongocli \
     OMZP::vscode \
@@ -160,7 +160,7 @@ zinit ice wait"0" lucid atload"zicdreplay"
 zinit light zdharma-continuum/fast-syntax-highlighting
 
 # pnpm completion
-zinit ice wait"1" lucid atload"zpcdreplay" atclone"./zplug.zsh" atpull"%atclone"
+zinit ice wait"0" lucid atload"zpcdreplay" atclone"./zplug.zsh" atpull"%atclone"
 zinit light g-plane/pnpm-shell-completion
 
 # Zsh VI Mode (Shallow clone)
