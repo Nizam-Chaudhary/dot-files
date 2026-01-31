@@ -58,7 +58,7 @@
     "ms-azuretools.vscode-containers",
     "github.vscode-github-actions",
     // "GitHub.vscode-pull-request-github",
-    "ms-kubernetes-tools.vscode-kubernetes-tools"
+    "ms-kubernetes-tools.vscode-kubernetes-tools",
     // "vscodevim.vim",
     // "vue.volar",
     // "chrmarti.regex",
