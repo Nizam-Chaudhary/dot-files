@@ -66,7 +66,6 @@ zinit wait"0" lucid atpull"%atclone" atclone"_fix-omz-plugin" for \
     OMZP::copyfile \
     OMZP::copypath \
     OMZP::cp \
-    OMZP::git-auto-fetch \
     OMZP::git-extras \
     OMZP::history \
     OMZP::command-not-found \
@@ -114,7 +113,6 @@ zinit wait"0" lucid atpull"%atclone" atclone"_fix-omz-plugin" for \
     OMZP::postgres \
     OMZP::mongocli \
     OMZP::vscode \
-    OMZP::archlinux \
     OMZP::gh 
 
 # --- Disabled / Inactive Plugins (Safe to comment here) ---
@@ -127,6 +125,8 @@ zinit wait"0" lucid atpull"%atclone" atclone"_fix-omz-plugin" for \
 #    OMZP::dnf \
 #    OMZP::ng \
 #    OMZP::pass \
+    # OMZP::git-auto-fetch \
+    # OMZP::archlinux \
 #    OMZP::redis-cli \
     # OMZP::ssh-agent \
     # OMZP::gpg-agent \

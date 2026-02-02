@@ -20,9 +20,9 @@
 
   // =============== Font & Typography ===============
   "ui_font_family": "JetBrainsMonoNL Nerd Font",
-  "ui_font_size": 22,
+  "ui_font_size": 18,
   "buffer_font_family": "JetBrainsMonoNL Nerd Font",
-  "buffer_font_size": 20,
+  "buffer_font_size": 18,
   "buffer_font_weight": 400,
   "buffer_line_height": {
     "custom": 1.6
@@ -45,9 +45,9 @@
 
   // =============== Editor Behavior ===============
   "base_keymap": "VSCode",
-  "vim_mode": false,
-  "which_key": { "enabled": false },
-  "relative_line_numbers": "disabled",
+  "vim_mode": true,
+  "which_key": { "enabled": true },
+  "relative_line_numbers": "wrapped",
   "formatter": "language_server",
   "format_on_save": "off",
   "remove_trailing_whitespace_on_save": false,
@@ -228,7 +228,7 @@
       "EDITOR": "zed --wait"
     },
     "font_family": "JetBrainsMonoNL Nerd Font",
-    "font_size": 16,
+    "font_size": 15,
     "font_weight": 400,
     "shell": "system"
   },

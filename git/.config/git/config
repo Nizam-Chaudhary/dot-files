@@ -62,18 +62,18 @@
     diffFilter = delta --color-only
 
 # --- Credentials ---
-[credential]
-    credentialStore = libsecret
-	helper = cache --timeout 21600
-	helper = oauth
+# [credential]
+#   credentialStore = gpg
+# 	helper = cache --timeout 5
+# 	helper = oauth
 
 # --- GCM for windows ---
-# [credential]
-#     credentialStore = gpg
-#     helper = /usr/local/bin/git-credential-manager
+[credential]
+    credentialStore = gpg
+    helper = /usr/local/bin/git-credential-manager
 
-# [credential "https://dev.azure.com"]
-#   	useHttpPath = true
+[credential "https://dev.azure.com"]
+  	useHttpPath = true
 
 # WSL
 # [credential]

@@ -18,3 +18,6 @@ export FZF_DEFAULT_OPTS=" \
 
 # GPG TTY
 export GPG_TTY=$(tty)
+
+# DOCKER_HOST=unix:///run/user/1000/docker.sock
+export PATH="/home/nizam/.bun/bin:$PATH"
