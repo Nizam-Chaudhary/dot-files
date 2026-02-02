@@ -43,6 +43,10 @@
       "space a c": "agent::ToggleFocus",
       // Go to file with `gf`
       "g f": "editor::OpenExcerpts",
+
+      // format
+      "space l s": "editor::FormatSelections",
+      "space l f": "editor::Format",
     },
   },
   {
@@ -125,12 +129,18 @@
       "space f p": "projects::OpenRecent",
     },
   },
-  // Comment code
   {
-    "context": "Editor && vim_mode == visual && !VimWaiting && !menu",
+    "context": "Editor && VimControl && !VimWaiting && !menu",
     "bindings": {
-      // visual, visual line & visual block modes
-      "g c": "editor::ToggleComments",
+      // tab switcher
+      "space o": "tab_switcher::Toggle",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
+    "bindings": {
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp",
     },
   },
   // Better escape
