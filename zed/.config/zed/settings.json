@@ -12,18 +12,19 @@
   "tabs": {
     "file_icons": true,
     "git_status": true,
-    "show_close_button": "always"
+    "show_close_button": "always",
+    "show_diagnostics": "errors"
   },
   "title_bar": {
     "show_branch_icon": true
   },
 
   // =============== Font & Typography ===============
-  "ui_font_family": "JetBrainsMonoNL Nerd Font",
+  "ui_font_family": "Maple Mono NF",
   "ui_font_size": 18,
-  "buffer_font_family": "JetBrainsMonoNL Nerd Font",
+  "buffer_font_family": "Maple Mono NF",
   "buffer_font_size": 18,
-  "buffer_font_weight": 400,
+  "buffer_font_weight": 320,
   "buffer_line_height": {
     "custom": 1.6
   },
@@ -46,8 +47,11 @@
   // =============== Editor Behavior ===============
   "base_keymap": "VSCode",
   "vim_mode": true,
+  "vim": {
+    "use_system_clipboard":"always" ,
+  },
   "which_key": { "enabled": true },
-  "relative_line_numbers": "wrapped",
+  "relative_line_numbers": "enabled",
   "formatter": "language_server",
   "format_on_save": "off",
   "remove_trailing_whitespace_on_save": false,
@@ -55,12 +59,10 @@
   "colorize_brackets": true,
   "indent_guides": {
     "enabled": true,
-    "line_width": 1,
-    "active_line_width": 2,
     "coloring": "indent_aware"
   },
   "scrollbar": {
-    "show": "auto"
+    "show": "never"
   },
   "minimap": {
     "show": "auto",
@@ -83,13 +85,13 @@
   },
   "agent": {
     "always_allow_tool_actions": true,
-    "default_width": 400,
+    "default_width": 320,
     "default_model": {
       "model": "gpt-4.1",
       "provider": "copilot_chat"
     },
     "default_profile": "write",
-    "dock": "right",
+    "dock": "left",
     "inline_assistant_model": {
       "model": "gpt-4.1",
       "provider": "copilot_chat"
@@ -127,7 +129,7 @@
     },
     "tailwindcss-language-server": {
       "settings": {
-        "classAttributes": ["class", "className", "ngClass", "styles"]
+        "classAttributes": ["class", "className", "ngClass", "styles", "cva"]
       }
     }
   },
@@ -193,18 +195,22 @@
     "border_size": 2
   },
   "project_panel": {
-    "default_width": 400,
+    "default_width": 320,
     "dock": "right"
   },
   "outline_panel": {
-    "default_width": 400,
+    "default_width": 320,
     "dock": "right"
   },
   "git_panel": {
-    "default_width": 400,
+    "default_width": 320,
     "dock": "right",
     "status_style": "label_color",
     "tree_view": false
+  },
+  "centered_layout": {
+   "left_padding":0.15 ,
+   "right_padding": 0.15
   },
   "collaboration_panel": {
     "button": true,
@@ -227,9 +233,9 @@
     "env": {
       "EDITOR": "zed --wait"
     },
-    "font_family": "JetBrainsMonoNL Nerd Font",
+    "font_family": "Maple Mono NF",
     "font_size": 15,
-    "font_weight": 400,
+    "font_weight": 320,
     "shell": "system"
   },
 
@@ -237,7 +243,7 @@
   "file_finder": {
     "git_status": true,
     "include_ignored": "smart",
-    "modal_max_width": "large"
+    "modal_max_width": "medium",
   },
   "file_types": {
     "Dockerfile": ["Dockerfile", "Dockerfile.*"]
