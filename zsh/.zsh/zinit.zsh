@@ -60,6 +60,7 @@ zinit wait"0" lucid atpull"%atclone" atclone"_fix-omz-plugin" for \
     OMZP::aliases \
     OMZP::alias-finder \
     OMZP::sudo \
+    OMZP::dnf \
     OMZP::extract \
     OMZP::colored-man-pages \
     OMZP::web-search \

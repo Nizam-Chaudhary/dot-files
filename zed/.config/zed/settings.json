@@ -79,11 +79,9 @@
   // =============== AI, Copilot & Agent ===============
   "show_edit_predictions": true,
   "edit_predictions": {
+    "provider": "zed",
     "enabled_in_text_threads": false,
     "mode": "eager",
-  },
-  "features": {
-    "edit_prediction_provider": "zed",
   },
   "agent": {
     "always_allow_tool_actions": true,

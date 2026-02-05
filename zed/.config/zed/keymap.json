@@ -47,6 +47,12 @@
       // format
       "space l s": "editor::FormatSelections",
       "space l f": "editor::Format",
+      
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp",
+      
+      // open right dock
+      "ctrl-b": "workspace::ToggleRightDock",
     },
   },
   {
@@ -60,44 +66,10 @@
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-j": "workspace::ActivatePaneDown",
 
-      // +LSP
-      "space c a": "editor::ToggleCodeActions",
-      "space .": "editor::ToggleCodeActions",
-      "space c r": "editor::Rename",
-      "g d": "editor::GoToDefinition",
-      "g D": "editor::GoToDefinitionSplit",
-      "g i": "editor::GoToImplementation",
-      "g I": "editor::GoToImplementationSplit",
-      "g t": "editor::GoToTypeDefinition",
-      "g T": "editor::GoToTypeDefinitionSplit",
-      "g r": "editor::FindAllReferences",
-      "] d": "editor::GoToDiagnostic",
-      "[ d": "editor::GoToPreviousDiagnostic",
-      // TODO: Go to next/prev error
-      "] e": "editor::GoToDiagnostic",
-      "[ e": "editor::GoToPreviousDiagnostic",
-      // Symbol search
-      "s s": "outline::Toggle",
-      "s S": "project_symbols::Toggle",
-      // Diagnostic
-      "space x x": "diagnostics::Deploy",
-
-      // +Git
-      // Git prev/next hunk
-      "] h": "editor::GoToHunk",
-      "[ h": "editor::GoToPreviousHunk",
-
-      // TODO: git diff is not ready yet, refer https://github.com/zed-industries/zed/issues/8665#issuecomment-2194000497
-
       // + Buffers
       // Switch between buffers
       "shift-h": "pane::ActivatePreviousItem",
       "shift-l": "pane::ActivateNextItem",
-      // Close active panel
-      "shift-q": "pane::CloseActiveItem",
-      "ctrl-w": "pane::CloseActiveItem",
-      "space q": "pane::CloseActiveItem",
-      "space b d": "pane::CloseActiveItem",
       // Close other items
       "space b o": "pane::CloseOtherItems",
       // Save file
@@ -106,17 +78,12 @@
       "space space": "file_finder::Toggle",
       // Project search
       "space /": "pane::DeploySearch",
-      // TODO: Open other files
       // Show project panel with current file
       "space e": "pane::RevealInProjectPanel",
 
       // split
       "space v": "pane::SplitVertical",
-      // "space s": "pane::SplitHorizontal",
-
-      // switch tabs
-      // "tab": "pane::ActivateNextItem",
-      // "shift-tab": "pane::ActivatePreviousItem",
+      "space s": "pane::SplitHorizontal",
     },
   },
   // Empty pane, set of keybindings that are available when there is no active editor
@@ -127,6 +94,8 @@
       "space space": "file_finder::Toggle",
       // Open recent project
       "space f p": "projects::OpenRecent",
+      // Show project panel with current file
+      "space e": "workspace::ToggleRightDock",
     },
   },
   {
@@ -134,13 +103,6 @@
     "bindings": {
       // tab switcher
       "space o": "tab_switcher::Toggle",
-    },
-  },
-  {
-    "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
-    "bindings": {
-      "shift-j": "editor::MoveLineDown",
-      "shift-k": "editor::MoveLineUp",
     },
   },
   // Better escape
@@ -154,19 +116,14 @@
       "ctrl-s": "workspace::Save",
     },
   },
-  // Rename
+  // c operator
   {
     "context": "Editor && vim_operator == c",
     "bindings": {
       "c": "vim::CurrentLine",
+      // Rename
       "r": "editor::Rename", // zed specific
-    },
-  },
-  // Code Action
-  {
-    "context": "Editor && vim_operator == c",
-    "bindings": {
-      "c": "vim::CurrentLine",
+      // Code Action
       "a": "editor::ToggleCodeActions", // zed specific
     },
   },
@@ -200,11 +157,6 @@
       // Close project panel as project file panel on the right
       "q": "workspace::ToggleRightDock",
       "space e": "workspace::ToggleRightDock",
-      // Navigate between panel
-      "ctrl-h": "workspace::ActivatePaneLeft",
-      "ctrl-l": "workspace::ActivatePaneRight",
-      "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-j": "workspace::ActivatePaneDown",
     },
   },
   // Git panel
@@ -212,12 +164,6 @@
     "context": "GitPanel",
     "bindings": {
       "q": "workspace::ToggleRightDock",
-      // Use this to ensure it closes when you press your 'open' shortcut again
-      "space g s": "workspace::ToggleRightDock",
-
-      // Navigation
-      "ctrl-h": "workspace::ActivatePaneLeft",
-      "ctrl-l": "workspace::ActivatePaneRight",
     },
   },
   // Panel nagivation
@@ -234,8 +180,7 @@
     "context": "Workspace",
     "bindings": {
       // Map VSCode like keybindings
-      // "cmd-b": "workspace::ToggleRightDock",
-      // "ctrl-b": "workspace::ToggleRightDock",
+      "ctrl-b": "workspace::ToggleRightDock",
       "ctrl-alt-b": "workspace::ToggleLeftDock",
     },
   },
