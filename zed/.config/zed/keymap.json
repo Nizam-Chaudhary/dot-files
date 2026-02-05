@@ -112,7 +112,7 @@
 
       // split
       "space v": "pane::SplitVertical",
-      "space s": "pane::SplitHorizontal",
+      // "space s": "pane::SplitHorizontal",
 
       // switch tabs
       // "tab": "pane::ActivateNextItem",

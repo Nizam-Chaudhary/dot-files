@@ -63,10 +63,10 @@
     "coloring": "indent_aware",
   },
   "scrollbar": {
-    "show": "never",
+    "show": "always",
   },
   "minimap": {
-    "show": "auto",
+    "show": "never",
     "display_in": "active_editor",
     "max_width_columns": 80,
     "thumb_border": "full",
@@ -301,7 +301,7 @@
     "html": true,
     "ini": true,
     "log": true,
-    "oxc": true,
+    // "oxc": true,
     "make": true,
     "material-icon-theme": true,
     "mcp-server-context7": true,
@@ -312,7 +312,7 @@
     "sql": true,
     "terraform": true,
     "toml": true,
-    "tsgo": true,
+    // "tsgo": true,
     "catppuccin": true,
   },
 
