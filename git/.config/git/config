@@ -70,7 +70,8 @@
 # --- GCM for windows ---
 [credential]
     credentialStore = gpg
-    helper = /usr/local/bin/git-credential-manager
+  	helper = /usr/local/bin/git-credential-manager
+#  	githubAuthMode=device
 
 [credential "https://dev.azure.com"]
   	useHttpPath = true
