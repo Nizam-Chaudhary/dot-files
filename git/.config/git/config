@@ -1,11 +1,11 @@
 # --- Identity & Security ---
-[user]
-    name = Nizam Chaudhary
-    email = ChaudharyNizam10@gmail.com
-    signingkey = 15BB97EB9B4B26E7
+#[user]
+#    name = Nizam Chaudhary
+#    email = ChaudharyNizam10@gmail.com
+#    signingkey = 15BB97EB9B4B26E7
 
 [commit]
-    gpgsign = true
+#    gpgsign = true
     verbose = true
 
 [tag]
