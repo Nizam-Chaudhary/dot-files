@@ -20,4 +20,9 @@ export FZF_DEFAULT_OPTS=" \
 export GPG_TTY=$(tty)
 
 # DOCKER_HOST=unix:///run/user/1000/docker.sock
-export PATH="/home/nizam/.bun/bin:$PATH"
+export PATH="$HOME/.bun/bin:$PATH"
+
+# Use kitty's ssh kitten only when running inside kitty
+if [ "$TERM" = "xterm-kitty" ]; then
+  alias ssh="kitten ssh"
+fi
