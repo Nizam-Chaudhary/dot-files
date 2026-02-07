@@ -47,9 +47,6 @@
   // =============== Editor Behavior ===============
   "base_keymap": "VSCode",
   "vim_mode": true,
-  "vim": {
-    "use_system_clipboard": "always",
-  },
   "cursor_blink": false,
   "which_key": { "enabled": true, "delay_ms": 500 },
   "relative_line_numbers": "enabled",
@@ -154,30 +151,30 @@
     },
     "JavaScript": {
       "formatter": "prettier",
-      // "language_servers": [
-      //   "!vtsls",
-      //   "!typescript-language-server",
-      //   "tsgo",
-      //   "..."
-      // ]
+      "language_servers": [
+        "!typescript-language-server",
+        "tsgo",
+        "vtsls",
+        "..."
+      ]
     },
     "TSX": {
       "formatter": "prettier",
-      // "language_servers": [
-      //   "!vtsls",
-      //   "!typescript-language-server",
-      //   "tsgo",
-      //   "..."
-      // ]
+      "language_servers": [
+        "!typescript-language-server",
+        "tsgo",
+        "vtsls",
+        "..."
+      ]
     },
     "TypeScript": {
       "formatter": "prettier",
-      // "language_servers": [
-      //   "!vtsls",
-      //   "!typescript-language-server",
-      //   "tsgo",
-      //   "..."
-      // ]
+      "language_servers": [
+        "!typescript-language-server",
+        "tsgo",
+        "vtsls",
+        "..."
+      ]
     },
     "YAML": {
       "formatter": "prettier",
@@ -299,7 +296,7 @@
     "html": true,
     "ini": true,
     "log": true,
-    // "oxc": true,
+    "oxc": true,
     "make": true,
     "material-icon-theme": true,
     "mcp-server-context7": true,
@@ -310,7 +307,7 @@
     "sql": true,
     "terraform": true,
     "toml": true,
-    // "tsgo": true,
+    "tsgo": true,
     "catppuccin": true,
   },
 
